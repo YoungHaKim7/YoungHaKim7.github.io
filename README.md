@@ -7,13 +7,6 @@ trunk serve --open
 ```
 
 
-# trunk
-
-```
-trunk serve --open
-```
-
-
 - Build, bundle & ship your Rust WASM application to the web
 
 https://github.com/thedodd/trunk
