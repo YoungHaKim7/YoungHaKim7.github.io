@@ -109,3 +109,7 @@ cargo install --locked wasm-bindgen-cli
 https://trunkrs.dev/#install
 
 <hr>
+
+# Thanks to
+
+https://github.com/ShironCat/ShironCat.github.io
