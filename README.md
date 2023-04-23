@@ -118,6 +118,64 @@ https://trunkrs.dev/#install
 
 <hr>
 
+# GitLab CI
+
+To test your package on GitLab CI, here is a sample .gitlab-ci.yml file:
+
+```
+stages:
+  - build
+
+rust-latest:
+  stage: build
+  image: rust:latest
+  script:
+    - cargo build --verbose
+    - cargo test --verbose
+
+rust-nightly:
+  stage: build
+  image: rustlang/rust:nightly
+  script:
+    - cargo build --verbose
+    - cargo test --verbose
+  allow_failure: true
+```
+
+This will test on the stable channel and nightly channel, but any breakage in nightly will not fail your overall build. Please see the GitLab CI documentation for more information.
+
+- builds.sr.ht
+To test your package on sr.ht, here is a sample .build.yml file. Be sure to change <your repo> and <your project> to the repo to clone and the directory where it was cloned.
+
+```
+image: archlinux
+packages:
+  - rustup
+sources:
+  - <your repo>
+tasks:
+  - setup: |
+      rustup toolchain install nightly stable
+      cd <your project>/
+      rustup run stable cargo fetch
+  - stable: |
+      rustup default stable
+      cd <your project>/
+      cargo build --verbose
+      cargo test --verbose
+  - nightly: |
+      rustup default nightly
+      cd <your project>/
+      cargo build --verbose ||:
+      cargo test --verbose  ||:
+  - docs: |
+      cd <your project>/
+      rustup run stable cargo doc --no-deps
+      rustup run nightly cargo doc --no-deps ||:
+```  
+
+This will test and build documentation on the stable channel and nightly channel, but any breakage in nightly will not fail your overall build. Please see the builds.sr.ht documentation for more information.
+
 # Thanks to
 
 https://github.com/ShironCat/ShironCat.github.io
