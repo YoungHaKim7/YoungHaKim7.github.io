@@ -1,41 +1,15 @@
-<!DOCTYPE html><html lang="en"><head>
-  <meta charset="utf-8">
-  <title>GlobalYoung</title>
-  <link rel="stylesheet" href="/index-95766ff5a905c241.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&amp;display=swap" rel="stylesheet">
-  <script type="module">import init from '/gyoung-github-io-31e686d0c50f48ef.js';init('/gyoung-github-io-31e686d0c50f48ef_bg.wasm');</script>
+<!DOCTYPE html><html><head><base href=/><meta charset=UTF-8><meta name=viewport content="width=device-width, initial-scale=1.0"><script type=module>window.__PERSEUS_RENDER_CFG = `{"about":"about","studykr":"studykr","":""}`;
 
-<link rel="preload" href="/gyoung-github-io-31e686d0c50f48ef_bg.wasm" as="fetch" type="application/wasm" crossorigin="">
-<link rel="modulepreload" href="/gyoung-github-io-31e686d0c50f48ef.js"></head>
-
-<body>
-
-
-<script>(function () {
-    var protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-    var url = protocol + '//' + window.location.host + '/_trunk/ws';
-    var poll_interval = 5000;
-    var reload_upon_connect = () => {
-        window.setTimeout(
-            () => {
-                // when we successfully reconnect, we'll force a
-                // reload (since we presumably lost connection to
-                // trunk due to it being killed, so it will have
-                // rebuilt on restart)
-                var ws = new WebSocket(url);
-                ws.onopen = () => window.location.reload();
-                ws.onclose = reload_upon_connect;
-            },
-            poll_interval);
-    };
-
-    var ws = new WebSocket(url);
-    ws.onmessage = (ev) => {
-        const msg = JSON.parse(ev.data);
-        if (msg.reload) {
-            window.location.reload();
+        import init from "/.perseus/bundle.js";
+        async function main() {
+            await init("/.perseus/bundle.wasm");
         }
-    };
-    ws.onclose = reload_upon_connect;
-})()
-</script></body></html>
+        main();
+
+        
+        
+
+window.__PERSEUS_GLOBAL_STATE = `null`;</script><meta itemprop=__perseus_head_boundary><title>Welcome to Perseus!</title><script>
+window.__PERSEUS_INITIAL_STATE = `null`;
+window.__PERSEUS_INITIAL_WIDGET_STATES = `{}`;
+window.__PERSEUS_TRANSLATIONS = ``;</script><meta itemprop=__perseus_head_end><script>//</script><body><div id=root><div data-hk=0.0 style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 95vh;"><h1 data-hk=0.1>Welcome to Perseus!</h1><p data-hk=0.2>Hello World __Perseus _sycamore Rust Lang</p><a data-hk=0.3 href=about id=about-link>About!</a><h2 data-hk=0.4>DisCord Kor</h2><a data-hk=0.5 href=studykr id=study-link>StudyLink</a></div></div><div id=__perseus_popup_error></div>
