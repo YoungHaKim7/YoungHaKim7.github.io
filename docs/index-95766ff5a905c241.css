@@ -1,0 +1,25 @@
+body {
+  font: 100% Roboto, sans-serif;
+  color: white;
+  background-color: #008f53;
+}
+
+#buttons {
+  text-align: right;
+}
+
+#wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+#time {
+  text-align: center;
+  font-size: 17vh;
+  padding: 15% 0;
+  float: left;
+}
+
+#messages {
+  float: right;
+}
