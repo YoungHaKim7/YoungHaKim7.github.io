@@ -1,0 +1,19 @@
+.clock {
+  display: flex;
+  justify-content: space-around;
+  margin : 0px 10px;
+}
+
+.clock-korea {
+  background-color: antiquewhite;
+  margin-left: 20px;
+}
+
+.clock-EU-est {
+  background-color: rgb(243, 240, 240);
+  margin-left: 10px;
+}
+
+.clock-NY-est {
+  background-color: aliceblue;
+}

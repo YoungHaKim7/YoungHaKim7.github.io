@@ -2,15 +2,261 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Yew • TodoMVC</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/todomvc-common@1.0.5/base.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/todomvc-app-css@2.3.0/index.css" />
-
-  <link data-trunk rel="rust" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>economic-calendar</title>
+    <link rel="stylesheet" href="src/css/styles.css">
 </head>
+<header class="header_top">
+    <div class="clock">
+        <h6 class="clock-NY-est">NewYork🇺🇸</h6>
+        <h6 class="clock-EU-est">Germany🇺🇸</h6>
+        <h6 class="clock-korea">Korea🇰🇷</h6>
+    </div>
+</header>
 
-<body></body>
+<body>
+    <div class="todo-main">
+        <h2 class="title"></h2>
+        <h1 class="todo-list-title">📱 이번 주 체크할 주요일정</h1>
+        <form id="todo-form">
+            <input type="text" placeholder="Write a To Do and Press Enter!" required>
+        </form>
+        <li id="todo-list">오늘의 할일을 입력 한 후 Enter엔터를 눌러주세요 ↑↑↑</li>
+    </div>
+    <div class="todo-main">
+        <h1 class="todo-list-title">🌇러스트(Rust)로 만든 TodoApp</h1>
+        <div class="todo-list-title">
+            <a href="https://younghakim7.github.io/rust_todo/" target="_blank">
+                Todo App
+                <새창열림>
+            </a>
+        </div>
+    </div>
+    <br>
+    <div class="todo-main">
+        <h1 class="todo-list-title">📅 실시간 경제 스케쥴 📊</h1>
+        <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+            <div class="tradingview-widget-copyright"><a
+                    href="https://www.tradingview.com/markets/currencies/economic-calendar/" rel="noopener"
+                    target="_blank"><span class="blue-text">Economic Calendar</span></a> by TradingView</div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js"
+                async>
+                    {
+                        "colorTheme": "light",
+                            "isTransparent": false,
+                                "width": "510",
+                                    "height": "600",
+                                        "locale": "en",
+                                            "importanceFilter": "-1,0,1"
+                    }
+                </script>
+        </div>
+        <h1 class="todo-list-title">📈 주요국 실시간 시세 📉</h1>
+        <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+            <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/" rel="noopener"
+                    target="_blank"><span class="blue-text">Financial Markets</span></a> by TradingView</div>
+            <script type="text/javascript"
+                src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+                    {
+                        "colorTheme": "light",
+                            "dateRange": "12M",
+                                "showChart": true,
+                                    "locale": "en",
+                                        "largeChartUrl": "",
+                                            "isTransparent": false,
+                                                "showSymbolLogo": true,
+                                                    "showFloatingTooltip": false,
+                                                        "width": "400",
+                                                            "height": "660",
+                                                                "plotLineColorGrowing": "rgba(41, 98, 255, 1)",
+                                                                    "plotLineColorFalling": "rgba(41, 98, 255, 1)",
+                                                                        "gridLineColor": "rgba(240, 243, 250, 0)",
+                                                                            "scaleFontColor": "rgba(120, 123, 134, 1)",
+                                                                                "belowLineFillColorGrowing": "rgba(41, 98, 255, 0.12)",
+                                                                                    "belowLineFillColorFalling": "rgba(41, 98, 255, 0.12)",
+                                                                                        "belowLineFillColorGrowingBottom": "rgba(41, 98, 255, 0)",
+                                                                                            "belowLineFillColorFallingBottom": "rgba(41, 98, 255, 0)",
+                                                                                                "symbolActiveColor": "rgba(41, 98, 255, 0.12)",
+                                                                                                    "tabs": [
+                                                                                                        {
+                                                                                                            "title": "Indices",
+                                                                                                            "symbols": [
+                                                                                                                {
+                                                                                                                    "s": "FOREXCOM:SPXUSD",
+                                                                                                                    "d": "S&P 500"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "s": "FOREXCOM:NSXUSD",
+                                                                                                                    "d": "US 100"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "s": "FOREXCOM:DJI",
+                                                                                                                    "d": "Dow 30"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "s": "INDEX:NKY",
+                                                                                                                    "d": "Nikkei 225"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "s": "INDEX:DEU40",
+                                                                                                                    "d": "DAX Index"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "s": "FOREXCOM:UKXGBP",
+                                                                                                                    "d": "UK 100"
+                                                                                                                }
+                                                                                                            ],
+                                                                                                            "originalTitle": "Indices"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "title": "Futures",
+                                                                                                            "symbols": [
+                                                                                                                {
+                                                                                                                    "s": "CME_MINI:ES1!",
+                                                                                                                    "d": "S&P 500"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "s": "CME:6E1!",
+                                                                                                                    "d": "Euro"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "s": "COMEX:GC1!",
+                                                                                                                    "d": "Gold"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "s": "NYMEX:CL1!",
+                                                                                                                    "d": "Crude Oil"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "s": "NYMEX:NG1!",
+                                                                                                                    "d": "Natural Gas"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "s": "CBOT:ZC1!",
+                                                                                                                    "d": "Corn"
+                                                                                                                }
+                                                                                                            ],
+                                                                                                            "originalTitle": "Futures"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "title": "Bonds",
+                                                                                                            "symbols": [
+                                                                                                                {
+                                                                                                                    "s": "CME:GE1!",
+                                                                                                                    "d": "Eurodollar"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "s": "CBOT:ZB1!",
+                                                                                                                    "d": "T-Bond"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "s": "CBOT:UB1!",
+                                                                                                                    "d": "Ultra T-Bond"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "s": "EUREX:FGBL1!",
+                                                                                                                    "d": "Euro Bund"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "s": "EUREX:FBTP1!",
+                                                                                                                    "d": "Euro BTP"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "s": "EUREX:FGBM1!",
+                                                                                                                    "d": "Euro BOBL"
+                                                                                                                }
+                                                                                                            ],
+                                                                                                            "originalTitle": "Bonds"
+                                                                                                        },
+                                                                                                        {
+                                                                                                            "title": "Forex",
+                                                                                                            "symbols": [
+                                                                                                                {
+                                                                                                                    "s": "FX:EURUSD"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "s": "FX:GBPUSD"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "s": "FX:USDJPY"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "s": "FX:USDCHF"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "s": "FX:AUDUSD"
+                                                                                                                },
+                                                                                                                {
+                                                                                                                    "s": "FX:USDCAD"
+                                                                                                                }
+                                                                                                            ],
+                                                                                                            "originalTitle": "Forex"
+                                                                                                        }
+                                                                                                    ]
+                    }
+                </script>
+        </div>
+        <input class="goupbtn" type="button" value="Top" onclick="window.scrollTo(0,0);">
+        <div class="todo-main">
+            <div class="todo-list-title">
+                <a href="https://www.investing.com/economic-calendar/" target="_blank">
+                    이번주 주요일정 investing.com
+                    - 새창열림
+                </a>
+            </div>
+
+            <div class="todo-main">
+                <div class="todo-list-title">
+                    <a href="https://news.research.stlouisfed.org/category/fred-announcements/" target="_blank">
+                        전 Fred News 지표 체크 그래프로 굿
+                        - 새창열림
+                    </a>
+                </div>
+                <div class="todo-list-title">
+                    <a href="https://kr.investing.com/central-banks/" target="_blank">
+                        <전 세계 중앙 은행 금리 비교 조회>
+                            <새창열림>
+                    </a>
+                </div>
+
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+            </div>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__list-item">
+                        <a href="index.html" class="nav__list-link">
+                            <i class="fas fa-home"></i></a>
+                    </li>
+                    <li class="nav__list-item">
+                        <a href="analysis.html" class="nav__list-link">
+                            <i class="fas fa-file-contract"></i>
+                        </a>
+                    </li>
+                    <li class="nav__list-item">
+                        <a href="fibo.html" class="nav__list-link">
+                            <i class="fas fa-chart-line"></i>
+                        </a>
+                    </li>
+                    <li class="nav__list-item">
+                        <a href="more.html" class="nav__list-link">
+                            <i class="fab fa-tumblr"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <script src="src/js_src/clock.js"></script>
+            <script src="src/js_src/toDo.js"></script>
+            <script src="https://kit.fontawesome.com/2b98fdff26.js" crossorigin="anonymous"></script>
+</body>
 
 </html>

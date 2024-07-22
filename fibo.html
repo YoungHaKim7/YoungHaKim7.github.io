@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>economic-calendar</title>
+    <link rel="stylesheet" href="src/css/styles.css">
+</head>
+<header class="header_top">
+    <div class="clock">
+        <h6 class="clock-NY-est">NewYork🇺🇸</h6>
+        <h6 class="clock-EU-est">Germany🇺🇸</h6>
+        <h6 class="clock-korea">Korea🇰🇷</h6>
+    </div>
+</header>
+
+<body>
+    <br>
+    <br>
+    <main>
+        <br>
+        <div class="todo-main">
+            <h1 class="sort-title"> Daily Check</h1>
+            <div class="todo-list-title">
+                <a href="https://kr.investing.com/tools/fibonacci-calculator" target="_blank">
+                    Fibonacci-Calculator 피보나치 계산기
+                    <새창열림>
+                </a>
+            </div>
+        </div>
+        <div class="todo-main">
+            <h1 class="sort-title">Chart Analysis_TradingView</h1>
+            <h1 class="todo-list-title">차트 분석</h1>
+            <div class="tradingview-widget-container">
+                <div id="tradingview_3cc69"></div>
+                <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/NASDAQ-AAPL/"
+                        rel="noopener" target="_blank"><span class="blue-text">AAPL Chart</span></a> by TradingView
+                </div>
+                <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                <script type="text/javascript">
+                    new TradingView.widget(
+                        {
+                            "width": 980,
+                            "height": 610,
+                            "symbol": "NASDAQ:AAPL",
+                            "interval": "D",
+                            "timezone": "Etc/UTC",
+                            "theme": "light",
+                            "style": "1",
+                            "locale": "en",
+                            "toolbar_bg": "#f1f3f6",
+                            "enable_publishing": false,
+                            "allow_symbol_change": true,
+                            "container_id": "tradingview_3cc69"
+                        }
+                    );
+                </script>
+            </div>
+
+            <div class="todo-main">
+                <h1 class="sort-title">Swap 시장 & Bond 시장 Details</h1>
+                <div class="todo-list-title">
+                    <a href="https://www.investing.com/rates-bonds/world-cds" target="_blank">
+                        World_Credit_Default_Swap_Rate(US CDS 5 Years USD,United States CDS 5 Years USD (USGV5YUSAB=R))
+                        <새창열림>
+                    </a>
+                </div>
+            </div>
+
+
+            <div class="todo-main">
+                <h1 class="sort-title">(Investing)Fed - Rate- Monitor 금리인상 확률 70%이상은 확실 </h1>
+                <div class="todo-list-title">
+                    <a href="https://www.investing.com/central-banks/fed-rate-monitor" target="_blank">
+                        Fed-Rate-Monitor(Investing.com)
+                        <새창열림>
+                    </a>
+                </div>
+            </div>
+
+            <div class="todo-main">
+                <h1 class="sort-title">(Original)Fed - Rate- Monitor 금리인상 확률 70%이상은 확실 </h1>
+                <div class="todo-list-title">
+                    <a href="https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html" target="_blank">
+                        Fed-Rate-Monitor(CME)(PC로 봐야 나오는 듯)
+                        <새창열림>
+                    </a>
+                </div>
+            </div>
+
+    </main>
+
+    <br>
+    <br>
+    <br>
+    <input class="goupbtn" type="button" value="Top" onclick="window.scrollTo(0,0);">
+</body>
+<nav class="nav">
+    <ul class="nav__list">
+        <li class="nav__list-item">
+            <a href="index.html" class="nav__list-link">
+                <i class="fas fa-home"></i></a>
+        </li>
+        <li class="nav__list-item">
+            <a href="analysis.html" class="nav__list-link">
+                <i class="fas fa-file-contract"></i>
+            </a>
+        </li>
+        <li class="nav__list-item">
+            <a href="fibo.html" class="nav__list-link">
+                <i class="fas fa-chart-line"></i>
+            </a>
+        </li>
+        <li class="nav__list-item">
+            <a href="more.html" class="nav__list-link">
+                <i class="fab fa-tumblr"></i>
+            </a>
+        </li>
+    </ul>
+</nav>
+<script src="src/js_src/clock.js"></script>
+<script src="src/js_src/toDo.js"></script>
+<script src="https://kit.fontawesome.com/2b98fdff26.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
