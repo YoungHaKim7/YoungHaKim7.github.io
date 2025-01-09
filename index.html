@@ -70,11 +70,54 @@
 
             </div>
 
+            <!-- ************************************************** -->
+
+            <hr />
+
+            <div id="test-news">
+              <h1>Mermaid 그리기 Test</h1>
+              <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+              <script>mermaid.initialize({ startOnLoad: true });</script>
+              <div class="mermaid">
+                graph TD; LLVM_IR-->LLVM_Optimizer;
+                LLVM_Optimizer-->LLVM_IR_
+                subgraph Back-End
+                LLVM_IR_-->LLVM_Static_Compiler
+                LLVM_Static_Compiler-->x86 & ARM & RISC-V & MIPS & PowerPC
+                end
+                subgraph Middle-End
+                LLVM_IR-->LLVM_Optimizer
+                LLVM_Optimizer-->LLVM_IR_
+                end
+                subgraph Front-End
+                C & C++--> Clang/g++
+                Clang/g++ --> LLVM_IR
+                rust --> rustc
+                rustc --> LLVM_IR
+                zig--> zig_build-exe
+                zig_build-exe --> LLVM_IR
+                mojo --> mojo_build
+                mojo_build --> LLVM_IR
+                end
+              </div>
+            </div>
+
+            <hr />
+
+            <div id="test-news">
+
+              <script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js"></script>
+              <h1>슈레딩거 방정식 수식 테스트<br /><br />Schrödinger equation** </h1>
+
+              $$i \hbar \frac{\partial}{\partial t}\Psi(\mathbf{r},t) = \hat H \Psi(\mathbf{r},t)$$
+            </div>
+
+            <hr />
 
             <!-- ************************************************** -->
 
             <div id="news">
-              <h2>News &amp; Updates</h2>
+              <h2>News &amp; Updates [Top 10]<a href="./new_more.html">news 더 자세히 더 보기(search전용)</a></h2>
 
               <h3>Rust String에 대해서</h3>
               <div class="date">2025-01-09</div>
@@ -90,7 +133,8 @@
                 <p> raylib 게임 만들기 최근에 푹 빠져 있습니다.<a
                     href="https://github.com/YoungHaKim7/raylib-rs_training_game_dev">Github raylib 게임만들기 이동</a>.
                 </p>
-                <p> SDL3/2 게임 만들기도 최고요 ^^.<a href="https://github.com/YoungHaKim7/SDL3_Rust_Game_Training">Github SDL3/2
+                <p> SDL3/2 게임 만들기도 최고요 ^^.<a href="https://github.com/YoungHaKim7/SDL3_Rust_Game_Training">Github
+                    SDL3/2
                     게임만들기 이동</a>.
                 </p>
               </ul>
@@ -333,10 +377,10 @@ $ systemctl stop ollama.service
           <a href="index.html#news">News</a>
         </li>
         <li class="primary">
-          <a href="freetype2/docs/index.html">Blog개인글</a>
+          <a href="./gy_doc/Investment/index_investment.html">Blog개인글</a>
         </li>
         <li class="primary">
-          <a href="freetype2/docs/documentation.html">결제&Doc</a>
+          <a href="gy_doc/documentation.html">결제&Doc</a>
         </li>
         <li class="primary">
           <a href="developer.html">Development</a>
