@@ -1,0 +1,12 @@
+/* freetype2_60.css */
+
+@import "../freetype2.css";
+
+.bar {
+  background: #cecc3b url("../../image/Lang_logo/rust_tight.png") no-repeat right top;
+  background-size: 10%;
+}
+
+#top a {
+  border-bottom: 2px solid #cecc3b;
+}

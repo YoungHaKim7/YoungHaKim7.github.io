@@ -13,7 +13,7 @@
 
     <link rel="icon" href="../image/favicon_-60.ico">
     <link rel="shortcut icon" href="../image/favicon_-60.ico">
-    <link rel="stylesheet" type="text/css" href="../css/lang_css/cpp_lang1.css">
+    <link rel="stylesheet" type="text/css" href="../../css/lang_css/rust_lang1.css">
 
     <script type="text/javascript" src="../js/freetype2.js">
     </script>
@@ -24,7 +24,7 @@
 <body>
 
     <div id="top" class="bar">
-        <h1><a href="index.html">C/C++언어</a> Development</h1>
+        <h1><a href="index.html">Rust 언어</a> Development</h1>
     </div>
 
 
@@ -39,39 +39,39 @@
                         <!-- ************************************************** -->
 
                         <div id="source-code">
-                            <h2><a href="../developer.html">- Rust dev(Dev. Home으로 이동)</a></h2>
-                            <h2><a href="#cpp-dev">- C++ dev</a></h2>
+                            <h2><a href="../../developer.html">- Rust dev(Dev. Home으로 돌아가기)</a></h2>
                             <br />
                             <hr />
-                            <h1 id="cpp-dev"><img width=30px src="../image/Lang_logo/C++_Logo_svg.png"><a
-                                    href="#cpp-dev">- C++
+                            <h1 id="rust-dev"><img width=30px src="../../image/rust_logo.png"><a href="#cpp-dev"> Rust
                                     dev</a></h1>
                             <ul>
                                 <li class="emph">
-                                    <p><a href="#cpp-devteset"> 250108 SDL2 시리즈</a></p>
+                                    <p><a href="#cpp-devteset"> 250109 Rust가 문자를 출력하는 원리.시리즈</a></p>
                                 </li>
                             </ul>
 
-
-
-
-
+                            <h2> Rust의 문자 출력을 알아보겠습니다.</h2>
+                            <script
+                                src="https://gist.github.com/YoungHaKim7/c56cb38c1ca38625bf61bea1a2885471.js"></script>
+                            <h3 id="ascii-table">Ascii Table과 비교하면서 보도록 하겠습니다.</h3>
+                            <ul>
+                                <script
+                                    src="https://gist.github.com/YoungHaKim7/7b17022ff8acb52f0af068198fd4a6f0.js"></script>
+                                <li> 72 H</li>
+                                <li> Ascii Table 숫자를 그대로 출력하는것을 보실 수 있습니다. 러스트 언어는 대부분의 데이터를 스택에 할당시킵니다.</li>
+                                <ui> String의 경우 u8타입으로 바꿔서 스택에 할당 시켜 빠른 프로그래밍을 추구합니다.</ui>
+                            </ul>
 
                         </div>
 
 
                         <!-- ************************************************** -->
-                        <div id="rectangle">
-                            <h2> 사각형(Rectangle) 그리기</h2>
-                            <script
-                                src="https://gist.github.com/YoungHaKim7/714ba3f7cfe5a59fbb9ead6a8985b8b1.js"></script>
-                        </div>
 
 
                         <!-- ************************************************** -->
 
                         <div class="updated">
-                            <p>Last update: 25-Feb-2024</p>
+                            <p>Last update: 05-Jan-2025</p>
                         </div>
                         <input class="goupbtn" type="button" value="Top" onclick="window.scrollTo(0,0);">
                     </div>
@@ -118,17 +118,21 @@
                     </form>
                 </li>
                 <li class="primary">
-                    <a href="../index.html">Home</a>
+                    <a href="../../index.html">Home</a>
                 </li>
+
                 <li>
                     &nbsp; <!-- separate primary from secondary entries -->
                 </li>
+
                 <li class="secondary">
-                    <a href="#cpp-dev">C++ Lang</a>
+                    <a href="#cpp-dev">Rust Lang</a>
                 </li>
                 <li class="secondary">
-                    <a href="#cpp-dev">사각형Rectangle</a>
+
+                    <a href="#ascii-table">Ascii Table</a>
                 </li>
+            </ul>
         </div>
 
     </div> <!-- id="wrapper" -->

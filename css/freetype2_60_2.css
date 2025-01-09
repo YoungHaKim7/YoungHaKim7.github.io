@@ -4,6 +4,7 @@
 
 .bar {
   background: #21065E url("../image/coding_lang.png") no-repeat right top;
+  background-size: 40%;
 }
 
 #top a {

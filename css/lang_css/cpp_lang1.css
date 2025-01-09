@@ -1,0 +1,12 @@
+/* freetype2_60.css */
+
+@import "../freetype2.css";
+
+.bar {
+  background: #21065E url("../../image/Lang_logo/C++_Logo_svg.png") no-repeat right top;
+  background-size: 8%;
+}
+
+#top a {
+  border-bottom: 2px solid #31166E;
+}

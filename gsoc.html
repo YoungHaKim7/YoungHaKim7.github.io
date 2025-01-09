@@ -1,31 +1,20 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-          "https://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd">
 
 <html lang="en">
 
 <head>
-  <meta http-equiv="Content-Type"
-        content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type"
-        content="text/css">
-  <meta http-equiv="Content-Script-Type"
-        content="text/javascript">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
 
-  <meta name="description"
-        content="Ideas for GSoC">
-  <meta name="keywords"
-        content="GSoC Ideas">
+  <meta name="description" content="Ideas for GSoC">
+  <meta name="keywords" content="GSoC Ideas">
 
-  <link rel="icon"
-        href="image/favicon_-60.ico">
-  <link rel="shortcut icon"
-        href="image/favicon_-60.ico">
-  <link rel="stylesheet"
-        type="text/css"
-        href="css/freetype2_-60.css">
+  <link rel="icon" href="image/favicon_-60.ico">
+  <link rel="shortcut icon" href="image/favicon_-60.ico">
+  <link rel="stylesheet" type="text/css" href="css/freetype2_-60.css">
 
-  <script type="text/javascript"
-          src="js/freetype2.js">
+  <script type="text/javascript" src="js/freetype2.js">
   </script>
 
   <title>Ideas for Google Summer of Code</title>
@@ -33,208 +22,223 @@
 
 <body>
 
-<div id="top"
-     class="bar">
-  <h1><a href="index.html">FreeType</a> &amp; GSoC</h1>
-</div>
+  <div id="top" class="bar">
+    <h1><a href="index.html">FreeType</a> &amp; GSoC</h1>
+  </div>
 
 
-<div id="wrapper">
+  <div id="wrapper">
 
-<div class="colmask leftmenu">
-  <div class="colright">
-    <div class="col1wrap">
-      <div class="col1">
+    <div class="colmask leftmenu">
+      <div class="colright">
+        <div class="col1wrap">
+          <div class="col1">
 
 
-        <!-- ************************************************** -->
+            <!-- ************************************************** -->
 
-        <div>
-          <p>The FreeType project participates in
-            <a href="https://summerofcode.withgoogle.com/">Google
-              Summer of Code 2024</a>.  Here is our list of possible
-              projects – if you have more ideas, please write to
-              our <a href="mailto:freetype-devel@nongnu.org">mailing
-              list</a> so that we can discuss your suggestions,
-              eventually adding them to this page.</p>
+            <div>
+              <p>The FreeType project participates in
+                <a href="https://summerofcode.withgoogle.com/">Google
+                  Summer of Code 2024</a>. Here is our list of possible
+                projects – if you have more ideas, please write to
+                our <a href="mailto:freetype-devel@nongnu.org">mailing
+                  list</a> so that we can discuss your suggestions,
+                eventually adding them to this page.
+              </p>
 
-          <p>If you are interested to participate as a student, please
-            also contact us via
-            the <a href="mailto:freetype-devel@nongnu.org">mailing
-              list</a>.  It's probably best if
-            you <a href="https://lists.nongnu.org/mailman/listinfo/freetype-devel">subscribe</a>
-            to it.</p>
+              <p>If you are interested to participate as a student, please
+                also contact us via
+                the <a href="mailto:freetype-devel@nongnu.org">mailing
+                  list</a>. It's probably best if
+                you <a href="https://lists.nongnu.org/mailman/listinfo/freetype-devel">subscribe</a>
+                to it.</p>
 
-          <p>Note that there are half-time and full-time projects.
-            Most of our projects are modular, more or less, allowing
-            students to propose a subset of the mentioned targets if
-            this appears appropriate.</p>
+              <p>Note that there are half-time and full-time projects.
+                Most of our projects are modular, more or less, allowing
+                students to propose a subset of the mentioned targets if
+                this appears appropriate.</p>
 
-          <p class="warning">Before contacting us, however, you should
-            get <em>really</em> acquainted with the topic you would
-            like to start with – in particular, search
-            the <a href="https://lists.nongnu.org/archive/html/freetype-devel/">mailing
-              list archive</a> and/or do some googling!  We don't want
-            to answer questions like &ldquo;I'm interested in your
-            project, I want to contribute, please tell me what to
-            do!&rdquo; again and again&hellip;</p>
+              <p class="warning">Before contacting us, however, you should
+                get <em>really</em> acquainted with the topic you would
+                like to start with – in particular, search
+                the <a href="https://lists.nongnu.org/archive/html/freetype-devel/">mailing
+                  list archive</a> and/or do some googling! We don't want
+                to answer questions like &ldquo;I'm interested in your
+                project, I want to contribute, please tell me what to
+                do!&rdquo; again and again&hellip;</p>
 
-          <dl>
-            <dt>Update FreeType's build systems</dt>
+              <dl>
+                <dt>Update FreeType's build systems</dt>
 
-            <dd>
-              <p>Due to historical reasons, FreeType's build systems
-                are strange to newcomers.  The default one is based
-                on <a href="https://www.gnu.org/software/make/"><code>GNU
+                <dd>
+                  <p>Due to historical reasons, FreeType's build systems
+                    are strange to newcomers. The default one is based
+                    on <a href="https://www.gnu.org/software/make/"><code>GNU
                 make</code></a>, also
-                integrating <a href="https://www.gnu.org/software/autoconf/"><code>autoconf</code></a>
-                support.  Alternatives are generic build files
-                for <a href="https://cmake.org/"><code>cmake</code></a>
-                and <a href="https://mesonbuild.com/"><code>meson</code></a>,
-                together with special support files
-                for <a href="https://visualstudio.microsoft.com">MS
-                Visual
-                Studio</a>, <a href="https://en.wikipedia.org/wiki/OpenVMS">OpenVMS</a>,
-                and some even more exotic, old platforms.</p>
+                    integrating <a href="https://www.gnu.org/software/autoconf/"><code>autoconf</code></a>
+                    support. Alternatives are generic build files
+                    for <a href="https://cmake.org/"><code>cmake</code></a>
+                    and <a href="https://mesonbuild.com/"><code>meson</code></a>,
+                    together with special support files
+                    for <a href="https://visualstudio.microsoft.com">MS
+                      Visual
+                      Studio</a>, <a href="https://en.wikipedia.org/wiki/OpenVMS">OpenVMS</a>,
+                    and some even more exotic, old platforms.</p>
 
-              <p>This project is intended to update the build systems.
-                Here is a preliminary list of tasks.</p>
+                  <p>This project is intended to update the build systems.
+                    Here is a preliminary list of tasks.</p>
 
-              <ul>
-                <li>Investigate which build systems should be
-                  retained, modified, added, removed, etc.,
-                  approaching the project with a conservative point of
-                  view.  This needs intensive contact with the mailing
-                  list(s) to identify the needs of users and the
-                  preferences of developers.  Right now, we tend to
-                  move to <code>meson</code>.</li>
+                  <ul>
+                    <li>Investigate which build systems should be
+                      retained, modified, added, removed, etc.,
+                      approaching the project with a conservative point of
+                      view. This needs intensive contact with the mailing
+                      list(s) to identify the needs of users and the
+                      preferences of developers. Right now, we tend to
+                      move to <code>meson</code>.</li>
 
-                <li>Check software distributions for different
-                  platforms and analyze how FreeType's build systems
-                  are modified for integration.  This might give
-                  further hints on necessary changes or
-                  adaptations.</li>
+                    <li>Check software distributions for different
+                      platforms and analyze how FreeType's build systems
+                      are modified for integration. This might give
+                      further hints on necessary changes or
+                      adaptations.</li>
 
-                <li>Especially for <code>cmake</code> support, there
-                  are some issues
-                  in <a href="https://gitlab.freedesktop.org/groups/freetype/-/issues">Freetype's
-                  bug tracker</a> that should be taken care of.</li>
+                    <li>Especially for <code>cmake</code> support, there
+                      are some issues
+                      in <a href="https://gitlab.freedesktop.org/groups/freetype/-/issues">Freetype's
+                        bug tracker</a> that should be taken care of.</li>
 
-                <li>Modernize and update the build system based on the
-                  outcome of the previous items.  This might also
-                  include changes in the directory structure of the
-                  source files if necessary and useful.</li>
-              </ul>
+                    <li>Modernize and update the build system based on the
+                      outcome of the previous items. This might also
+                      include changes in the directory structure of the
+                      source files if necessary and useful.</li>
+                  </ul>
 
-              <p><em>Difficulty:</em> medium.  <em>Size:</em>
-                175h/350h.  <em>Requirements:</em> Various Unix and
-                Windows build tools, in particular <code>GNU
+                  <p><em>Difficulty:</em> medium. <em>Size:</em>
+                    175h/350h. <em>Requirements:</em> Various Unix and
+                    Windows build tools, in particular <code>GNU
                 make</code>,
-                <code>cmake</code>,
-                and <code>meson</code>.  <em>Potential mentors:</em>
-                Werner Lemberg, Alexei Podtelezhnikov, Toshiya Suzuki
-                (FreeType).</p>
-            </dd>
-          </dl>
+                    <code>cmake</code>,
+                    and <code>meson</code>. <em>Potential mentors:</em>
+                    Werner Lemberg, Alexei Podtelezhnikov, Toshiya Suzuki
+                    (FreeType).
+                  </p>
+                </dd>
+              </dl>
 
-          <dl>
-            <dt>Integrate <code>ftbench</code> into FreeType's build
-              structure(s)</dt>
+              <dl>
+                <dt>Integrate <code>ftbench</code> into FreeType's build
+                  structure(s)</dt>
 
-            <dd>
-              <p>The <a href="https://manpages.ubuntu.com/manpages/bionic/man1/ftbench.1.html"><code>ftbench</code>
-                  demo program</a>
-                  (<a href="https://gitlab.freedesktop.org/freetype/freetype-demos/-/blob/master/src/ftbench.c">source
-                  code</a>) is a small tool that benchmarks the
-                  performance of various FreeType library functions.
-                  The aim of this project is to integrate it into
-                  FreeType's build system(s) so that the timings of
-                  a <em>baseline</em> (for example, a released
-                  version) can be easily compared with the timings of
-                  the current git version.  Eventually, the results
-                  should be integrated into FreeType's
-                  CI <a href="https://gitlab.freedesktop.org/freetype/freetype/-/blob/master/.gitlab-ci.yml">as
-                  provided by gitlab</a>.</p>
+                <dd>
+                  <p>The <a href="https://manpages.ubuntu.com/manpages/bionic/man1/ftbench.1.html"><code>ftbench</code>
+                      demo program</a>
+                    (<a href="https://gitlab.freedesktop.org/freetype/freetype-demos/-/blob/master/src/ftbench.c">source
+                      code</a>) is a small tool that benchmarks the
+                    performance of various FreeType library functions.
+                    The aim of this project is to integrate it into
+                    FreeType's build system(s) so that the timings of
+                    a <em>baseline</em> (for example, a released
+                    version) can be easily compared with the timings of
+                    the current git version. Eventually, the results
+                    should be integrated into FreeType's
+                    CI <a href="https://gitlab.freedesktop.org/freetype/freetype/-/blob/master/.gitlab-ci.yml">as
+                      provided by gitlab</a>.</p>
 
-              <p>There are many approaches possible to accomplish the
-                project.  For example, the raw results emitted
-                by <code>ftbench</code> could be post-processed by a
-                script to produce a nice-looking HTML page.  Another
-                possibility is to modify the <code>ftbench</code>
-                program directly to emit HTML code.</p>
+                  <p>There are many approaches possible to accomplish the
+                    project. For example, the raw results emitted
+                    by <code>ftbench</code> could be post-processed by a
+                    script to produce a nice-looking HTML page. Another
+                    possibility is to modify the <code>ftbench</code>
+                    program directly to emit HTML code.</p>
 
-              <p><em>Difficulty:</em> medium.  <em>Size:</em>
-                175h/350h.  <em>Requirements:</em> C, Unix build
-                tools, HTML.  <em>Potential mentors:</em> Werner
-                Lemberg, Alexei Podtelezhnikov, Toshiya Suzuki
-                (FreeType).</p>
-            </dd>
-          </dl>
+                  <p><em>Difficulty:</em> medium. <em>Size:</em>
+                    175h/350h. <em>Requirements:</em> C, Unix build
+                    tools, HTML. <em>Potential mentors:</em> Werner
+                    Lemberg, Alexei Podtelezhnikov, Toshiya Suzuki
+                    (FreeType).</p>
+                </dd>
+              </dl>
 
-          <dl>
-            <dt>Integrate VFlib's TeX font support into FreeType</dt>
+              <dl>
+                <dt>Integrate VFlib's TeX font support into FreeType</dt>
 
-            <dd>
-              <p>A <a href="https://gitlab.freedesktop.org/freetype/freetype/-/tree/GSoC-2018-parth">GSoC
-                  2018 project</a> was a first try to integrate
-                <a href="http://www-masu.ist.osaka-u.ac.jp/~kakugawa/VFlib/">VFlib</a>
-                into FreeType.  This library contains mature support
-                for TeX's bitmap formats (in
-                particular <code>GF</code> and <code>PK</code> fonts,
-                together with <code>TFM</code> metric files
-                and <code>VF</code> virtual fonts).</p>
+                <dd>
+                  <p>A <a href="https://gitlab.freedesktop.org/freetype/freetype/-/tree/GSoC-2018-parth">GSoC
+                      2018 project</a> was a first try to integrate
+                    <a href="http://www-masu.ist.osaka-u.ac.jp/~kakugawa/VFlib/">VFlib</a>
+                    into FreeType. This library contains mature support
+                    for TeX's bitmap formats (in
+                    particular <code>GF</code> and <code>PK</code> fonts,
+                    together with <code>TFM</code> metric files
+                    and <code>VF</code> virtual fonts).
+                  </p>
 
-              <p>The project would be as follows.</p>
+                  <p>The project would be as follows.</p>
 
-              <ul>
-                <li>Evaluate the existing code to find out whether it
-                  can be used as a starting point to complete the
-                  begun task, this is, to merge VFlib's source code
-                  into FreeType, thus providing new modules to handle
-                  TeX bitmap fonts.</li>
+                  <ul>
+                    <li>Evaluate the existing code to find out whether it
+                      can be used as a starting point to complete the
+                      begun task, this is, to merge VFlib's source code
+                      into FreeType, thus providing new modules to handle
+                      TeX bitmap fonts.</li>
 
-                <li>Evaluate different routes if necessary.  For
-                  example, it might be easier to provide simple and
-                  small wrapper modules that call VFlib functions.  In
-                  other words, this wouldn't integrate the code of
-                  VFlib but have it as an external dependency.</li>
+                    <li>Evaluate different routes if necessary. For
+                      example, it might be easier to provide simple and
+                      small wrapper modules that call VFlib functions. In
+                      other words, this wouldn't integrate the code of
+                      VFlib but have it as an external dependency.</li>
 
-                <li>Create modules.</li>
-              </ul>
+                    <li>Create modules.</li>
+                  </ul>
 
-              <p>The canonic references for
-                the <code>PK</code>, <code>GF</code>, <code>TFM</code>,
-                and <code>VF</code> font formats are the source code
-                of the TeX
-                tools <a href="https://www.tug.org/svn/texlive/trunk/Master/texmf-dist/doc/generic/knuth-pdf/mfware/gftopk.pdf?view=co">gftopk</a>
-                (for
-                <code>PK</code>), <a href="https://www.tug.org/svn/texlive/trunk/Master/texmf-dist/doc/generic/knuth-pdf/mfware/gftype.pdf?view=co">gftype</a>
-                (for
-                <code>GF</code>), <a href="https://www.tug.org/svn/texlive/trunk/Master/texmf-dist/doc/generic/knuth-pdf/texware/tftopl.pdf?view=co">tftopl</a>
-                (for <code>TFM</code>),
-                and <a href="https://www.tug.org/svn/texlive/trunk/Master/texmf-dist/doc/generic/knuth-pdf/etc/vftovp.pdf?view=co">vftovp</a>
-                (for <code>VF</code>).</p>
+                  <p>The canonic references for
+                    the <code>PK</code>, <code>GF</code>, <code>TFM</code>,
+                    and <code>VF</code> font formats are the source code
+                    of the TeX
+                    tools <a
+                      href="https://www.tug.org/svn/texlive/trunk/Master/texmf-dist/doc/generic/knuth-pdf/mfware/gftopk.pdf?view=co">gftopk</a>
+                    (for
+                    <code>PK</code>), <a
+                      href="https://www.tug.org/svn/texlive/trunk/Master/texmf-dist/doc/generic/knuth-pdf/mfware/gftype.pdf?view=co">gftype</a>
+                    (for
+                    <code>GF</code>), <a
+                      href="https://www.tug.org/svn/texlive/trunk/Master/texmf-dist/doc/generic/knuth-pdf/texware/tftopl.pdf?view=co">tftopl</a>
+                    (for <code>TFM</code>),
+                    and <a
+                      href="https://www.tug.org/svn/texlive/trunk/Master/texmf-dist/doc/generic/knuth-pdf/etc/vftovp.pdf?view=co">vftovp</a>
+                    (for <code>VF</code>).
+                  </p>
 
-              <p><em>Difficulty:</em> medium (high for VF
-                support).  <em>Size:</em>
-                175h/350h.  <em>Requirements:</em> C, Unix build
-                tools, knowledge of TeX infrastructure
-                (using <a href="https://www.tug.org/texlive/">TeXLive</a>
-                is recommended).  <em>Potential mentor:</em> Werner
-                Lemberg (FreeType).</p>
-            </dd>
-          </dl>
+                  <p><em>Difficulty:</em> medium (high for VF
+                    support). <em>Size:</em>
+                    175h/350h. <em>Requirements:</em> C, Unix build
+                    tools, knowledge of TeX infrastructure
+                    (using <a href="https://www.tug.org/texlive/">TeXLive</a>
+                    is recommended). <em>Potential mentor:</em> Werner
+                    Lemberg (FreeType).</p>
+                </dd>
+              </dl>
 
-          <p>Do you have more ideas?  Please write to
-            our <a href="mailto:freetype-devel@nongnu.org">mailing
-              list</a> so that we can discuss your suggestions,
-            eventually adding them to the list!</p>
+              <p>Do you have more ideas? Please write to
+                our <a href="mailto:freetype-devel@nongnu.org">mailing
+                  list</a> so that we can discuss your suggestions,
+                eventually adding them to the list!</p>
+            </div>
+
+            <!-- ************************************************** -->
+
+            <div class="updated">
+              <p>Last update: 03-Mar-2024</p>
+            </div>
+          </div>
         </div>
 
+
         <!-- ************************************************** -->
 
-        <div class="updated">
-          <p>Last update: 03-Mar-2024</p>
+        <div class="col2">
         </div>
       </div>
     </div>
@@ -242,66 +246,35 @@
 
     <!-- ************************************************** -->
 
-    <div class="col2">
+    <div id="TOC">
+      <ul>
+        <li class="funding">
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <input type="hidden" name="cmd" value="_s-xclick">
+            <input type="hidden" name="hosted_button_id" value="SK827YKEALMT4">
+            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" name="submit"
+              alt="PayPal - The safer, easier way to pay online!">
+          </form>
+        </li>
+        <li class="primary">
+          <a href="index.html">Home<br />GY홈으로 돌아가기</a>
+        </li>
+
+        <li>
+          &nbsp; <!-- separate primary from secondary entries -->
+        </li>
+
+        <li class="secondary">
+          <a href="gsoc.html" class="current">FreeType &amp; GSoC</a>
+        </li>
+      </ul>
     </div>
+
+  </div> <!-- id="wrapper" -->
+
+  <div id="TOC-bottom">
   </div>
-</div>
-
-
-<!-- ************************************************** -->
-
-<div id="TOC">
-  <ul>
-    <li class="funding">
-      <form action="https://www.paypal.com/cgi-bin/webscr"
-            method="post"
-            target="_top">
-        <input type="hidden"
-               name="cmd"
-               value="_s-xclick">
-        <input type="hidden"
-               name="hosted_button_id"
-               value="SK827YKEALMT4">
-        <input type="image"
-               src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif"
-               name="submit"
-               alt="PayPal - The safer, easier way to pay online!">
-      </form>
-    </li>
-    <li class="primary">
-      <a href="index.html">Home</a>
-    </li>
-    <li class="primary">
-      <a href="index.html#news">News</a>
-    </li>
-    <li class="primary">
-      <a href="freetype2/docs/index.html">Overview</a>
-    </li>
-    <li class="primary">
-      <a href="freetype2/docs/documentation.html">Documentation</a>
-    </li>
-    <li class="primary">
-      <a href="developer.html">Development</a>
-    </li>
-    <li class="primary">
-      <a href="contact.html"
-         class="emphasis">Contact</a>
-    </li>
-
-    <li>
-      &nbsp; <!-- separate primary from secondary entries -->
-    </li>
-
-    <li class="secondary">
-      <a href="gsoc.html" class="current">FreeType &amp; GSoC</a>
-    </li>
-  </ul>
-</div>
-
-</div> <!-- id="wrapper" -->
-
-<div id="TOC-bottom">
-</div>
 
 </body>
+
 </html>
