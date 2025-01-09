@@ -1,0 +1,377 @@
+<html>
+<head>
+<link rel="stylesheet" href="../css/freetype.css">
+<title>FREETYPE Related Projects</title>
+<META name="description"
+ content="FreeType Related Projects">
+<META name="keywords"
+ content="FreeType TrueType digital font TTF engine renderer rasterizer">
+
+<basefont face="Georgia, Arial, Helvetica, Geneva">
+<style content="text/css">
+  P { text-align: justify; }
+  H1 { text-align: center; }
+  H2 { text-align: center; }
+  LI { text-align: justify; }
+</style>
+</head>
+
+<body text="#000000"
+      bgcolor="#FFFFFF"
+      link="#0000EF"
+      vlink="#51188E"
+      alink="#FF0000">
+
+
+<table  width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr><td BGCOLOR="#06425F"><a href="../index.html">
+<IMG SRC="../image/fond3.jpg" ALIGN="right" BORDER="0" HSPACE="0" VSPACE="0"
+     ALT="FreeType home page"></a></td><td BGCOLOR="#06425F">
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+
+<!-- *********************************************************************************** H1 -->
+<TR><TD BGCOLOR="#06425F"><h1 class="intro">FREETYPE 1</h1></TD><TD BGCOLOR="#06425F">&nbsp;</TD></TR>
+<TR><TD BGCOLOR="#669999">
+<P>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="#servers" CLASS="index">Servers</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="#converters" CLASS="index">Converters</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="#bindings" CLASS="index">Bindings</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="#libraries" CLASS="index">Libraries</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="#other" CLASS="index">Other</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+	<font color="#FFFFFF">|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
+      <a href="../index.html" CLASS="index">home page</a>
+
+</P>
+</TD><TD BGCOLOR="#669999">&nbsp;</TD></TR>
+</table>
+
+<table align="center" width="80%"><tr><td>
+<br><br>
+
+<p><font size="+2" color="red">Red comments indicate the current status of
+the projects if known.</font></p>
+    
+<p>FreeType 1 is used in a great number of products and projects. This page
+contains only a <em>small</em> list of selected projects (most of them
+<em>open-source</em>, though the library is also used in a great quantity of
+commercial products). <a href="mailto:david.turner@freetype.org">Mail us</a>
+if you want to see your project to your list.</p>
+
+<h1 class="section"><a name="server">
+Font Servers
+</a></h1>
+
+<h3>FreeType/2</h3>
+<ul>
+  <p>a free font server for OS/2.
+  &copy;<a href="mailto:mike@mendelu.cz">Michal Necasek</a></p>
+  
+  <p>FreeType/2 is a free replacement for OS/2's
+  <tt>TRUETYPE.DLL</tt>.  It works perfectly on all 32-bit versions
+  of OS/2, even good old&nbsp;2.1.  See
+  <a href="../ft_os2/index.html">here</a> for more info.</p>
+      
+  <p>A binary package, containing simple install/uninstall scripts, is
+  available on our <a href="download.html#ftos2">download</a>
+  page.</p>
+</ul>
+
+<h3>XFSFT</h3>
+<ul>
+    <p><font color="red">[2009-Dec-25] Dead.  FreeType&nbsp;2
+    is now part of the X11 server.</font></p>
+
+    <p>A TrueType-enabled font server for all X11 stations.
+    &copy;<a href="mailto:mleisher@gmail.com">Mark Leisher</a>
+    and <a href="mailto:jch@pps.jussieu.fr">Juliusz Chroboczek</a></p>
+
+    <p>XFSFT is a set of patches to the standard XFree source code
+    distribution that allows its font server, named <b>xfs</b>, to use
+    TrueType fonts, in addition to its other formats (Type 1, Speedo,
+    PCF, etc..). Note that, as it is an independent process, the patched
+    font server can be used on any platform, even those using a commercial
+    X servers</p>
+
+    <p>See <a href="http://www.dcs.ed.ac.uk/home/jec/programs/xfsft/">
+    Juliusz Chroboczek's page</a> for further info, screenshots,
+    precompiled binaries, and the latest source code.
+
+    Screenshots of Netscape using TrueType Fonts and a precompiled
+    xfs binary for Linux Redhat&nbsp;5.0 are available from
+    <a href="http://www.joerg-pommnitz.de/TrueType/xfsft.html">J&ouml;rg
+    Pommnitz's <tt>xfsft</tt> page</a>.</p>
+
+    <p>You can also use <b>xfstt</b>, a TrueType-only font server developed
+    independently from FreeType, which can be found at:<br>
+    <a href="ftp://sunsite.unc.edu/pub/Linux/X11/fonts/">
+    ftp://sunsite.unc.edu/pub/Linux/X11/fonts/</a>.<br>
+    Look for a file named <tt>Xfstt-*.tar.gz</tt>.  It works well and
+    compiles fast, though seems to comply with the standard in its own way.
+    Definitely worth the try.</p>
+</ul>
+
+<h3>X-TrueType</h3>  
+<ul>
+   <p><font color="red">[2009-Dec-25] Dead.  FreeType&nbsp;2 is now part of
+   the X11 server.</font></p>
+
+   <p>A different project with the same goal than XFSFT. It is however designed
+   with Japanese and other ideographics, like Chinese and Korean scripts in
+   mind (that XFSFT doesn't handle too well).</p>
+   
+   <p>More information is available at the
+   <a href="http://x-tt.sourceforge.jp/">X-TrueType project page</a>.</p>
+</ul>
+
+
+
+<h1 class="section"><a name="converters">
+Font Converters
+</a></h1>
+
+<h3>TTF2PFB</h3>
+<ul>
+  <p><font color="red">[2009-Dec-25] Dead.  Use <a
+  href="http://fontforge.sf.net">FontForge</a> instead.</font></p>
+
+  <p>Converting TrueType fonts to the Postscript Type 1 format.
+  &copy;<a href="mailto:cylee@ncree.narl.org.tw">Lee Chun-Yu</a> and
+  <a href="mailto:werner.lemberg@freetype.org">Werner Lemberg</a></p>
+
+  <p>This tool does not yet convert composite TrueType glyphs correctly (it
+  is needed to decompose overlapping outlines into non-overlapping ones;
+  such algorithms are still under investigation).  Source code is available
+  in the <tt>contrib/ttf2pfb</tt> directory of the FreeType archive.</p>
+
+  <p>Note that we also recommend using the
+  <a href="http://ttf2pt1.sourceforge.net/">ttf2pt1</a> tool
+  to generate postscript fonts. It provides features that are not found in
+  TTF2PFB, like automatic Type 1 hints generation.</p>
+</ul>
+
+<h3>TTF2PK</h3>
+<ul>
+    <p><font color="red">[2009-Dec-25] Unmaintained, more or less.  If you
+    need this, get the version from <a
+    href="http://www.tug.org/texlive/">TeXLive</a> instead which contains
+    various bug fixes.</font></p>
+
+    <p>A simple conversion tool to bring TrueType quality to the TeX
+    world.
+    &copy;<a href="mailto:loyer@ensta.fr">Fr&eacute;d&eacute;ric
+    Loyer</a> and <a href="mailto:werner.lemberg@freetype.org">Werner
+    Lemberg</a></p>
+
+    <p>Supports composite glyphs and hinting (unlike the current
+    Ghostscript-based conversion tools).  Source code is available in
+    the <tt>contrib/ttf2pk</tt> directory of the FreeType archive.</p>
+</ul>
+
+<h3>TTF2BDF</h3>
+<ul>
+    <p><font color="red">[2009-Dec-25] Deprecated.  Use <a
+    href="http://www.math.nmsu.edu/~mleisher/Software/otf2bdf/">otf2bdf</a>
+    instead.</font></p>
+
+    <p>Produce bitmapped fonts from TrueType files for your X11
+    applications.
+    &copy;<a href="mailto:mleisher@gmail.com">Mark Leisher</a></p>
+
+    <p>While the FreeType/X11 font server is still in the works, this
+    tool can already be used to produce bitmap fonts in the Adobe BDF
+    format to be used in legacy X applications.</p>
+      
+    <p>Source code is available in the "contrib/ttf2bdf" directory of
+    the FreeType archive.</p>
+</ul>
+
+<h1 class="section"><a name="bindings">
+Language Bindings
+</a></h1>
+
+<h3>Python</h3>
+<ul>
+  <p>Bindings to FreeType are available for Python programs through the
+  <a href="http://starship.python.net/crew/kernr/Projects.html">PyFT library</a>.
+  &copy Robert Kern.
+  </p>
+</ul>
+
+<h3>Perl</h3>
+<ul>
+  <p>A binding to the Perl language is also available from the same
+  people that brought us X-TrueType on
+  <a href="http://www.io.com/~kazushi/xtt/">this page</a>. </p>
+</ul>
+
+<h3>TCL</h3>
+<ul>
+   <p>TrueType font support for the TCL GD graphics package.
+    &copy;<a href="mailto:ellson@graphviz.org">John Ellson</a></p>
+
+   <p>Go to <a href="http://ftp.graphviz.org/pub/">http://ftp.graphviz.org/pub/</a>
+    for more details.</p>
+</ul>
+
+<h3>PHP</h3>
+<ul>
+  <p><a href="http://www.php.net/">PHP</a> is a server-side web
+  scripting language that now has support for the FreeType library. 
+  They are using code from the gdttf package written by
+  <a href="mailto:ellson@graphviz.org">John Ellson</a> to interface
+  FreeType to PHP's already existing GD support.</p>
+  
+  <p>PHP has two FreeType-related functions: <tt>ImageTTFText()</tt>
+    and <tt>ImageTTFBBox()</tt>.</p>
+</ul>
+
+<h3>Aptilis</h3>
+<ul>
+  <p>Aptilis is a scripting language specifically designed to dynamically
+     create dynamic web pages. Unlike other alternatives like PHP or Zope,
+     it doesn't use server-side includes, which results in clearer syntax,
+     and easier management. It includes a command to generate text images
+     through FreeType, it is demonstrated
+     <a href="http://www.glaine.net/~teebo/freetype/index.html">here</a></p>
+
+  <p><a href="http://www.glaine.net/aptilis/">http://www.glaine.net/aptilis/</a></p>
+
+</ul>
+
+<h1 class="section"><a name="libraries">
+Libraries
+</a></h1>
+
+<h3>The GLTT library</h3>
+<ul>
+   <p>A library that allows you to use TrueType fonts in any OpenGL
+    application.
+    &copy;<a href="mailto:rehel@worldnet.fr">St&eacute;phane
+    Rehel</a></p>
+
+   <p>The FreeType Project logo was generated with Gltt.
+    Complete information and download can be found
+    <a href="http://gltt.sourceforge.net/">
+    here</a>.</p>
+</ul>
+
+<h3>ALLEGTTF</h3>
+<ul>
+    <p>A TrueType font loader and fast antialiased text drawing routines
+    for <a href="http://www.delorie.com/djgpp/">DJGPP</a> and
+    <a href="http://alleg.sourceforge.net/">Allegro</a>.
+    &copy;<a href="mailto:deleveld@dds.nl">Doug Eleveld</a></p>
+
+    <p>Supports hinting and smoothing.  Source code is available
+    <a href="http://huizen.dds.nl/~deleveld/allegttf.htm">
+    here</a>.</p>
+</ul>
+
+<h3>VFlib</h3>
+<ul>
+    <p><b>VFlib</b> is a font library written in&nbsp;C providing
+    several functions to obtain bitmaps of characters (i.e., a
+    rasterizer). <b>VFlib</b> hides the font format of font files and
+    provides a unified API for all supported font formats.  The
+    homepage of VFlib is:</p>
+    
+    <p><a href="http://www-masu.ist.osaka-u.ac.jp/~kakugawa/VFlib/">
+    http://www.se.hiroshima-u.ac.jp/~kakugawa/VFlib/</a>.</p>
+    
+    <p>It uses FreeType 1 as its TrueType-rendering backend.</p>
+</ul>
+
+<h3>GD</h3>
+<ul>
+    <p><b>GD</b> is a library for fast image creation. It can use FreeType
+       1.x to generate text on images.</p>
+       
+    <p><a href="http://www.boutell.com/gd/">http://www.boutell.com/gd/</a>.</p>
+</ul>
+
+<h3>ImageMagick</h3>
+<ul>
+    <p>ImageMagick is a robust collection of tools and libraries to read,
+    write, and manipulate an image in any of the more popular image formats</p>
+    
+    <p><a href="http://imagemagick.org/">
+        http://imagemagick.org</a>.</p>
+</ul>
+
+
+<h3>SDL_ttf</h3>
+<ul>
+    <p>The <b>Simple DirectMedia Library</b> is a cross-platform gaming
+       library that handles graphics, sound, input and even network.
+       <b>SDL_ttf</b> is a SDL library used to display text with TrueType fonts
+       using FreeType 1.x.</p>
+       
+    <p><a href="http://www.libsdl.org/projects/SDL_ttf/">
+       http://www.libsdl.org/projects/SDL_ttf/</a>.</p>
+</ul>
+
+
+<h3>MsWordView</h3>
+<ul>
+    <p>The open-source word viewer uses FreeType to handle text in Windows
+    Metafiles.</p>
+    
+    <p><a href="http://www.csn.ul.ie/~caolan/docs/MSWordView.html">
+    http://www.csn.ul.ie/~caolan/docs/MSWordView.html</a>.</p>
+
+</ul>
+
+
+<h1 class="section"><a name="other">
+Other projects
+</a></h1>
+
+<h3>Yudit</h3>
+<ul>
+    <p>yudit is a unicode text editor for the X Window System.
+    &copy;<a href="mailto:gsinai@yudit.org">Gaspar Sinai</a></p>
+
+    <p>Optionally, it can be compiled with FreeType library to use
+    TrueType fonts in X11. It can be found at 
+    <a href="http://www.ibiblio.org/pub/Linux/apps/editors/X/">here</a>.</p>
+</ul>
+
+<h3>FreeWRML</h3>
+<ul>
+  <p> An open-source VRML browser for Linux</p>
+  </p>
+  <p><a href="http://www.crc.doc.ca/FreeWRL/">
+     http://www.crc.doc.ca/FreeWRL/</a>.</p>
+</ul>
+
+<br><br>
+</td></tr></table>
+
+<table  width="100%" border="0" cellspacing="0" cellpadding="0">
+<TR><TD BGCOLOR="#669999">
+<P>
+<P>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="#servers" CLASS="index">Servers</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="#converters" CLASS="index">Converters</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="#bindings" CLASS="index">Bindings</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="#libraries" CLASS="index">Libraries</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="#other" CLASS="index">Other</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+	<font color="#FFFFFF">|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
+      <a href="../index.html" CLASS="index">home page</a>
+
+</P>
+</TD><TD BGCOLOR="#669999">&nbsp;</TD></TR>
+
+<tr><td BGCOLOR="#06425F"><a href="../index.html">
+<IMG SRC="../image/fond3.jpg" ALIGN="right" BORDER="0" HSPACE="0" VSPACE="0"
+     ALT="FreeType home page"></a></td><td BGCOLOR="#06425F">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+
+</table>
+
+</body>
+</html>

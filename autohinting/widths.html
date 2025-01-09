@@ -1,0 +1,130 @@
+<html>
+
+<head>
+<title>Stem Widths and Heights Management in FreeType 2</title>
+<basefont face="Georgia, Arial, Helvetica, Geneva">
+<style content="text/css">
+  P { text-align=justify }
+  H1 { text-align=center }
+  H2 { text-align=center }
+  LI { text-align=justify }
+</style>
+</head>
+
+<body text="#000000"
+      bgcolor="#FFFFFF"
+      link="#0000EF"
+      vlink="#51188E"
+      alink="#FF0000">
+
+<center>
+<table width="70%" cellspacing=5><tr bgcolor="#CCCCEE"><td>
+<h2 align=center>Stem widths & heights management</h2>
+</td></tr><tr><td>
+
+<h2>Introduction & Background:</h2>
+
+<p>One of the primary purpose of grid-fitting is to ensure that some important
+   features are preserved. One of them, if not the most important, is keeping
+   the widths and heights of stems consistent on each character pixel size.</p>
+
+<p>A naive approach would grid-fit each stem width by simply rounding it,
+   independently of other consideration. However, this can create visible
+   inconsistencies at small pixel sizes, when two stem widths that are close
+   in pixel space become visibly distant due to the thresholding in the
+   rounding process. This artefact is indeed very similar to the one that
+   requires specific treatments in blue zones.</p>
+
+<p>This problem is illustrated by the following picture:</p>
+
+<center><img src="image/naive_widths.png"></center>
+
+<p>As you can see, incoherent stems are really difficult to bear when reading
+   text.</p>
+
+<h2>Standard widths and heights</h2>
+
+<p>The classical ways of dealing with this problem, as described in the Type 1
+   font format specification is to choose one or more "standard" widths that
+   will serve as references in pixel space when computing the pixel dimensions
+   of stems.</p>
+   
+<p>It merely consists in two phases:</p>
+
+<p><ul>
+  <li><p>First, at design time, an histogram of the stem widths and heights
+         of all font glyphs is built, and peaks are detected (through any
+         given thresholding method). The median of each peak is stored within
+         the font file in a list of "standard stem widths".</p>
+
+  <li><p>During alignment control, each standard width is scaled and rounded to
+         integer pixel coordinates. Then, for each glyph, stem widths and
+         heights are compared to the standard ones in pixel space. If
+         they are sufficiently close, the stem's width is snapped to the
+         pixel standard width. Otherwise, it is rounded normally.</p>
+</ul></p>
+
+<p>This scheme works as long as the standard widths and heights stored in
+   the font are coherent and meaningful. However, there is no way to extract
+   this information from many other formats, including TrueType. We thus
+   need a fast way to compute standard widths on-the-fly.</p>
+
+<p>To do it, we simply re-compute the standard width, or an
+   approximation of it, each time a new face is loaded in the auto-hinter.
+   This is done very simply by loading a few well-known characters like
+   the "O", "o", "I", "i", "Z", "z" and taking the size of their largest
+   stems.</p>
+
+<h2>Width normalisation</h2>
+
+<p>Once the standard widths are computed in the master space, we can scale
+   them to the current pixel grid, and round them to integer pixel widths.</p>
+   
+<p>When aligning edges, we compute the scaled width of stems and compare it
+   to the (unaligned) standard widths. If a stem width is sufficiently close
+   to a given standard width (using a typical threshold of a half pixel),
+   its is snapped to the rounded standard width.</p>
+   
+<p>However, if the stem width is not close enough to one of the standard
+   widths in pixel space, it needs to be aligned. A first implementation
+   consists in simply rounding its pixel width to an integer. However, this
+   sometimes creates unpleasant artefacts, that are much rarer than the
+   discepency demonstrated in the introduction picture.</p>
+
+<p>These artefacts are rare, usually appear for a single point size which
+   varies with the font, but still exist. A general principle of coherency
+   is that <em>it is better to be wrong by 10% all the time</em> than
+   <em>completely correct in 95% cases, and greatly wrong in 5% cases</em>.</p>
+
+<p>To avoid these problem while following the coherency principle, we
+   essentially change the rounding threshold depending on the position of the
+   stem width compared to its closest standard width.</p>
+
+<p>For example, if the stem width is greater than its closest standard width,
+   we use a rounding threshold of 3/4 instead of 1/2. Similarely, if it is
+   lower than the closest standard width, we use a treshold of 1/4, like
+   in:</p>
+   
+<pre>
+    if (width > closest)
+       width = (width+16) & -64;
+       
+    else if (width < closest)
+       width = (width+40) & -64;
+</pre>
+   
+<p>Of course, a similar choice is performed when the stem is under the
+   standard width. We thus have a way of making stem widths slightly
+   closer to the standard width, and avoid most artefacts this way.</p>
+   
+<p>XXX : An alternative implementation could consist in moving the stem
+         width towards the standard width, using the delta that was used
+         to grid-fit the latter when it is in the right direction.</p>
+
+<p>XXX : Yet another alternative implementation could also try to move
+         the stem width closer by a fixed distance (like a half pixel)
+         then round it later.</p>
+
+</td></tr></table></center>
+
+</body>

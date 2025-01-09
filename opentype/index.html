@@ -1,0 +1,215 @@
+<html>
+<head>
+<title>The FREETYPE Project</title>
+<META name="description"
+ content="The FreeType Project: a free, quality and portable Font engine">
+<META name="keywords"
+ content="FreeType fonts renderer TrueType Type1 TTF library free fast quality">
+</head>
+
+<body text="#000000"
+      bgcolor="#FFFFFF"
+      link="#0000EF"
+      vlink="#51188E"
+      alink="#FF0000">
+
+
+<font size=1>http://www.freetype.org</font><p>
+
+<center>
+  <img src="../image/freetype.jpg" alt="The FreeType Project" border=0><p>
+  <font size="+2"><em>OpenType Support</em>
+  </font><p>
+</center>
+
+<center><table width=500><tr><td>
+<hr><p>
+
+<center>
+
+<p><font color="red" size="+2">Please go to homepage of the <a
+href="http://www.freedesktop.org/wiki/Software/HarfBuzz">HarfBuzz
+library</a>!  FreeType&nbsp;1 and its OpenType support is no longer
+maintained.</font>
+
+<table width=650><tr><td>
+<h3 align=justify>
+We are proud to announce that FreeType now supports the <font color="blue">
+<b>OpenType Layout</b></font>
+extension tables (also formerly known as <em>TrueType Open</em>).
+</h3>
+</td></tr></table>
+<p>
+  <table border=0>
+  <tr valign=top>
+
+  <td>
+    <ul>
+
+      <li>
+        <a href="#otlayout">
+        <font size="+1"><b>What is OpenType Layout ?</b></font></a><br>
+	<ul>
+	  <a href="#base">The Baseline Table</a><br>
+	  <a href="#gdef">The Glyph Definition Table</a><br>
+	  <a href="#gpos">The Glyph Positioning Table</a><br>
+	  <a href="#gsub">The Glyph Substitution Table</a><br>
+	  <a href="#jstf">The Justification Table</a><br>
+	</ul>
+	<p>
+
+      <li>
+        <a href="#examples">
+	<font size="+1"><b>ScreenShots</b></font></a><br>
+	<p>
+
+    </ul>
+  <td>
+    <ul>
+      <li>
+        <a href="#how-to"><font size="+1"><b>How to use it ?</b></font></a><br>
+	<ul>
+          <a href="#extension">The FreeType OpenType extension</a><br>
+          <a href="#api">The API</a><br>
+	</ul>
+	<p>
+
+      <li>
+        <font size="+1"><b>Related sites and information</b></font><br>
+	<ul>
+           <a href="https://learn.microsoft.com/en-us/typography/opentype/spec/">The OpenType Specification</a><br>
+           <p>
+	</ul>
+        <p>
+
+    </ul>
+
+  </table>
+</center>
+<p>
+<hr>
+<p>
+
+<a name="otlayout">
+<h3>What is OpenType Layout ?</h3>
+<ul>
+  Formerly known as <em>TrueType Open</em>, the <b>OpenType Layout</b>
+  specification defines a set of tables that might appear in font files
+  to provide much improved support for internationalisation and
+  advanced typographic features.
+  <p>
+
+  Note that <em>OpenType Layout</em> is only one part of the larger
+  <em>OpenType</em> specification, which defines, among other things,
+  a new glyph coding format, which will not be discussed there.
+  <p>
+
+  An OpenType Layout font must contain the following tables:<p>
+  <ul>
+       <li><a name="base"><b>A Baseline Table (BASE)</b><br>
+           This table provides data used to align glyphs on different
+           scripts baselines, whether the glyphs are in the same font
+           or not. This is essential to correctly display multi-script
+           text strings in a single line.
+           <p>
+
+       <li><a name="gdef"><b>A Glyph Definition Table (GDEF)</b><br>
+           This table contains information used to classify each glyph
+           in various classes. These are later used in the GPOS and
+           GSUB tables to perform contextual positioning and substitution.
+           <p>
+
+       <li><a name="gpos"><b>A Glyph Positioning Table (GPOS)</b><br>
+           This table provides precise control over glyph placement
+           for advanced text layouts. Note that the rendering rules that
+           it contains can adapt to the language system currently
+           used.
+           <p>
+
+       <li><a name="gsub"><b>A Glyph Substitution Table (GSUB)</b><br>
+           This table provides information used to substitute glyphs
+           according to the script and language system currently used.
+           It allows advanced contextual substitution even for client
+           applications that are not aware of them.
+           <p>
+
+       <li><a name="jstf"><b>A Glyph Justification Table (JSTF)</b><br>
+           This table provides additional control over the positioning
+           and substitution processes when text must be justified. For
+           example, a "fi" ligature can be broken into "f" & "i" if the
+           justified text has large inter-letter space.
+           <p>
+ 
+  </ul>
+  <p>FreeType supports the GSUB, GPOS and GDEF for now. Support for the BASE
+  and JSTF tables will be added later.
+  </p>
+</ul>
+
+<p>
+<hr>
+<p>
+
+<a name="examples">
+<h3>ScreenShots</h3>
+<ul>
+    Here are a few screenshots demonstrating how useful OpenType Layout can
+    be. All following examples are rendered with FreeType.
+    <p>
+    <b>Nastaliq</b>
+    <ul>
+        <p>Here is an image showing a string of Arabic text written in Nastaliq
+        style, rendered as a succession of individual glyphs. Note that
+        Nastaliq is a writing style of the Arabic script, it is thus written
+        right-to-left, but with an <em>oblique</em> baseline on each word.
+        </p>
+	<img src="farsi-normal.png" border="0" alt="Farsi text, with no OTLayout">
+        <p>
+        <p>This above image is wrong, because glyphs were not positioned correctly.
+        Using the FreeType OpenType Layout extension, the text becomes :
+        </p>
+        <img src="farsi-layout.png" border="0" alt="Farsi text, with OTLayout">
+        <p>
+        Now, this is correct !!
+    </ul>
+    <p>
+
+    <b>Sura</b>
+    <ul>
+        <a href="sura1.png">Click here</a> to see an screenshot of Word
+        displaying an Arabic text. Now compare it to the following four
+        images that were generated with FreeType :
+        <p>
+        <center>
+        <img src="sura-layout-2.png" border=1><br>
+        <img src="sura-layout-1.png" border=1><br>
+        <img src="sura-layout-4.png" border=1><br>
+        <img src="sura-layout-3.png" border=1><br>
+        </center>
+        <p>
+    </ul>
+    <p>
+</ul>
+
+<p>
+<hr>
+<p>
+
+<a name="howto">
+<h3>How to use it ?</h3>
+<ul>
+    For now, one should use the FreeType OpenType Layout extension located
+    in the "freetype/lib/extend" under the names "ftxopen.h", "ftxgdef.h",
+    "ftxgpos.h" and "ftxgsub.h".
+    <p>
+    More text will follow... still under constructions..
+</ul>
+
+<i>
+  Page maintained by <a href="mailto:robert.wilhelm@freetype.org">
+  Robert Wilhelm</a>
+</i><br>
+
+</td></tr></table></center>
+</body>
+</html>

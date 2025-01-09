@@ -1,0 +1,413 @@
+<html>
+<head>
+<title>The FreeType Auto-Hinting pages</title>
+<basefont face="Georgia, Arial, Helvetica, Geneva">
+<META name="description"
+ content="The FreeType Project: a free, quality and portable Font engine">
+<META name="keywords"
+ content="FreeType fonts renderer TrueType Type1 TTF library free fast quality">
+<style content="text/css">
+  P { text-align=justify }
+  P.location { text-align=left; font-size="20" }
+  P.url { text-align=center; font-size="20" }
+  P.title { text-align=center; font-size="20" }
+  P.center { text-align=center }
+  H1 { text-align=center }
+  H2 { text-align=center }
+  LI { text-align=justify }
+</style>
+</head>
+
+<body text="#000000"
+      bgcolor="#FFFFFF"
+      link="#0000EF"
+      vlink="#51188E"
+      alink="#FF0000">
+
+<center>
+<table width="70%" cellspacing=5><tr bgcolor="#CCCCEE"><td>
+<h2 align=center>The FreeType Auto-Hinter</h2>
+</td></tr><tr><td>
+
+<h3>Basic design goals</h3>
+
+<p>The FreeType auto-hinter will be designed in order provide the following
+   features:</p>
+   
+<p><ul>
+   <li><p>absolutely patent-free from day 1 !!</p>
+   
+   <li><p>capable of hinting monochrome and anti-aliased glyphs
+          differently, in order to generate high-quality images matched to
+          the target device.</p>
+
+   <li><p>capable of real-time hinting of outlines, in order to be used
+          with any FreeType 2 font driver ( TrueType, Type 1, CFF/Type 2,
+          etc..) that doesn't provide its own hinting algorithm.</p>
+
+   <li><p>we'll try to make the auto-hinter as independent as the rest of
+          FreeType 2, in order to make it usable in other projects.</p>
+
+   <li><p>well, as usual with FreeType code, expect small footprint, code
+          size and excellent performance ;-)</p>
+</ul></p>
+
+<h3>Development</h3>
+
+<p>The FreeType Auto-Hinter is developed by David Turner, lead FreeType
+   architect and developer, under contract with an unnamed company. Among
+   other things, the following have been agreed when signing the contract:</p>
+
+<p><ul>
+  <li><p>The auto-hinter will be released under an open source license similar
+         to the FreeType one (with copyrights reverted to the Company). Hence,
+         it will be included in FreeType 2 when the latter is released.</p>
+  
+  <li><p>The source code for the auto-hinter will be kept confidential until
+         the contract delivery date, set to the end of May 2000. However,
+         its algorithms will be freely and publicly discussed and detailed
+         in a dedicated mailing list. Screen shots of the on-going work will
+         be posted on web pages too.</p>
+  
+</ul></p>
+
+<p>Other than the legal stuff, the general approach is extremely practical,
+   and features will be introduced progressively in the auto-hinting engine
+   to enhance its quality and performance. Do not expect beautiful results
+   immediately then :-)</p>
+
+<p>Of course, the engine will be tested against a large number of fonts.
+   However, it will first focus on correctly hinting widely available
+   high-quality fonts (Arial, Times, Helvetica, Palatino, Courier, etc..)
+   for Latin scripts. Managin ideographs will be added later as these will
+   much probably require some specific settings.</p>
+
+<h3>Current Status</h3>
+
+<p>Aaack, I'm supposed to describe the auto-hinting algorithms there, but
+   detailing them will take too long. Here's only an overview of the code
+   that is currently written and working :</p>
+
+<p>The module contains distinct feature-detection and alignment control passes.
+
+<h4>a. The Feature Detection phase :</h4>
+  
+ <p>This phase is performed on the unscaled master outline of a glyph. Its
+    purpose is to detect stems, serifs as well as point candidates for blue
+    zone alignment</p>
+    
+ <p>Basically, we will start with something simple, consisting in:</p>
+ <p><ul>
+    <li><p>Detecting horizontal or vertical "segments". A segment is simply a
+           set of successive points aligned either on the horizontal or vertical
+           direction. Each segment has a direction, depending on the contour that
+           includes it.</p>
+        
+    <li><p>linking segments together, in order to recognize vertical or horizontal
+           "stems". Basically, two segments can be linked when they delimit a
+           "span" during the scan-conversion process. Basically, this means :</p>
+        
+        <p><ul>
+           <li><p>they are both aligned on the same axis, and have opposite
+                  directions.</p>
+             
+           <li><p>in TrueType, outlines are filled to the right of the contour's
+                  direction. This means that if the segments are vertical, the
+                  upwards segment must be located to the left of the downwards
+                  segment.</p>
+             
+           <li><p>Similarly, for TrueType, if the segments are horizontal, the
+                  leftwards segment must be placed below the rightwards one.</p>
+             
+           <li><p>For Type 1, which uses the opposite filling convention, inverse
+                  rules must be applied. This means that we need to know in advance
+                  what's the filling rule used in an outline.</p>
+         </ul></p>
+
+     <li><p>Each segment is linked to the "closest" linkable segment. We do this
+            by scoring the "distance" between two segments, and keeping the one
+            with the lowest score. The scoring function must be simple and reflects
+            basically the "distance" between the segments.</p>
+
+     <li><p>Then when two segments are linked "together", i.e. when we have
+            (seg1->link == seg2 && seg2->link == seg1->link), they form a
+            vertical or horizontal "stem"</p>
+         
+     <li><p>When (seg1->link == seg2 && seg2->link != seg1), then seg1 is said
+            to be a "serif" segment, and we put the value (seg2->link) in its
+            field (seg1->serif) to indicate this.</p>
+    
+     <li><p>a segment is said to be "rounded" when either one of its extrema
+            points is off the outline (cubic control point).</p>
+<!--    
+         **** we could restrict the definition of "roundness" to segments
+         **** wich have only two off-curve extrema..
+         **** XXXX
+-->
+      <li><p>We compute the outline "edges". An edge is simply an axis coordinate
+             that contains one or more segments on it. Each edge inherits the
+             properties of its segments, following these rules:</p>
+         
+        <p><ul>
+           <li>an edge that contains a stem segment is a stem edge
+           <li>an edge that only contains serif segments is a serif edge
+           <li>an edge that only contains rounded segments is a rounded edge
+        </ul></p>
+        
+    </ul></p>
+    
+    <p>For now, we will not control italics diagonals or other extra features.
+       The goal is to progressively introduce complexity to solve specific cases
+       not covered by the current algorithm.</p>
+    
+    
+<h4>b. The Alignment Control phase:</h4>
+  
+ <p>Once a glyph's features have been detected, its scaled outline can be
+    aligned to the pixel grid of a given character size, depending on the
+    features detected.</p>
+    
+ <p>With our current scheme, it really means aligning the "edges" to the
+    pixel grid, then interpolating points between them. Several techniques
+    can be considered :</p>
+    
+ <p><ul>
+     <li><p><b>distortion function minimization:</b></p>
+       
+      <p>The technique is used in a famous John D. Hobby paper which
+         describes an algorithm for automatically tuning monochrome bitmaps.
+         Basically, after a rather exhaustive feature detection pass based
+         mostly on Voronoi diagrams, a distorsion function is built.</p>
+         
+      <p>The alignment control pass then tries to minimize the function,
+         by inverting a matrix while finding optimal integer coordinates
+         for some of the solution's values. It uses a rather complex technique
+         IMHO and a lot of things could be done to simply this pass and make
+         it a lot more speedy..</p>
+         
+      <p>The big problem here is that creating the distortion function
+         means the introduction of a great number of more or less liberal
+         scaling factors, that then need to be hand-tweaked to render
+         esthaetically optimal results. Also, the correlation between
+         these factors and the final result is absolutely not obvious
+         given the detection measures performed..</p>
+         
+      <p>There are also other issues in Hobby's paper, like the fact that
+         most of the distortion functions it uses do not map really well to
+         the problem space, and introduce un-necessary constraints on the
+         solution.</p>
+                  
+      <p>We could however use something similar, but in a much simpler form
+         in order to minimize the alignment of our edges.</p>
+         
+         
+     <li><p><b>direct alignment techniques:</b></p>
+       
+      <p>Most TrueType bytecoded programs do something along the following
+         lines (this information comes from months of study needed to write
+         a normal TrueType bytecode interpreter):</p>
+         
+      <p><ul>
+       <li><p>align important edges to pre-computed positions of the pixel
+              grid. These position mainly correspond to the traditionnal
+              blue values in the vertical direction, but the TT bytecodes
+              usually also include horizontal "blues"..</p>
+              
+       <li><p>align other edges of the font to the pixel grid, checking
+              that the relative order of edges is changed..</p>
+            
+       <li><p>check that a few stem/serif widths are correct (including the
+              width of some diagonals).</p>
+            
+       <li><p>eventually apply some manual modifications for a given character
+              size (usually through a DeltaP or DeltaC instruction).</p>
+            
+       <li><p>interpolate all other points that haven't been touched.</p>
+
+       <li><p>eventually apply some other manual modifications to interpolated
+              points (also through DeltaP or DeltaC).</p>
+      </ul></p>
+      
+      <p>It is believed that most of the phases of this process can be
+         directly reproduced through clever algorithms.</p>
+  </ul></p>          
+                       
+  <p>This research will start with direct manipulation research, mainly because
+     the knowledge acquired during it can easily be translated to a function
+     minimzation algorithm later, if results do not follow. The opposite way
+     isn't necessarily easy.</p>
+
+<p><ul>
+
+</ul></p>   
+
+<h3>ScreenShots</h3>
+
+<p>Here are some screenshots taken on Friday 10 March 2000 with the current
+   auto-hinting module. Please note the following :</p>
+   
+<p><ul>
+   <li><p>Glyph metrics are not hinted in this version, so do not be surprised
+          if you see some strange inter-character spacing. Composite glyphs (i.e.
+          mainly accented characters) are also not hinted correctly as they will
+          be in a near future.</p>
+
+   <li><p>Diagonals are not hinted for now, so don't be surprised to see the
+          same "colorful" letters as with TrueDoc.</p>
+      
+   <li><p>The anti-aliased images correspond to the same grid-fitted outlines than
+          the monochrome ones. For now, we do not explicitely support anti-aliased
+          hinting, even though this should not prove to be really hard..</p>
+      
+   <li><p>The anti-aliased images are rendered through Beta FreeType 2's default
+          renderer which supports 128 levels of grays (this will go as high as
+          256 for the release, but shouldn't make a difference to the human
+          eye..).</p>
+</ul></p>
+
+<p>These images lead me to the following conclusions regarding the current
+   prototype.</p>
+
+<p><ul>
+  <li><p>Quality of a sans-serif font like Arial seems good for monochrome
+         bitmaps, and excellent with anti-aliasing (even though we do not
+         specifically hint for this "resolution", which would create even
+         better looking glyphs). Howver, it could certainly be made better.</p>
+         
+  <li><p>Even though we do not process diagonals for now, there is a visible
+         improvements on italics fonts too. This probably comes from adjusting
+         glyph heights to the blue zones and normalizing stem widths.</p>
+         
+  <li><p>Quality of a serif font like Times New Roman is between poor and
+         good for monochrome bitmaps. There is a noticeable improvements
+         compared to scaled outlines, however a lot should be done to improve
+         the situation.</p>
+         
+  <li><p>I'm still very surprised by the results given by the Courier New face.
+         I'll have to look in details what's really happenning. Apparently,
+         most of the ends on this font are rounded and slightly oversized
+         commpared to the <em>tiny</em> edge and stem strokes.</p>
+</ul></p>
+
+<center>
+<h1>Images dated 2000-02-10</h1>
+<h3 align="center">Arial</h3>
+
+<p class="center">
+   Unhinted monochrome outlines<br>
+   <img src="image/auto_arial_no.png"><br><br>
+
+   Hinted monochrome outlines<br>
+   <img src="image/auto_arial.png"><br><br>
+   
+   Hinted anti-aliased outlines<br>
+   <img src="image/auto_arial_aa.png"></p>
+
+<h3 align="center">Arial Italic</h3>
+
+   Unhinted monochrome outlines<br>
+   <img src="image/auto_ariali_no.png"><br><br>
+
+   Hinted monochrome outlines<br>
+   <img src="image/auto_ariali.png"><br><br>
+   
+   Hinted anti-aliased outlines<br>
+   <img src="image/auto_ariali_aa.png"></p>
+
+<h3 align="center">Times New Roman</h3>
+
+   Unhinted monochrome outlines<br>
+   <img src="image/auto_tnr_no.png"><br><br>
+
+   Hinted monochrome outlines<br>
+   <img src="image/auto_tnr.png"><br><br>
+   
+   Hinted anti-aliased outlines<br>
+   <img src="image/auto_tnr_aa.png"></p>
+
+<h3 align="center">Times New Roman Italic</h3>
+
+<p class="center">Unhinted monochrome outlines<br>
+   <img src="image/auto_tnri_no.png"><br><br>
+
+   Hinted monochrome outlines<br>
+   <img src="image/auto_tnri.png"><br><br>
+   
+   Hinted anti-aliased outlines<br>
+   <img src="image/auto_tnri_aa.png"></p>
+
+<h3 align="center">Courier New</h3>
+
+<p class="center">Unhinted monochrome outlines<br>
+   <img src="image/auto_cour_no.png"><br><br>
+
+   Hinted monochrome outlines<br>
+   <img src="image/auto_cour.png"><br><br>
+   
+   Hinted anti-aliased outlines<br>
+   <img src="image/auto_cour_aa.png"></p>
+
+<h3 align="center">Courier New Italic</h3>
+
+<p class="center">Unhinted monochrome outlines<br>
+   <img src="image/auto_couri_no.png"></p>
+
+   Hinted monochrome outlines<br>
+   <img src="image/auto_couri.png"><br><br>
+   
+   Hinted anti-aliased outlines<br>
+   <img src="image/auto_couri_aa.png"><br><br>
+</center>
+
+<h3>Things TO DO !!</h3>
+
+<p>Well, for now: </p>
+
+<p><ul>
+  <li><p>Finish this damn web site !!</p>
+  
+  <li><p>Implement composite glyph hinting correctly. This requires a few
+         changes in FreeType 2 itself to be able to extract the subglyphs
+         list.</p>
+  
+  <li><p>Introduce extra edges for the left-most and right-most extrema
+         in a font (when those are not covered already by an edge). This
+         seems to be important for many things, including diagonals !!</p>
+  
+  <li><p>See what's so wrong with Courier New ?</p>
+
+  <li><p>Test with more fonts to detect issues (seems Georgia show some
+         small problems in the blue zone detection/alignment code..).</p>
+  
+  <li><p>Implement anti-aliased hinting (should be easy and give good
+         results)</p>
+  
+  <li><p>Test with asian fonts, and try to devise an algorithm to improve
+         their rendering (apparently, equal spacing of white distances is
+         much more important than correct positioning of black ones..).</p>
+         
+  <li><p>Test a new algorithm were basically the auto-hinter would try
+         to minimize a distortion function (a la John Hobby). However,
+         the distortion would be computed very differently and be
+         correctly mapped to our problem space..</p>
+         
+  <li><p>For now, the auto-hinter is limited to TrueType outlines, this is
+         only due to the filling convention used to orient inside/outside
+         contours within glyphs. I need to change it to make it work with
+         Type 1 outlines too (should be easy..,
+         because the hinting doesn't depend on the polynomial order of
+         curves).</p>
+</ul></p>
+
+</td></tr></table>
+</center>
+
+<p>
+<i>
+  Page maintained by <a href="mailto:david.turner@freetype.org">
+  David Turner</a>
+</i><br>
+</p>
+
+</body>
+</html>

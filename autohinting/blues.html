@@ -1,0 +1,162 @@
+<html>
+
+<head>
+<title>Blue Zone Computation & Alignment in FreeType 2</title>
+<basefont face="Georgia, Arial, Helvetica, Geneva">
+<style content="text/css">
+  P { text-align=justify }
+  H1 { text-align=center }
+  H2 { text-align=center }
+  LI { text-align=justify }
+</style>
+</head>
+
+<body text="#000000"
+      bgcolor="#FFFFFF"
+      link="#0000EF"
+      vlink="#51188E"
+      alink="#FF0000">
+
+<center>
+<table width="70%" cellspacing=5><tr bgcolor="#CCCCEE"><td>
+<h2 align=center>Blue Zones in FreeType 2</h2>
+</td></tr><tr><td>
+
+<h2>Introduction & Background:</h2>
+
+<p>It is common in Latin scripts to put the top of rounded glyphs, like "O", "C"
+   or "Q", above the top of flat glyphs like "T" or "Z" by a small distance. This
+   variation is an aesthetic choice, used to improve the appearance of text.
+   Without it, rounded glyphs often appear a tiny bit smaller to the human eye.</p>
+
+<p>However, it is very important, when grid-fitting the extrema of glyphs, that
+   the top of rounded and flat glyphs be snapped to the same pixel grid. Otherwise
+   this small distance might be stregthen resulting in very unpleasant artefacts,
+   depending on the current pixel size, as in the following picture:</p>
+
+<p><center><img src="image/no_blues.png" alt="image of un-aligned tops and bottoms"></center></p>
+
+<p>To address this problem, the zone of points whose y coordinate is located
+   between the top of flat glyphs (called the zone's reference coordinate) and
+   the top of rounded glyphs (called the zone's overshoot coordinate) is treated
+   in a special way. Such zones are called "blue" zones. Usually, the following
+   zones are noticed and processed in Latin scripts:</p>
+
+<p><ul>
+  <li>the top of capital letters
+  <li>the top of small letters
+  <li>the bottom of capital letters
+  <li>the bottom of small letters
+  <li>the bottom of "legged" small letters like "p", "q", "g", "j" & "y"
+</ul></p>
+
+<p>Note that some other blue zones might be defined to process specifically
+   certain symbols like:</p>
+
+<p><ul>
+  <li>enclosure symbols like "(", ")", "[", "]", "{", "}" which typically
+      have more or less the same height in a digital font
+    
+  <li>some special math symbols, like the integration symbol, the sigma
+      symbol, and others. Figures may also be important for math uses.
+</ul></p>
+
+<p>Note that when the overshoot coordinate is above the reference coordinate,
+   the blue zone is said to be a "top zone". This is the case for the top of
+   capital letters, small letters, enclosures, etc.. Similarly, when the
+   overshoot is under the reference, the blue zone is said to be a
+   "bottom zone".</p>
+
+<p>The FreeType Auto-Hinter computes the blue zones automatically. The purpose
+   of this page is to present the technique used to do that, as well as the one
+   used later to grid fit points within this blue zone. Note that for now,
+   we only consider Latin scripts. Other scripts that may require blue zone
+   alignement might be added in the future (e.g. arabic, hebrew, etc..)</p>
+
+
+<h2>Automatic Computation Algorithm:</h2>
+
+<p>It is assumed that the font is well designed. This means, in the case of the
+   "capitals top" blue zone that all flat characters (like "Z", "T", "H" etc..)
+   have the same height (given a certain threshold); moreover, that all rounded
+   characters (like "O", "C", "S", "Q", etc..) have the same height.</p>
+
+<p>Because of differences in design between fonts, we cannot assume however that
+   a well-know character like "Z" has always a flat top, or that a "C" has two
+   rounded vertical extrema.</p>
+
+<p>For a given blue zone, the technique used simply loads a set of well-known
+   characters that present some "features" related to the zone. For example, the
+   characters of "HEZLOCUS" are loaded to compute the "capitals bottom" zone.</p>
+
+<p>For each zone, the algorithm uses two lists of coordinates that are initially
+   empty. Each character in this "zone set" is then analyzed for either its upper
+   or lower extrema, depending on the zone's orientation. If the extrema is
+   rounded, its coordinate is added to the first list, if it is flat, it is added
+   to the second list.</p>
+
+<p>When all characters in the set are loaded and analyzed, the median of each
+   list is taken to compute the reference and overshoot position of the blue zone.
+   In the case where one of the list is empty, the two positions are both set to
+   the median of the remaining list.</p>
+
+<p>By keeping a small sets of well-chosen characters for each zone, we avoid
+   loading each glyph in the font for analysis, speeding considerably the
+   computation compared to a real global analysis (normally performed by building
+   the histograms of flat and rounded tops of each glyphs, and detecting "peaks";
+   this detection phase can be tricky if the font contains many symbols that
+   are not part of a Latin script..).</p>
+
+
+<h2>Blue Zone Grid-Fitting:</h2>
+
+<p>For each pixel size, the blue zones need to be grid-fitted to the current
+   scale. This is done by normally grid-fitting the reference position of each
+   zone, the positioning the overshoot position relative to this reference
+   grid-fitted coordinate.</p>
+
+<p>As usual with blue zone in digital typography, if the size in pixel space
+   of the blue zone falls under a certain threshold (like ONE pixel), the blue
+   zone is "snapped", which means that the overshoot is grid-fitted to the
+   reference position itself (along with each horizontal edges between them).</p>
+
+
+<h2>Blue Edges detection:</h2>
+
+<p>We need to "snap" some of the horizontal edges detected in the
+   feature-detection pass to the grid-fitted reference and overshoot position
+   of the blue zones.</p>
+
+<p>We select the edges according to the following rules. Note that the
+   TrueType filling convention is used in this example (directions must
+   be inversed for Type 1 fonts):</p>
+
+<p><ul>
+  <li><p>Only right-wards edges can be snapped to top zones, and left-wards
+         edges can be snapped to bottom zones. This in order to avoid snapping
+         the inner contours of glyphs to a blue zone. (invert left and
+         right for Type 1 fonts).</p>
+         
+  <li><p>The edge can be snapped either to the zone's reference or overshoot
+         coordinate depending on its position relative to the zone and its
+         roundness flag. For example, for top zones:</p>
+         
+     <p><ul>
+       <li><p>A round edge will be snapped to the pixel overshoot if it is
+              within a certain threshold of the overshoot in design space.</p>
+           
+       <li><p>A flat edge will be snapped to the pixel reference if it is
+              within a certain threshold of the reference in design space.</p>
+
+       <li><p>To avoid weird artefacts, a round edge may NOT be snapped to
+              a blue position when it is under the reference point.</p>
+
+       <li><p>Similarly, a flat edge may NOT be snapped to a blue position
+              when it is over the overshoot.</p>
+              
+     </ul></p>
+</ul></p>
+
+</td></tr></table></center>
+
+</body>

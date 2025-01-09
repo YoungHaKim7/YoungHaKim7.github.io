@@ -1,0 +1,156 @@
+<html>
+<head>
+<title>The FreeType Auto-Hinting pages</title>
+<basefont face="Georgia, Arial, Helvetica, Geneva">
+<META name="description"
+ content="The FreeType Project: a free, quality and portable Font engine">
+<META name="keywords"
+ content="FreeType fonts renderer TrueType Type1 TTF library free fast quality">
+<style content="text/css">
+  P { text-align=justify }
+  P.location { text-align=left; font-size="20" }
+  P.url { text-align=center; font-size="20" }
+  P.title { text-align=center; font-size="20" }
+  P.center { text-align=center }
+  H1 { text-align=center }
+  H2 { text-align=center }
+  LI { text-align=justify }
+</style>
+</head>
+
+<body text="#000000"
+      bgcolor="#FFFFFF"
+      link="#0000EF"
+      vlink="#51188E"
+      alink="#FF0000">
+
+
+<!--<h1 align="center">Background Information</h1>-->
+
+<center>
+<table width="70%" cellspacing=5><tr bgcolor="#CCCCEE"><td>
+<h2 align=center>Background Information</h2>
+</td></tr><tr><td>
+
+<p><br>
+   Fonts are usually stored in a font file as a series of vectorial shapes
+   called <em>outlines</em>. Each outline is defined as a series of points
+   in what is called the <em>master</em> or <em>EM</em> space. Points can
+   be tagged to indicate that they are actually <em>on</em> the curve, or
+   alternatively, conic or cubic bezier control points. In the latter case,
+   they are called <em>off</em> points.</p>
+
+<p>In order to render a glyph to a given character size, the outline is scaled
+   from the master space to the device space using a simple scaling transform.
+   This scaled outline can then be converted into a monochrome bitmap, or an
+   anti-aliased one. However, such glyphs displayed on a low-resolution surface
+   will often show numerous unpleasant artifacts. Here is an example of 
+   simply-scaled text :</p>
+
+<center><img src="image/scaled_cascade.png" width=494 height=155></center>
+   
+<p>As you can see, this text suffers from the following symptoms:</p>
+<ul>
+   <li><p>stem widths and heights are not consistent, even in a single
+          character image</p>
+          
+   <li><p>the top and bottom of certain characters do not seem to align
+          with the top or bottom of others.</p>
+          
+   <li><p>curves and diagonals are generally ugly..</p>
+</ul>
+
+<a name="grid-fitting"><h3>Grid-Fitting</h3></a>
+
+<p>Grid-Fitting is the general process of modifying glyph outlines in order
+   to align some of their important features to the pixel grid in device
+   space. When done correctly, the quality of the final glyph bitmaps is
+   massively improved. Here is an example of the <em>same</em> text with
+   all glyph outlines grid-fitted by a TrueType renderer:</p>
+   
+<center><img src="image/hinted_cascade.png" width=492 height=147></center>
+
+<p>The difference is indeed striking.</p>
+
+<a name="hinting"><h3>Hinting</h3></a>
+
+<p>Grid-fitting can be decomposed in two important phases :</p>
+
+<ul>
+  <li><p><b>Feature Detection</b><br>
+         This pass is in charge of detecting important glyph and font
+         features and produce control data, called <b>hints</b>, which describe
+         them to the final renderer.</p>
+         
+  <li><p><b>Alignment Control</b><br>
+         This pass is in charge of scaling the outline, then applying the
+         alignment operations described in the <em>hints</em> produced
+         beforehand in order to grid-fit it.</p>
+</ul>
+
+<p>Traditionally, Feature Detection is performed when the font file is created.
+   The hints produced can be stored in many different ways by what is called
+   the <em>hinter</em>, which can be a program, a font designer or a
+   combination of both (i.e. program computed hints + hand-edited ones).</p>
+
+<p>The final renderer performs the alignment control given the hints provided
+   in the font file.</p>
+
+<p>The advantage is that the hints can be very accurate and describe very
+   precisely the features and the way they should be grid-fitted. For example,
+   the TrueType format simply creates a bytecoded program for each glyph
+   outline that is interpreted on the final renderer. The bytecode used is
+   a complete virtual processor, specialized in geometric operations.</p>
+   
+<p>On the other hand, the Type 1 format uses much simpler and shorter hints,
+   which forces the final renderer to interpret them more or less liberally.</p>
+
+<a name="auto-hinting"><h3>Automatic Hinting</h3></a>
+
+<p>This project is aiming at the development of an <b>automatic hinting</b>
+   module that would include both a feature-detection and alignment control
+   pass. Unlike common practice in the industry, we're aiming at <b>real-time
+   performance</b>; we also do not want to rely on font-provided and
+   format-specific hints that may already be present in the font files.</p>
+   
+<p>This means that we must select algorithms that are both fast and accurate
+   in all phases of development.</p>
+
+<a name="mono-or-aa"><h3>Monochrome or anti-aliased hinting</h3></a>
+                  
+<p>An important thing to note when considering hinting is the fact that
+   generating either monochrome or anti-aliased glyph bitmaps can, and
+   more generally should, use distinct algorithms.</p>
+   
+<p>A good anti-aliasing scan-converter generates a gray-levels image that
+   compute the exact outline coverage on each pixel, or an approximation of
+   it. These images have much more detail than a monochrome bitmap. Generally,
+   many people argue that rendering anti-aliased scaled outlines is sufficient
+   and that no additional grid-fitting is needed.</p>
+   
+<p>However, experience proves that grid-fitting anti-aliased glyphs helps a
+   lot by enhancing the contrast of certain glyph features, mainly edges, in
+   order to make them more readable. Indeed, most users consider than
+   non-hinted anti-aliased outlines are fuzzy and painful to read. For
+   example, consider the following image rendered by Acrobat:</p>
+
+<center>An example of bad anti-aliased text<br>
+        (text is fuzzy and hard to read at any size)<br>
+        <img src="image/bad_aa.png" width=516 height=331></center>
+
+<p>Because anti-aliased outlines carry more detail, they need less adjustment
+   to improve their quality. The really hard part is in hinting monochrome
+   bitmaps, of course..</p>
+
+</td></tr></table>
+
+</center>
+
+<p>
+<i>
+  Page maintained by <a href="mailto:david.turner@freetype.org">
+  David Turner</a>
+</i><br>
+</p>
+</body>
+</html>

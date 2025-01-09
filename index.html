@@ -1,273 +1,366 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd">
+
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>economic-calendar</title>
-    <link rel="stylesheet" href="src/css/styles.css">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
+
+  <meta name="description" content="GlobalYoung Project:
+                 Rust Language zig C++ cpp C lang ">
+  <meta name="keywords" content="rust sdl sdl3 sdl2 raylib tokio
+                 investment Futures Securities">
+
+  <link rel="icon" href="image/favicon.ico">
+  <link rel="shortcut icon" href="image/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="css/freetype2.css">
+
+  <script type="text/javascript" src="js/freetype2.js">
+  </script>
+
+  <title>Global Young</title>
 </head>
-<header class="header_top">
-    <div class="clock">
-        <img width=15px src="./imgs/logo_gy.png" />
-        <h6 class="clock-NY-est">NewYork🇺🇸</h6>
-        <h6 class="clock-EU-est">Germany🇺🇸</h6>
-        <h6 class="clock-korea">Korea🇰🇷</h6>
-    </div>
-</header>
 
 <body>
-    <div class="todo-main">
-        <h2 class="title"></h2>
-        <h1 class="todo-list-title">📱 이번 주 체크할 주요일정</h1>
-        <form id="todo-form">
-            <input type="text" placeholder="Write a To Do and Press Enter!" required>
-        </form>
-        <li id="todo-list">오늘의 할일을 입력 한 후 Enter엔터를 눌러주세요 ↑↑↑</li>
-    </div>
-    <!-- <div class="todo-main">
-            <h1 class="todo-list-title">🌇러스트(Rust)로 만든 TodoApp</h1>
-            <div class="todo-list-title">
-                <a href="https://younghakim7.github.io/rust_todo/" target="_blank">
-                    Todo App
-                    <새창열림>
-                </a>
-            </div>
-    </div> -->
-    <div class="todo-main">
-        <h1 class="todo-list-title"><img width=20px src="imgs/rust_logo.png"> 러스트(Rust) 강의 문의 <img width=20px
-                src="imgs/rust_logo.png"></h1>
-        <div class="todo-list-title">
-            <a href="more.html" target="_blank">
-                Rust러스트 강의 문의
-                <새창열림>
-            </a>
-        </div>
-    </div>
-    <br>
-    <div class="todo-main">
-        <h1 class="todo-list-title">📅 실시간 경제 스케쥴 📊</h1>
-        <div class="tradingview-widget-container">
-            <div class="tradingview-widget-container__widget"></div>
-            <div class="tradingview-widget-copyright"><a
-                    href="https://www.tradingview.com/markets/currencies/economic-calendar/" rel="noopener"
-                    target="_blank"><span class="blue-text">Economic Calendar</span></a> by TradingView</div>
-            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js"
-                async>
-                    {
-                        "colorTheme": "light",
-                            "isTransparent": false,
-                                "width": "510",
-                                    "height": "600",
-                                        "locale": "en",
-                                            "importanceFilter": "-1,0,1"
-                    }
-                </script>
-        </div>
-        <h1 class="todo-list-title">📈 주요국 실시간 시세 📉</h1>
-        <div class="tradingview-widget-container">
-            <div class="tradingview-widget-container__widget"></div>
-            <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/" rel="noopener"
-                    target="_blank"><span class="blue-text">Financial Markets</span></a> by TradingView</div>
-            <script type="text/javascript"
-                src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
-                    {
-                        "colorTheme": "light",
-                            "dateRange": "12M",
-                                "showChart": true,
-                                    "locale": "en",
-                                        "largeChartUrl": "",
-                                            "isTransparent": false,
-                                                "showSymbolLogo": true,
-                                                    "showFloatingTooltip": false,
-                                                        "width": "400",
-                                                            "height": "660",
-                                                                "plotLineColorGrowing": "rgba(41, 98, 255, 1)",
-                                                                    "plotLineColorFalling": "rgba(41, 98, 255, 1)",
-                                                                        "gridLineColor": "rgba(240, 243, 250, 0)",
-                                                                            "scaleFontColor": "rgba(120, 123, 134, 1)",
-                                                                                "belowLineFillColorGrowing": "rgba(41, 98, 255, 0.12)",
-                                                                                    "belowLineFillColorFalling": "rgba(41, 98, 255, 0.12)",
-                                                                                        "belowLineFillColorGrowingBottom": "rgba(41, 98, 255, 0)",
-                                                                                            "belowLineFillColorFallingBottom": "rgba(41, 98, 255, 0)",
-                                                                                                "symbolActiveColor": "rgba(41, 98, 255, 0.12)",
-                                                                                                    "tabs": [
-                                                                                                        {
-                                                                                                            "title": "Indices",
-                                                                                                            "symbols": [
-                                                                                                                {
-                                                                                                                    "s": "FOREXCOM:SPXUSD",
-                                                                                                                    "d": "S&P 500"
-                                                                                                                },
-                                                                                                                {
-                                                                                                                    "s": "FOREXCOM:NSXUSD",
-                                                                                                                    "d": "US 100"
-                                                                                                                },
-                                                                                                                {
-                                                                                                                    "s": "FOREXCOM:DJI",
-                                                                                                                    "d": "Dow 30"
-                                                                                                                },
-                                                                                                                {
-                                                                                                                    "s": "INDEX:NKY",
-                                                                                                                    "d": "Nikkei 225"
-                                                                                                                },
-                                                                                                                {
-                                                                                                                    "s": "INDEX:DEU40",
-                                                                                                                    "d": "DAX Index"
-                                                                                                                },
-                                                                                                                {
-                                                                                                                    "s": "FOREXCOM:UKXGBP",
-                                                                                                                    "d": "UK 100"
-                                                                                                                }
-                                                                                                            ],
-                                                                                                            "originalTitle": "Indices"
-                                                                                                        },
-                                                                                                        {
-                                                                                                            "title": "Futures",
-                                                                                                            "symbols": [
-                                                                                                                {
-                                                                                                                    "s": "CME_MINI:ES1!",
-                                                                                                                    "d": "S&P 500"
-                                                                                                                },
-                                                                                                                {
-                                                                                                                    "s": "CME:6E1!",
-                                                                                                                    "d": "Euro"
-                                                                                                                },
-                                                                                                                {
-                                                                                                                    "s": "COMEX:GC1!",
-                                                                                                                    "d": "Gold"
-                                                                                                                },
-                                                                                                                {
-                                                                                                                    "s": "NYMEX:CL1!",
-                                                                                                                    "d": "Crude Oil"
-                                                                                                                },
-                                                                                                                {
-                                                                                                                    "s": "NYMEX:NG1!",
-                                                                                                                    "d": "Natural Gas"
-                                                                                                                },
-                                                                                                                {
-                                                                                                                    "s": "CBOT:ZC1!",
-                                                                                                                    "d": "Corn"
-                                                                                                                }
-                                                                                                            ],
-                                                                                                            "originalTitle": "Futures"
-                                                                                                        },
-                                                                                                        {
-                                                                                                            "title": "Bonds",
-                                                                                                            "symbols": [
-                                                                                                                {
-                                                                                                                    "s": "CME:GE1!",
-                                                                                                                    "d": "Eurodollar"
-                                                                                                                },
-                                                                                                                {
-                                                                                                                    "s": "CBOT:ZB1!",
-                                                                                                                    "d": "T-Bond"
-                                                                                                                },
-                                                                                                                {
-                                                                                                                    "s": "CBOT:UB1!",
-                                                                                                                    "d": "Ultra T-Bond"
-                                                                                                                },
-                                                                                                                {
-                                                                                                                    "s": "EUREX:FGBL1!",
-                                                                                                                    "d": "Euro Bund"
-                                                                                                                },
-                                                                                                                {
-                                                                                                                    "s": "EUREX:FBTP1!",
-                                                                                                                    "d": "Euro BTP"
-                                                                                                                },
-                                                                                                                {
-                                                                                                                    "s": "EUREX:FGBM1!",
-                                                                                                                    "d": "Euro BOBL"
-                                                                                                                }
-                                                                                                            ],
-                                                                                                            "originalTitle": "Bonds"
-                                                                                                        },
-                                                                                                        {
-                                                                                                            "title": "Forex",
-                                                                                                            "symbols": [
-                                                                                                                {
-                                                                                                                    "s": "FX:EURUSD"
-                                                                                                                },
-                                                                                                                {
-                                                                                                                    "s": "FX:GBPUSD"
-                                                                                                                },
-                                                                                                                {
-                                                                                                                    "s": "FX:USDJPY"
-                                                                                                                },
-                                                                                                                {
-                                                                                                                    "s": "FX:USDCHF"
-                                                                                                                },
-                                                                                                                {
-                                                                                                                    "s": "FX:AUDUSD"
-                                                                                                                },
-                                                                                                                {
-                                                                                                                    "s": "FX:USDCAD"
-                                                                                                                }
-                                                                                                            ],
-                                                                                                            "originalTitle": "Forex"
-                                                                                                        }
-                                                                                                    ]
-                    }
-                </script>
-        </div>
-        <input class="goupbtn" type="button" value="Top" onclick="window.scrollTo(0,0);">
-        <div class="todo-main">
-            <div class="todo-list-title">
-                <a href="https://www.investing.com/economic-calendar/" target="_blank">
-                    이번주 주요일정 investing.com
-                    - 새창열림
-                </a>
+
+  <div id="top" class="bar">
+    <h1><a href="index.html">Global Young</a></h1>
+  </div>
+
+
+  <div id="wrapper">
+
+    <div class="colmask leftmenu">
+      <div class="colright">
+        <div class="col1wrap">
+          <div class="col1">
+
+
+            <!-- ************************************************** -->
+
+            <div id="intro">
+              <p class="large">안녕하세요 GlobalYoung입니다. Rust가 너무 좋아 러스트(Rust언어)를 연구하는 1인 개발자 입니다.</p>
+              <p class="large">- 주언어는 Rust입니다.(Rust코드가 젤 편해요 ^^)</p>
+              <p class="large">-Rust외에 관심있는 언어는 Zig, C/C++, Kotlin, Swift, C#입니다.(polyglot을 추구합니다.)</p>
+
+              <p>부족한 부분이 많아서 누구에게나 배우고 싶어하는 개발자입니다. 많은 조언 부탁드립니다.</p>
+              <p>제가 가장 잘하는것은 미국 주식이나 해외선물, 옵션, 상품, 투자 미국채등 돈 되는건 전세계 다 투자합니다.^^</p>
+              <p>개발내용은 최대한 올리겠지만 아마도 금융 내용도 꽤 많을것 같습니다. </p>
+
+
+              <ul>
+                <li><a href="https://dhghomon.github.io/easy_rust/Chapter_0.html">Easy Rust스승님 많이 사랑해 주시고요</a>
+                  러스트 기초는 Easy rust 만세 !!! 갓갓 !!
+                </li>
+                <li>옥찬호님 찬양하라!!! 한국 러스트의 기둥 !!
+                  <a href="https://github.com/utilforever">옥찬호님 Github 많이 훔쳐 보고 배우려 하고 있습니다.</a>,
+                </li>
+
+              </ul>
+
+              <p>기여해주고 답장 주시면 답장 드리도록 하겠습니다.<a href="./freetype2/docs/documentation.html#comment">댓글로 이동</a></p>
+              <ul>
+                <li><a href="https://gitlab.freedesktop.org/freetype/freetype-web">이 홈페이지는 Freetype에 기반으로 만들어 졌습니다.
+                    감사합니다. 홈페이지 날로
+                    먹네요 ^^</a>
+                </li>
+
+              </ul>
+
             </div>
 
-            <div class="todo-main">
-                <div class="todo-list-title">
-                    <a href="https://news.research.stlouisfed.org/category/fred-announcements/" target="_blank">
-                        전 Fred News 지표 체크 그래프로 굿
-                        - 새창열림
-                    </a>
-                </div>
-                <div class="todo-list-title">
-                    <a href="https://kr.investing.com/central-banks/" target="_blank">
-                        <전 세계 중앙 은행 금리 비교 조회>
-                            <새창열림>
-                    </a>
-                </div>
 
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
+            <!-- ************************************************** -->
+
+            <div id="news">
+              <h2>News &amp; Updates</h2>
+              <h3>홈페이지 test</h3>
+              <div class="date">2025-01-07</div>
+              <ul>
+                <p>GlobalYoung공식 홈페이지 입니다. 서툴지만 최대한 만들어 보겠습니다. 좌측 상단 후원 감사합니다. ^^</p>
+                <p> raylib 게임 만들기 최근에 푹 빠져 있습니다.<a
+                    href="https://github.com/YoungHaKim7/raylib-rs_training_game_dev">Github raylib 게임만들기 이동</a>.
+                </p>
+                <p> SDL3/2 게임 만들기도 최고요 ^^.<a href="https://github.com/YoungHaKim7/SDL3_Rust_Game_Training">Github SDL3/2
+                    게임만들기 이동</a>.
+                </p>
+              </ul>
+
+
+              <h4>FreeType 2.13.3</h4>
+              <div class="date">2024-08-12</div>
+
+              <p>The B/W rasterizer has become much faster; besides that,
+                it is a maintenance release.</p>
+
+              <p>As usual, a list of the more noteworthy changes can be
+                found in
+                the <a href="https://sourceforge.net/projects/freetype/files/freetype2/2.13.3/">release
+                  notes</a>.</p>
+
+
             </div>
-            <nav class="nav">
-                <ul class="nav__list">
-                    <li class="nav__list-item">
-                        <a href="index.html" class="nav__list-link">
-                            <i class="fas fa-home"></i></a>
-                    </li>
-                    <li class="nav__list-item">
-                        <a href="analysis.html" class="nav__list-link">
-                            <i class="fas fa-file-contract"></i>
-                        </a>
-                    </li>
-                    <li class="nav__list-item">
-                        <a href="fibo.html" class="nav__list-link">
-                            <i class="fas fa-chart-line"></i>
-                        </a>
-                    </li>
-                    <li class="nav__list-item">
-                        <a href="more.html" class="nav__list-link">
-                            <i class="fab fa-tumblr"></i>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <script src="src/js_src/clock.js"></script>
-            <script src="src/js_src/toDo.js"></script>
-            <script src="https://kit.fontawesome.com/2b98fdff26.js" crossorigin="anonymous"></script>
+
+
+            <!-- ************************************************** -->
+
+            <div id="links">
+
+
+              <h2>Links</h2>
+              <ul>
+                <li><a href="https://cerebras.ai/">https://cerebras.ai/</a>
+                </li>
+                <li>
+                  <a href="https://www.perplexity.ai/">https://www.perplexity.ai/</a>,
+                </li>
+                <li>
+                  <a href="https://chatgpt.com/">https://chatgpt.com/</a>,
+                </li>
+                <li>
+                  <a href="https://gemini.google.com/app">https://gemini.google.com/app</a>,
+                </li>
+                <li>
+                  <a href="https://www.microsoft.com/en-us/edge/features/bing-chat">엣지설치하기 싫어서 안 씀 ㅋBing Chat |
+                    Microsoft
+                  </a>
+                </li>
+                <li>
+                  <a href="https://github.com/features/copilot ">기가 막힌 코파일럿, https://github.com/features/copilot
+                    Microsoft
+                  </a>
+                </li>
+                <li>
+                  <a href="https://alan.estsoft.ai/">한국꺼 이지소프트에서 만듬 Alan앨런</a>
+                </li>
+
+              </ul>
+              - ollama로컬 설치용(mistral, llama3.3)
+
+              <pre>
+
+```bash
+
+# llama3.3(가정용 컴퓨터로 405B모델을 경험 가능 지금은 아주 느리다. 241212
+# New state of the art 70B model. Llama 3.3 70B offers similar performance compared to Llama 3.1 405B
+model.
+ollama run llama3.3
+
+# ollam 프로세서 잘 실행 되는지 확인
+# pgrep ollama
+6327
+6521
+
+# ollam "/bye" 로 종료 시키고 서비스 종료 시키기
+$ systemctl stop ollama.service
+```
+              </pre>
+
+              - https://github.com/ollama/ollama/issues/690
+
+              <br />
+
+              <br />
+
+              <hr />
+
+              <hr />
+
+              <p>The links collected in this section are useful if you
+                want to put FreeType into a larger frame of
+                understanding.</p>
+
+
+              <h3>Reference Sites</h3>
+
+              <div class="quote">
+                <p><a href="https://learn.microsoft.com/en-us/typography/">Microsoft
+                    Typography</a> &ndash; Microsoft's OpenType
+                  specification and developing tools<br>
+
+                  <a href="https://developer.apple.com/fonts/">Apple
+                    Fonts</a> &ndash; Apple's TrueType specification and
+                  other things<br>
+
+                  <a href="https://www.adobe.com/products/type.html">Adobe
+                    Typography</a> &ndash; PostScript fonts specifications
+                  and developing tools
+                </p>
+              </div>
+
+              <p>Detailed information on the font formats supported by
+                FreeType can be found in the
+                file <a href="https://gitlab.freedesktop.org/freetype/freetype/-/blob/master/docs/formats.txt"
+                  type="text/plain"><tt>formats.txt</tt></a>, which is part
+                of the FreeType source code bundle.</p>
+
+
+              <h3>Font Tools</h3>
+
+              <div class="quote">
+                <p><a href="https://github.com/fonttools/fonttools">TTX</a>
+                  &ndash; an OpenType assembler and disassembler<br>
+
+                  <a href="https://fontforge.github.io/en-US/">FontForge</a> &ndash;
+                  a free, powerful graphical font editor, including a
+                  TrueType instructions debugger (using FreeType)<br>
+
+                  <a href="http://home.kabelfoon.nl/~slam/fonts/truetypeviewer.html">TrueTypeViewer</a>
+                  &ndash; a free, powerful OpenType viewing tool with a
+                  TrueType instructions debugger (<em>not</em> using
+                  FreeType)<br>
+
+                  <a href="ttfautohint/index.html">ttfautohint</a> &ndash;
+                  a tool to auto-hint TrueType fonts, based on FreeType's
+                  auto-hinting engine
+                </p>
+              </div>
+
+
+              <h3>Font Shaping and Layout Engines</h3>
+
+              <p>These libraries work on top of font rendering libraries
+                like FreeType to provide sophisticated text (string)
+                layout, being able to handle OpenType features in
+                particular. All of them
+                use <a href="https://www.unicode.org">Unicode</a> for font
+                and text encoding.</p>
+
+              <div class="quote">
+                <p><a href="https://www.pango.org">Pango</a> &ndash; the
+                  layout library used
+                  by <a href="https://www.gnome.org">Gnome</a>'s <a href="https://www.gtk.org">GTK+</a>
+                  framework<br>
+
+                  <a href="http://www.icu-project.org">ICU</a> &ndash; a
+                  layout library originally developed by IBM, used for
+                  example in <a href="https://tug.org/xetex/">XeTeX</a>, an
+                  internationalized successor
+                  of <a href="https://en.wikipedia.org/wiki/TeX">TeX</a><br>
+
+                  <a href="http://harfbuzz.org">HarfBuzz</a> &ndash; a
+                  text shaping library, originally based on
+                  FreeType&nbsp;1's OpenType layout support
+                </p>
+              </div>
+
+
+              <h3>Other Font-related Libraries</h3>
+
+              <div class="quote">
+                <p><a href="https://www.t1lib.org/">T1Lib</a> &ndash; a
+                  Type&nbsp;1 fonts library (no longer under
+                  development)<br>
+
+                  <a href="http://www-masu.ist.osaka-u.ac.jp/~kakugawa/VFlib/">VFLib</a>
+                  &ndash; a library especially for accessing TeX fonts (no
+                  longer under development)
+                </p>
+              </div>
+            </div>
+            <input class="goupbtn" type="button" value="Top" onclick="window.scrollTo(0,0);">
+
+            <!-- ************************************************** -->
+
+            <div class="webmaintainer">
+              <p>This page is maintained by
+                <a href="mailto:wl@gnu.org">Werner Lemberg.</a> The
+                FreeType logo has been designed
+                by <a href="http://www.colom.org">Manuel Colom</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- ************************************************** -->
+
+        <div class="col2">
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ************************************************** -->
+
+    <div id="TOC">
+      <ul>
+        <li class="funding">
+          <style>
+            .pp-5HHBGYD2SP7JJ {
+              text-align: center;
+              border: none;
+              border-radius: 0.25rem;
+              min-width: 11.625rem;
+              padding: 0 2rem;
+              height: 2.625rem;
+              font-weight: bold;
+              background-color: #FFD140;
+              color: #000000;
+              font-family: "Helvetica Neue", Arial, sans-serif;
+              font-size: 1rem;
+              line-height: 1.25rem;
+              cursor: pointer;
+            }
+          </style>
+          <form action="https://www.paypal.com/ncp/payment/5HHBGYD2SP7JJ" method="post" target="_top"
+            style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;">
+            <input class="pp-5HHBGYD2SP7JJ" type="submit" value="후원하기Donate" />
+            <img src=https://www.paypalobjects.com/images/Debit_Credit.svg alt="cards" />
+            <section> 제공: <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg"
+                alt="paypal" style="height:0.875rem;vertical-align:middle;" /></section>
+          </form>
+          <!-- <form action="https://www.paypal.com/ncp/payment/5HHBGYD2SP7JJ" method="post" target="_top">
+            <input type="hidden" name="cmd" value="_s-xclick">
+            <input type="hidden" name="hosted_button_id" value="5HHBGYD2SP7JJ">
+            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" name="submit"
+              alt="PayPal - The safer, easier way to pay online!">
+          </form> -->
+        </li>
+        <li class="primary">
+          <a href="index.html" class="current">Home</a>
+        </li>
+        <li class="primary">
+          <a href="index.html#news">News</a>
+        </li>
+        <li class="primary">
+          <a href="freetype2/docs/index.html">Blog개인글</a>
+        </li>
+        <li class="primary">
+          <a href="freetype2/docs/documentation.html">결제&Doc</a>
+        </li>
+        <li class="primary">
+          <a href="developer.html">Development</a>
+        </li>
+        <li class="primary">
+          <a href="contact.html" class="emphasis">Contact</a>
+        </li>
+
+        <li>
+          &nbsp; <!-- separate primary from secondary entries -->
+        </li>
+
+        <li class="secondary">
+          <a href="comment.html">게시판&Q&A</a>
+        </li>
+        <li class="secondary">
+          <a href="#links">Links</a>
+        </li>
+        <li>
+          &nbsp; <!-- separate primary from secondary entries -->
+        </li>
+        <li class="primary">
+          <a href="gsoc.html">GSoC</a>
+        </li>
+      </ul>
+    </div>
+
+  </div> <!-- id="wrapper" -->
+
+  <div id="TOC-bottom">
+  </div>
+
 </body>
 
 </html>

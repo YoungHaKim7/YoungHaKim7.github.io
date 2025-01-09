@@ -1,0 +1,125 @@
+<html>
+
+<head>
+<title>Edge and Segment Alignment in FreeType 2</title>
+<basefont face="Georgia, Arial, Helvetica, Geneva">
+<style content="text/css">
+  P { text-align=justify }
+  H1 { text-align=center }
+  H2 { text-align=center }
+  LI { text-align=justify }
+</style>
+</head>
+
+<body text="#000000"
+      bgcolor="#FFFFFF"
+      link="#0000EF"
+      vlink="#51188E"
+      alink="#FF0000">
+
+<center>
+<table width="70%" cellspacing=5><tr bgcolor="#CCCCEE"><td>
+<h2 align=center>Edge and Segment Alignment</h2>
+</td></tr><tr><td>
+
+<h2>Introduction & Background:</h2>
+
+<p>Once segments and edges have been detected and properly linked together
+   to reveal stems and serifs, they needed to be scaled and aligned to the
+   pixel grid. This page explains how this process is performed in the
+   current auto-hinter.</p>
+   
+<h2>Basic alignment strategy</h2>
+
+<p>Because we want to perform real-time hinting easily, we need a strategy
+   that scales well. This means that the algorithm must be very fast at large
+   pixel sizes (because hinting doesn't really change much things there) though
+   takes more time at smaller pixel sizes in order to deal with specific
+   problems of low-resolution display.</p>
+   
+<p>A two-step method was thus chosen: on a first pass, stems and serifs are
+   directly aligned to the pixel grid with a direct and simple algorithm. Then,
+   for sufficiently small sizes (e.g. under 24 pixels), we measure the
+   distortion of the generated glyph according to a set of rules defined
+   below, and try to optimise the grid-fitted outline if the distortion
+   falls over a certian threshold.</p>
+
+<h2>Direct Alignment</h2>
+
+<p>Direct alignment is performed in each direction following a set of very
+   simple rules:</p>
+   
+<p><ul>
+
+  <li><p>Blue stem edges are hinted first, then comes normal stem edges,
+         serif edges then finally those "single" edges that do not seem to be
+         linked to any other one. Later, points are interpolated.</p>
+
+  <li><p>A stem edge that is linked against a blue edge is positioned relative
+         to the latter, with a distance normalized according to the standard
+         heights computed. The stem's height is always an integer pixel
+         distance.</p>
+
+  <li><p>A bottom stem edge is aligned to an integer grid coordinate. Top stem
+         edges are similarly positioned relative to their bottom edge, with
+         distance normalization.</p>
+
+  <li><p>A left stem edge is always aligned on the nearest pixel grid. This
+         also tends to increase the stem's contrast when rendering anti-aliased
+         glyphs.</p>
+         
+  <li><p>A right stem edge is positioned relative to its left stem edge with
+         a distance that is normalized according to the standard widths
+         computed. It is always rounded to an integer pixel distance for
+         monochrome hinting. Note that for anti-aliased hinting, it could be
+         kept as is though this is not currently implemented.</p>
+
+  <li><p>A serif edge is positioned relative to its "master" stem edge. Its
+         distance is rounded.</p>
+  
+  <li><p>Single edges are simply rounded to the nearest grid coordinate.</p>
+</ul></p>
+
+<p>Note that the current implementation is actually a bit more complex than
+   that, given that we try to avoid any changes in the relative order of edges,
+   and use some heuristics to correctly position edges on the pixel grid
+   (basically, we take into account the first edge that was aligned, and use
+   its delta to shift the rest of the outline).</p>
+
+
+
+<h2>Distortion Measurement</h2>
+
+<p>As stated above, direct alignment is fast and gives very good results for
+   a large variety of glyphs and sizes. However, there are some cases where
+   it simply doesn't generate adequate results. The following picture shows
+   the character "e" from the Arial face, renderer at a small pixel size.
+   As you can see, the inside contour completely disappears because of the
+   direct alignment:</p>
+   
+<p><center><img src="image/unhinted_e.png" alt="unhinted 'e'">
+           <img src="image/hinted_e.png" alt="hinted 'e'"></p>
+
+<p>As you can see, there are basically three horizontal stems in this glyph.
+   The bottom stem is moved up-wards and the top stem down-wards due to blue
+   zone alignement. The middle stem is aligned, but the direct alignment
+   algorithm doesn't take all stem movements in consideration, hence
+   that stem is moved upwards. Because all three stems are strengthened
+   by height normalization, the inside contour disappears.</p>
+
+<p>We thus need a way to detect when direct alignment produces outlines that
+   are too distorted (in this example, a "white distance" simply disappeared).</p>
+   
+<p>XXX NOTE : For now, distortion measurement and optimisation is not
+   implemented in the current auto-hinter, the following is a description of
+   a method I've come up with, and trying to implement.</p>
+
+
+
+<h2>Outline Optimisation</h2>
+
+<p>Sorry, outline optimisation isn't currently implemented.</p>
+
+</td></tr></table></center>
+
+</body>

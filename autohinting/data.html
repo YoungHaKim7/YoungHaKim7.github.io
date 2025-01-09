@@ -1,0 +1,277 @@
+<html>
+<head>
+<title>The FreeType Auto-Hinting pages</title>
+<basefont face="Georgia, Arial, Helvetica, Geneva">
+<META name="description"
+ content="The FreeType Project: a free, quality and portable Font engine">
+<META name="keywords"
+ content="FreeType fonts renderer TrueType Type1 TTF library free fast quality">
+<style content="text/css">
+  P { text-align=justify }
+  P.location { text-align=left; font-size="20" }
+  P.url { text-align=center; font-size="20" }
+  P.title { text-align=center; font-size="20" }
+  P.center { text-align=center }
+  H1 { text-align=center }
+  H2 { text-align=center }
+  LI { text-align=justify }
+</style>
+</head>
+
+<body text="#000000"
+      bgcolor="#FFFFFF"
+      link="#0000EF"
+      vlink="#51188E"
+      alink="#FF0000">
+
+
+<center>
+<table width="70%" cellspacing=5><tr bgcolor="#CCCCEE"><td>
+<h2 align=center>Available Data & Information</h2>
+</td></tr><tr><td>
+
+<p>This section contains various information, data & pointers related to
+   existing glyph grid-fitting technologies.</p>
+
+<a name="truetype"><h3>TrueType</h3></a>
+
+<p>As described previously, the TrueType format associates to each glyph
+   outline a bytecoded program written for a specific virtual processor
+   specialized in geometric processing in the pixel space. Hence, the
+   hints of a given glyph are really a program that is interpreted at
+   run-time by a TrueType renderer. The program directly performs all
+   grid-fitting operations on the scaled outline.</p>
+   
+<p>This incredible flexibility is what allows such high-quality fonts as
+   those distributed by Microsoft. However this has its price. The intermediate
+   bytecode used is pretty hard to write for, and only a very few number of
+   people in the world are able to "speak" it fluently.</p>
+   
+<p>Most TrueType fonts are created with tools that try to automatically
+   generate such programs from the hints they themselves provide, or those
+   given by the font designer. Not all of these tools really produce good
+   results, which is why, when TrueType first appeared, most of the fonts in
+   this format had _very_ low quality on the screen. With time, the tools
+   improved dramatically and it is now possible to create good-looking fonts
+   relatively easily.</p>
+   
+<p>Theorically, TrueType <em>far exceeds</em> the capabilities of Type 1
+   when it comes to rendering at low sizes, however it's high degree of
+   technicality makes the design of good fonts a very lengthy process,
+   actually longer than creating the equivalent good-looking Type 1 font.</p>
+
+<p>The quality of final glyph images is completely determined by the glyph
+   program, which means that several TrueType renderers should theorically
+   produce the exact same results. However, rounding considerations and
+   scan-conversion approximation (during drop-out control, for example)
+   often produce really minor differences between engines.</p>
+
+<p>TrueType is certainly the only technology that allows to hint glyphs in
+   order to make them match <em>perfectly</em> hand-edited bitmap glyphs,
+   though this can only done through a <em>very</em> long process, with
+   very specialized tools. It is by far the technology that produces the best
+   looking monochrome bitmaps.</p>
+
+<p>Regarding anti-aliased glyphs, Windows and FreeType 1.x use similar
+   algorithms that approximate each pixel coverage with only 5 levels of
+   grays. At small pixel size, this is however noticeable when reading large
+   portion of text. Most other engines, including FreeType 2, uses a higher
+   level number of grays for finer details.</p>
+   
+   
+
+<a name="type1"><h3>Type 1 / Type 2</h3></a>
+
+<p>The hints in a Postscript Type 1 fonts are relatively simple compared to
+   those of TrueType. They are however only suggestions given to the
+   final renderer, and they more or less describe some aspects of the glyph
+   or font.
+   </p>
+
+<p>This means that a Type 1 renderer must be smart enough to interpret them
+   correctly to produce good results. Note also that, even though Type 1 hints
+   are relatively easy to generate, a lot of Type 1 fonts available are
+   poorly hinted.</p>
+
+<p>Type 2 is an alternate glyph encoding format developed by Adobe for its
+   CFF font format. It is more compact than Type 1 but contains basically the
+   same hint information than Type 1.</p>
+
+<p>The quality of the rendered glyphs is highly dependent on the final
+   renderer's ability to interpret the hints or even align the outline
+   without them..</p>
+
+<p>Most Type 1 renderers do a poor-to-good job with hinting monochrome glyphs.
+   However, it is often possible to generate good-looking anti-aliased glyphs
+   with very few hints and "intelligence".</p>
+
+<a name="metafont"><h3>MetaFont</h3>
+
+<p>MetaFont is the digital type technology developped for TeX by Donald Knuth.
+   It is based on strokes, rather than outlines, and describes each glyph in
+   math terms. It is thus capable of parametric synthesis however.</p>
+   
+<p>Note that reader Matijs van Zuijlen recently a note regarding MetaFont's
+   support of hinting:</p>
+   
+<font color="green"><pre>
+  I just visited the FreeType Auto-Hinting pages, and decided to write a
+  quick note to tell you that MetaFont does in fact provide ways to align
+  outlines to the pixel grid. The method is described in detail in the
+  MetaFont Book. One of the aims of MetaFont is to privide good-quality
+  bitmaps for low resolution devices, though it was aimed more at printers
+  than screens.
+</pre></font>
+
+<p>Indeed, the MetaFont book chapter 24 is named "Discreteness and Discretion"
+   and deals with several ways to handle the pixel grid. However, the methods
+   described there are a lot more cumbersome than what TrueType offers, and
+   isn't capable of doing as much work.</p>
+
+<!--
+<a name="intellifont"><h3>Intellifont</h3></a>
+
+<p>Intellifont is a font format and technology developed by Agfa, and part
+   of HP's PCL 5 page description language. Since Agfa bought Monotype, it's
+   hard to see references to this technology on their web pages. However,
+   this <a href=" 
+   </p>
+
+<a name="infinifont"><h3>Infinifont</h3></a>
+
+<p>Infinifont is a parametric font format based on strokes rather than outlines,
+   a la Metafont. It is used by HP as a compression format as it is able to
+   generate fonts based on their PANOSE numbers.</p>
+   
+<p>It is described in more or less details in this
+   <a href="http://cajun.cs.nott.ac.uk/compsci/epo/papers/volume6/issue3/beausol.pdf">
+   old PDF article</a>. Note that it is stroke-based, like MetaFont.
+   </p>
+-->
+
+<a name="truedoc"><h3>TrueDoc</h3></a>
+
+<p>TrueDoc is a proprietary font format developped by BitStream. Its
+   specification is now publicly available as part of the
+   <a href="http://www.davic.org">Digital Audio-Video Council</a>
+   specification. It can be found in
+   <a href="ftp://ftp.davic.org/Davic/Pub/Spec1_4/14p09ml.pdf">
+   Annex A of this PDF Document</a>. Note that the format is covered by the
+   following <a href="http://www.patents.ibm.com/details?pn=US05099435__">
+   patent</a>. TrueDoc is a derivative of the Speedo Bitstream font format
+   (used for example in the X11 font server).</p>
+
+<p>The TrueDoc hints are very similar to the ones found in a Type 1 font.
+   However, the "innovation" here comes in the way they are stored and also
+   used to encode the outlines in the font. Basically, rendering a hinted
+   TrueDoc outline needs to: first decode the hints and adjust them to the
+   pixel grid, then load each outline element and _directly_ scale and grid-fit
+   it using the adjusted hints.</p>
+   
+<p>The TrueDoc file format itself, although highly messy, is compact and well
+   suited to fast glyph decoding/rendering. The rendering quality of glyph
+   images is however very dependent on the final renderer and the hints
+   provided in the fonts.</p>
+   
+<p>Curious users can have a look at the
+   <a href="http://www.truedoc.com">TrueDoc Site</a> for more information.</p>
+
+<p>The TrueDoc hints do not deal with diagonals, which unfortunately shows
+   a lot in the following image (taken from the TrueDoc site) where monochrome
+   glyphs are generated:</p>
+   
+<center><img src="image/truedoc_mono.png" width=413 height=225></center>
+
+<!--
+<p>On the other hand, anti-aliased images seem better, as expected, though far
+   from being excellent (can you see the "w" coming to you :-):</p>
+
+<center><img src="image/truedoc_antialias.png"></center>
+      
+-->
+<a name="d-type"><h3>D-Type</h3></a>
+
+<p>D-Type is a scalable graphics library that includes its own font engine.
+   There is little information on it, except at their web site. Their engine
+   is capable or real-time automatic hinting, though they advertise their own
+   D-Type font format, <em>which includes</em> hints !?.</p>
+   
+<p>Apparently, D-Type doesn't generate monochrome glyphs, only anti-aliased
+   ones. The results seem very impressive however. See this
+  <a href="http://dtype.yy.net/autohint.htm">this image</a> for an example.</p>
+
+
+<p>More details can be found on the
+   <a href="http://dtype.yy.net/type.htm">DType Font Engine Web Site</a></p>
+
+<a name="t2k"><h3>T2K</h3></a>
+
+<p>T2K is a font engine developed by Sampo Kaasila, the original lead TrueType
+   designer at Apple. His company, named Type Solutions Inc., was bought by
+   BitStream in December 1998, and the engine has been revamped and renamed
+   Font Fusion.</p>
+
+<p>More information is available on the <a href="http://www.typesolutions.com">
+   Type Solutions web site</a>. Notwithstanding the incredibly biased and hyped
+   information given at its site, T2K/Font Fusion seems to produce very good
+   results by automatically hinting fonts in real-time.</p>
+
+<p><em>T2K seems to have been licensed to Sun for Java. This could mean that its
+   source code, or part of it, could be available under the SCSL, though I
+   didn't take the time to download that _whole_ package. Anyone interested
+   in finding out if its there ??</em></p>
+
+<p>Apparently, T2K is able to generate auto-hinted monochrome images, though
+   they provide absolutely no screenshots of these. Their anti-aliased images
+   however seem at least as good as D-Type's.</p>
+
+<p>It is clear that both D-Type and T2K set the bar for anti-aliased rendering,
+   and we will try to at least match their quality in our own module. As for
+   monochrome hinting, it certainly will be a challenge to get right :-)</p>
+
+<a name="hobby"><h3>John Hobby's Paper</h3></a>
+
+<p>To be written. Briefly, I know about John Hobby's paper and have read
+   and analyzed it heavily. I'll post my detailed impressions on it a bit
+   later. Meanwhile, please do not send me references to this paper twice
+   a week, thanks ;-)</p>
+
+<a name="epfl"><h3>EPFL auto-hinting</h3></a>
+
+<p>The Peripheral Systems Laboratory department of the Ecole Polytechnique
+   de Lausanne has a patent on a method they call
+   <a href="http://diwww.epfl.ch/w3lsp/research/typography/grayscale/">
+   Perceptually-Tuned Grayscale Characters</a> which is nothing more than
+   a auto-hinting scheme used to improve the legibility/quality of glyphs.</p>
+   
+<p>Note that this technique is describe by this
+   <a href="http://www.patents.ibm.com/details?pn=US05796409__">patent</a> and
+   this <a href="http://diwww.epfl.ch/w3lsp/publications/grayscale//ptggf.html">
+   publication</a>.</p>
+   
+<p>The department has produced other interesting publications on the topic
+   of Digital Type and auto-hinting. For example :</p>
+   
+<p class="center"><a href="http://cajun.cs.nott.ac.uk/compsci/epo/papers/volume7/issue4/ep125jh.pdf">
+Towards a universal auto-hinting system for typographic shapes
+</a></p>
+   
+   
+
+<a name="ttf2pt1"><h3>TTF2PT1</h3></a>
+
+<p>To be written. This is an open-source TrueType to Type 1 converter that
+   apparently good hints when creating font files (unlike our own TTF2PFB
+   which completely ignores them..).</p>
+
+</td></tr></table>
+</center>
+
+<p>
+<i>
+  Page maintained by <a href="mailto:david.turner@freetype.org">
+  David Turner</a>
+</i><br>
+</p>
+</body>
+</html>

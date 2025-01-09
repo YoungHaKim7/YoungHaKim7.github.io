@@ -1,0 +1,251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+          "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type"
+        content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type"
+        content="text/css">
+  <meta http-equiv="Content-Script-Type"
+        content="text/javascript">
+  <meta name="description"
+        content="FreeType Documentation - RasterInfo">
+  <meta name="author"
+        content="Werner Lemberg">
+
+  <link rel="icon"
+        href="../../../image/favicon_-90.ico">
+  <link rel="shortcut icon"
+        href="../../../image/favicon_-90.ico">
+  <link rel="stylesheet"
+        type="text/css"
+        href="../../../css/freetype2_-90.css">
+
+  </script>
+  <script type="text/javascript"
+          src="../../../js/freetype2.js">
+  </script>
+
+  <style type="text/css">
+    @font-face {
+      font-family: "RasterInfo";
+      src: url("RasterInfo.ttf");
+      font-weight: normal;
+      font-style: normal;
+      text-rendering: optimizeLegibility; }	
+
+    span.RasterInfo {
+      font-family: "RasterInfo"; }
+    span.RasterInfo-large {
+      font-family: "RasterInfo";
+      font-size: 96px;
+      line-height: 100%; }
+
+    div.zebra {
+      float: right;
+      text-align:center;
+      line-height: 300%; }
+  </style>
+
+  <title>The RasterInfo Font</title>
+</head>
+
+<body>
+
+<div id="top"
+     class="bar">
+  <h1>The RasterInfo Font</h1>
+</div>
+
+
+<div id="wrapper">
+
+<div class="colmask leftmenu">
+  <div class="colright">
+    <div class="col1wrap">
+      <div class="col1">
+
+
+        <!-- ************************************************** -->
+
+        <p><a href="RasterInfo.ttf"><code>RasterInfo.ttf</code></a> is
+          a means to show various properties of the TrueType bytecode
+          interpreter used to hint the TrueType fonts on the current
+          HTML page.  If you only see one or more letters
+          &lsquo;E&rsquo; instead of digits, the TrueType bytecode
+          interpreter is not active.</p>
+
+        <p>At the same time, it is a showcase to demonstrate how to
+          change glyph shapes with TrueType instructions.</p>
+
+        <p>Now the characters contained in the font.  The value in
+          parentheses gives the character to be used in the RasterInfo
+          font.  For more details on the various parameters, please
+          consult the source code file for the font, to be found
+          on <a href="https://github.com/lemzwerg/RasterInfo/blob/master/RasterInfo.m4">github</a>.
+          The special zebra glyphs (&lsquo;#$&rsquo;) are designed
+          to test gamma correction and LCD filtering; they should not,
+          ideally, have any moir&eacute; or color fringes.</p>
+
+        <div class="zebra"><span class="RasterInfo-large">#$</span><br>
+          #$</div>
+
+        <div class="quote">
+          <p>The current PPEM value used in this paragraph
+            (&lsquo;0&rsquo;): <span class="RasterInfo">0</span></p>
+
+          <p>The version of the TrueType bytecode interpreter
+            (&lsquo;1&rsquo;): <span class="RasterInfo">1</span></p>
+
+          <p>If rotation is on, digit&nbsp;1 is shown
+            (&lsquo;2&rsquo;): <span class="RasterInfo">2</span></p>
+
+          <p>If stretching is on, digit&nbsp;1 is shown
+            (&lsquo;3&rsquo;): <span class="RasterInfo">3</span></p>
+
+          <p>If grayscale rendering is on, digit&nbsp;1 is shown
+            (&lsquo;4&rsquo;): <span class="RasterInfo">4</span></p>
+
+          <p>If ClearType is enabled, digit&nbsp;1 is shown
+            (&lsquo;5&rsquo;): <span class="RasterInfo">5</span></p>
+
+          <p>If ClearType's compatible width mode is on, digit&nbsp;1
+            is shown
+            (&lsquo;6&rsquo;): <span class="RasterInfo">6</span></p>
+
+          <p>If ClearType uses vertical LCD subpixels (this is, a
+            subpixel's longer side is horizontally positioned),
+            digit&nbsp;1 is shown
+            (&lsquo;7&rsquo;): <span class="RasterInfo">7</span></p>
+
+          <p>If ClearType uses BGR (blue-green-red) rendering instead
+            of RGB (red-green-blue), digit&nbsp;1 is shown
+            (&lsquo;8&rsquo;): <span class="RasterInfo">8</span></p>
+
+          <p>If ClearType uses subpixel positioning, digit&nbsp;1 is
+            shown
+            (&lsquo;9&rsquo;): <span class="RasterInfo">9</span></p>
+
+          <p>If ClearType symmetrical smoothing is active,
+            digit&nbsp;1 is shown
+            (&lsquo;:&rsquo;): <span class="RasterInfo">:</span></p>
+
+          <p>If Gray ClearType is active, digit&nbsp;1 is shown
+            (&lsquo;;&rsquo;): <span class="RasterInfo">;</span></p>
+        </div>
+
+        <p>As an example, the image below shows the values as
+          displayed by the Edge browser (version&nbsp;40) on
+          Windows&nbsp;10.</p>
+
+        <p align="center">
+          <img src="RasterInfo Windows 10 Edge 40.png"
+               height="240"
+               width="400"
+               alt="RasterInfo display on Windows 10 using Edge 40">
+        </p>
+
+        <p>On this page, the font is set up with
+          an <code>@font-face</code> CSS instruction, to be used
+          within a <code>span</code>.</p>
+
+        <pre>
+&lt;head&gt;
+  ...
+  &lt;style type="text/css"&gt;
+    @font-face {
+      font-family: "RasterInfo";
+      src: url("RasterInfo.ttf");
+      font-weight: normal;
+      font-style: normal;
+      text-rendering: optimizeLegibility; }
+    ...
+    span.RasterInfo { font-family: "RasterInfo"; }
+  &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  ...
+  &lt;span class="RasterInfo"&gt;1&lt;/span&gt;
+  ...
+&lt;/body&gt;</pre>
+
+        <p><a href="RasterInfo.ttf"><code>RasterInfo.ttf</code></a>
+          was written by Werner Lemberg; the font is licensed under
+          the <a href="https://opensource.org/licenses/OFL-1.1">SIL
+          Open Font License</a>. The current version is 1.02.</p>
+
+        <div class="updated">
+          <p>Last update: 13-Feb-2018</p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ************************************************** -->
+
+    <div class="col2">
+    </div>
+  </div>
+</div>
+
+
+<!-- ************************************************** -->
+
+<div id="TOC">
+  <ul>
+    <li class="funding">
+      <form action="https://www.paypal.com/cgi-bin/webscr"
+            method="post"
+            target="_top">
+        <input type="hidden"
+               name="cmd"
+               value="_s-xclick">
+        <input type="hidden"
+               name="hosted_button_id"
+               value="SK827YKEALMT4">
+        <input type="image"
+               src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif"
+               name="submit"
+               alt="PayPal - The safer, easier way to pay online!">
+      </form>
+    </li>
+    <li class="primary">
+      <a href="../../../index.html">Home</a>
+    </li>
+    <li class="primary">
+      <a href="../../../index.html#news">News</a>
+    </li>
+    <li class="primary">
+      <a href="../index.html">Overview</a>
+    </li>
+    <li class="primary">
+      <a href="../documentation.html">Documentation</a>
+    </li>
+    <li class="primary">
+      <a href="../../../developer.html">Development</a>
+    </li>
+    <li class="primary">
+      <a href="../../../contact.html"
+         class="emphasis">Contact</a>
+    </li>
+
+    <li>
+      &nbsp; <!-- separate primary from secondary entries -->
+    </li>
+
+    <li class="secondary">
+      <a href="rasterinfo.html" class="current">The RasterInfo Font</a>
+    </li>
+  </ul>
+</div>
+
+</div> <!-- id="wrapper" -->
+
+<div id="TOC-bottom">
+</div>
+
+</body>
+</html>

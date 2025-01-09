@@ -1,0 +1,165 @@
+<html>
+
+<head>
+<title>Strong versus Weak interpolation in FreeType 2</title>
+<basefont face="Georgia, Arial, Helvetica, Geneva">
+<style content="text/css">
+  P { text-align=justify }
+  H1 { text-align=center }
+  H2 { text-align=center }
+  LI { text-align=justify }
+</style>
+</head>
+
+<body text="#000000"
+      bgcolor="#FFFFFF"
+      link="#0000EF"
+      vlink="#51188E"
+      alink="#FF0000">
+
+<center>
+<table width="70%" cellspacing=5><tr bgcolor="#CCCCEE"><td>
+<h2 align=center>Strong versus Weak Interpolation</h2>
+</td></tr><tr><td>
+
+
+
+<h2>Introduction & Background:</h2>
+
+
+<p>As described before, the FreeType 2 Auto-hinter computes segments and
+   edges to model stems and serifs in a given glyph. Edges are grid-fitted
+   relative to each other in order to ensure low distorsion while ensuring
+   stem width normalization.</p>
+   
+<p>When this first step of alignment control is achieved, points of the glyph
+   outlines must be moved to a new position, depending on their coordinates
+   relative to the edges. For example, all the points that are part of a segment
+   or an edge are moved to the segment/edge's new position, directly.</p>
+
+<p>There are however several ways to position/interpolate the remaining points,
+   and they will be explained here. Each interpolation scheme happens in a
+   single dimension at a time. For the sake of clarity, we will consider that
+   we are moving points in the horizontal direction, relative to vertical
+   edges.</p>
+   
+<h2>Strong Interpolation</h2>
+
+<p>In the master/font outline, a point that is located between two edges
+   has a coordinate that can be considered a weighted average of its
+   surrounding edge's positions. Strong interpolation consists simply in
+   reproducing this relationship in pixel space, using the grid-fitted
+   position of edges.</p>
+
+<p>More technically, the point's pixel position will be the same weigthed
+   average of the grid-fitted edge's positions, using the formula:</p>
+   
+<ul>
+<pre>
+   p    the point to be interpolated
+   a    the edge before the point
+   b    the edge after the point
+   
+   grid-fitted coordinates are marked with a (')
+   
+   p.x' = a.x' + ( p.x - a.x ) * ( b.x' - a.x' )/( b.x - a.x )
+</pre>
+</ul>
+
+<p>Also, all points that are before the first edge will be shifted by a
+   distance that corresponds to the edge displacement between its scaled
+   and grid-fitted coordinate. Similarly, each point that is adter the
+   last edge will be shifted by a similar distance computed for the last
+   edge.</p>
+
+<p>Note that strong interpolation is equivalent to the TrueType "IP"
+   instruction (which isn't patented btw).</p>
+
+<p>Strong interpolation works wonders when it interpolates sections
+   of glyphs that are contained within two edges. However, it can unpleasantly
+   transform sections that span over more than two edges. For example, the
+   contour of the "9" in the following image is "broken", given that some of
+   its control points are incorrectly interpolated (horizontal edges displayed):</p>
+   
+<p><center><img src="image/strong_nine.png"></center></p>
+
+<p>Moreover, it is pretty ignorant of the general shape of the glyph and
+   its contours, which can lead to incorrect alignments in the case of
+   overlapping stems positions, as demonstrated by the top dot of the
+   semi-column in the following picture (vertical edges displayed):</p>
+
+<p><center><img src="image/strong_semi_column.png"></center></p>
+
+
+<h2>Weak Interpolation</h2>
+
+<p>Weak interpolation is very similar to strong interpolation, with the
+   exception that instead of taking the position of surrounding edges to
+   compute a weighted average, it takes for each point, the position of
+   the previous and next <em>contour</em> points that have been already
+   "touched".</p>
+
+<p>When only one point of the contour is touched, then the whole contour is
+   shifted. When no point of the contour is touched, the contour doesn't
+   move from its scaled position.</p>
+   
+<p>Weak interpolation works wonders when all extrema points lie on segments
+   and edges. However, it has many weaknesses when this condition isn't met.
+   For example, the following picture shows an "8" whose points have been
+   weak-interpolated (horizontal edges displayed):</p>
+
+<p><center><image src="image/weak_eight.png"></center></p>
+
+<p>The problem here is that the inside contours have been simply shifted when
+   the top and bottom stems of the "8" have been aligned. This is due to the
+   fact that only one of their points is touched for each of them.
+   Unfortunately, each inside contour has a
+   vertical extremum that seems to need to be strong-interpolated.
+   Weak interpolation is thus a technique that cannot be used alone.</p>
+
+<p>Note that weak interpolation is equivalent to the TrueType "IUP" instruction,
+   which isn't patented. Actually, most TrueType glyph programs hint a glyph
+   through a series of edge alignment + strong interpolation, and call IUP
+   to interpolate the remaining points as the last instruction before the
+   hand-edited delta instructions.</p>
+
+<h2>Interpolation in FreeType 2</h2>
+
+<p>Well, as you may have already guessed :o), we use a combination of these two
+   techniques when interpolating point in the FreeType 2 auto-hinter.</p>
+   
+<p>To be exact, we select which interpolation to apply depending on each
+   point's status, given that not all points are equal. Actually, given
+   that the artefacts of strong interpolation are mostly noticeable when
+   we interpolate bezier control points as well as on-points that
+   define the junction of two tangent arcs or segments, we simply
+   preferably weak-interpolate such points, leaving the others to
+   strong interpolation. We also perform strong interpolation before
+   weak interpolation.</p>
+   
+<p>This means the following scheme:</p>
+
+<p><ul>
+  <li><p>Find all conic or cubic control points and tag them as candidates
+         for weak interpolation.</p>
+         
+  <li><p>For all other points, compute the inwards and outwards angles of
+         the contour on this point. When the difference between these
+         angles is small, marks the point as a candidate for weak
+         interpolation.</p>
+
+  <li><p>Hint the edges, then scan the glyph to moved all edge points to
+         their new position. Mark such points as "done".</p>
+         
+  <li><p>Re-scan the glyph to move all non-edge points that were not
+         detected previously as "weak" candidates, and strong-interpolate
+         them. Mark such points as "done".</p>
+  
+  <li><p>If there are points left, weak-interpolate them using the "done"
+         flag of each contour point to compute the weak "bounds" in each
+         point.</p>
+</ul></p>
+
+</td></tr></table></center>
+
+</body>

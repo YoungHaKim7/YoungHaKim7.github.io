@@ -1,0 +1,276 @@
+<!DOCTYPE HTML PUBLIC "HTML 3.2">
+
+<!-- IBM HomePage Builder for OS/2  version 2.0.4 -->
+
+<!-- Thu Nov 12 20:03:07 1998 -->
+
+
+
+<HTML>
+
+<HEAD>
+
+<TITLE>FreeType/2</TITLE>
+
+</HEAD>
+
+
+
+<BODY bgcolor="#ffffff">
+
+
+
+<P align="center">
+
+<IMG src="ft2.png" align="MIDDLE" height="64" width="264">
+
+<H1 align="center">Version 1.0</H1>
+
+<H4 align="center">Part of the FreeType Project</H4>
+
+<CENTER>
+
+&copy; 1997-1998 <A href="mailto:mike@freetype.org">Michal Necasek</A><BR>
+
+&copy; 1996-1998 <A href="http://www.freetype.org">The FreeType Development Team</A>.
+
+<P>
+
+<B>Motto:</B> &quot;Don't ask what OS/2 can do for you, ask what you can
+
+do for OS/2!&quot;
+
+</CENTER>
+
+<HR>
+
+<H3 align="center"><FONT color="#ff0000">What's new in Ver. 1.0:</FONT></H3>
+
+<UL>
+
+  <LI>Support for kerning
+
+  <LI>Latest version (1.3.1) of the FreeType library used
+
+  <LI>Times New Roman is mapped to Tms Rmn - you can remove the ATM version
+
+  <LI>Few bugs fixed
+
+  <LI>Several entirely new, unexpected and amusing bugs probably added...
+
+</UL>
+
+<HR>
+
+<P>
+
+<B>FreeType/2</B> is an OS/2 TrueType Font Driver DLL based on the FreeType
+
+engine. It replaces IBM's TRUETYPE.DLL in Warp 4, but it can be installed
+
+on older versions of OS/2 too - but <A href="#warning">see below</A>!<BR>
+
+<BR>
+
+Some features of FreeType/2
+
+<UL>
+
+  <LI>Seamless integration with OS/2.
+
+  <LI>Supports outlines for further glyph manipulation
+
+  <LI>Supports national characters (if provided in the font). Now works with
+
+all Latin and Cyrillic languages and Greek. Other languages are being worked
+
+on (esp. Chinese, Japanese and Korean).<BR>
+
+Traditional Chinese should work. <FONT color="#ff0000">NEW</FONT>
+
+  <LI>Kerning now supported, although not extensively tested <FONT color="#ff0000">NEW</FONT>
+
+  <LI>Works with older releases of OS/2, but <A href="#warning">see below</A>!!
+
+  <LI>It's free
+
+  <LI>And last but not least, it looks great!
+
+</UL>
+
+<P>
+
+And some limitations of the current version:
+
+<UL>
+
+  <LI>No grayscaling a.k.a. antialiasing. Actually the FreeType engine supports
+
+it, but the OS/2 Graphics Engine doesn't. If you really want this, tell
+
+IBM. I can add this feature in about five minutes then (if the interface
+
+is OK).<BR>
+
+<SMALL>Note: It might help if your uncle is manager of one of those large
+
+banks with zillions of OS/2 licenses. He should be able to convince IBM
+
+easily &lt;grin&gt; </SMALL><BR>
+
+More about antialiasing: Things have started moving on this front very
+
+recently but right now I absoultely can't say if or when anything might
+
+happen so don't hold your breath.
+
+  <LI>Only partial support for DBCS languages. I'm working on it, but I have
+
+no idea how long it will take before it's complete.
+
+</UL>
+
+<P>
+
+The source code for the OS/2 font driver is part of the FreeType distribution
+
+which is available <A href="../download.html#freetype1">here</A> in case you're interested.
+
+<P>
+
+Binary packages, with simple install/uninstall scripts are available <A href="../download.html#ftos2">here</A>.
+
+<P>
+
+Before installing FreeType/2, you'd certainly like to see FreeType/2 in
+
+action.<BR>
+
+Click <A href="diff.png">here</A> to see the difference between the original
+
+Font Driver and FreeType/2 (both portions of text use Times New Roman at
+
+12 pt).<BR>
+
+<A href="ns.png">Here</A> you can see what this very page looked like at
+
+the time of first Beta.<BR>
+
+Note: FreeType/2 is compared to TRUETYPE.DLL form Warp 4 GA here. The latest
+
+version (FP5 and later) gives a lot better results, but it is still no
+
+match for FreeType/2.
+
+<P>
+
+Installation is quite simple, just run the approppriate REXX script. It
+
+is very advisable to archive your system files first although there <I>shouldn't</I>
+
+be problems.<BR>
+
+It is a good practice to make regular backups of system files. I usually
+
+don't and then I'm always sorry :-)<BR>
+
+For more info please see the included README.TXT and the <A href="ft2faq.html">FAQ</A>.
+
+<P>
+
+There are two versions of the package, one for OS/2 Warp 3 and 4 and the
+
+other for OS/2 2.1 (possibly even 2.0). Actually the 2.1 version works
+
+fine on OS/2 Warp, the only difference is different compression used for
+
+the DLL (i.e. the 2.1 version is a little bigger).
+
+<P>
+
+<A name="warning"></A> Note: because Warp 4 (preferably with FP5 or above)
+
+has full international support, it is now the target platform. But this
+
+doesn't mean that FreeType/2 won't run on Warp 4 GA or Warp 3! It only
+
+means you won't be able to use, say, Korean fonts on your Warp US. You
+
+might also run into problems if you use certain exotic fonts. If so, let
+
+me know!<BR>
+
+Please note that to use Times New Roman MT 30 or other large Unicode fonts
+
+on Warp 3 you probably need to install one of the later fixpacks. You should
+
+also have the required functionality if you have Java 1.1 installed.<BR>
+
+Note: The OS/2 2.1 version hasn't been updated. If that's a problem for
+
+you, don't hesitate to <A href="mailto:os2@freetype.org">mail</A>!
+
+<P>
+
+Bug reports, Comments and Suggestions can be sent to <A href="mailto:os2@freetype.org">os2@freetype.org</A>.<BR>
+
+Of course try to read the available documentation (FAQ, README) before
+
+you complain.
+
+<P>
+
+Simple greetings can also be sent directly to me at : <A href="mailto:mike@freetype.org">mike@freetype.org</A>
+
+:-)
+
+<P>
+
+<B>FREETYPE/2 can now be downloaded <A href="../download.html#ftos2">HERE</A>.
+
+</B> Enjoy !
+
+<P>
+
+My big thanks go to:<BR>
+
+<B>David Turner</B>, the brain behind FreeType, for his hard work without
+
+any compensation other than making the world a better place ;-)<BR>
+
+<B>IBM</B>, the company we love to hate, for their imperfect TrueType driver
+
+and for making all the necessary tools and documentation available publicly
+
+and free of charge.<BR>
+
+<B>Marc L Cohen</B>, <B>Ken Borgendale</B> and <B>Tetsuro Nishimura</B>
+
+from IBM for providing me with lots of information I could never obtain
+
+otherwise. Without them I'd never get this far.
+
+<HR>
+
+<P>
+
+Back to the <A href="http://www.freetype.org">
+
+FreeType HomePage</A>.
+
+<P>
+
+&quot;OS/2 is dead? Again? Thanks for telling me, I'd never notice!&quot;
+
+<P>
+
+<FONT size="-1">Copyright (C) 1998 <A href="mailto:mike@freetype.org">Michal
+
+Necasek</A><BR>
+
+Last updated Thu, 12 Nov 1998</FONT>
+
+</BODY>
+
+</HTML>
+

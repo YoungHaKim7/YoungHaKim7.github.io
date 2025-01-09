@@ -1,0 +1,476 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
+
+  <meta name="description" content="FreeType Development">
+  <meta name="keywords" content="FreeType fonts renderer TrueType OpenType Type1
+                 TTF OTF TTC library free fast quality">
+
+  <link rel="icon" href="image/favicon_-60.ico">
+  <link rel="shortcut icon" href="image/favicon_-60.ico">
+  <link rel="stylesheet" type="text/css" href="css/freetype2_-60.css">
+
+  <script type="text/javascript" src="js/freetype2.js">
+  </script>
+
+  <title>FreeType Development</title>
+</head>
+
+<body>
+
+  <div id="top" class="bar">
+    <h1><a href="index.html">FreeType</a> Development</h1>
+  </div>
+
+
+  <div id="wrapper">
+
+    <div class="colmask leftmenu">
+      <div class="colright">
+        <div class="col1wrap">
+          <div class="col1">
+
+
+            <!-- ************************************************** -->
+
+            <h1>freetype</h1>
+            <li class="secondary">
+              <a href="license.html">Licenses</a>
+            </li>
+            <li class="secondary">
+              <a href="history.html">History</a>
+            </li>
+            <li class="secondary">
+              <a href="#links">Links</a>
+            </li>
+            <div id="source-code">
+              <h2>Accessing the Source Code</h2>
+
+              <p>There are several ways to access the source code for the
+                FreeType packages.</p>
+
+              <ul>
+                <li class="emph">
+                  <p><a href="download.html">Download a source
+                      archive</a></p>
+
+                  <p>This is for browsing, compiling, and using the source
+                    code locally.</p>
+                </li>
+                <li class="emph">
+                  <p>Use git access</p>
+
+                  <p>FreeType's git repositories are available
+                    from <a href="https://gitlab.freedesktop.org/freetype">freedesktop.org's
+                      gitlab instance</a>.</p>
+
+                  <div class="quote">
+                    <tt>git clone https://gitlab.freedesktop.org/freetype/freetype.git<br>
+                      git clone https://gitlab.freedesktop.org/freetype/freetype-demos.git</tt>
+                  </div>
+                </li>
+                <li class="emph">
+                  <p>Use anonymous CVS access</p>
+
+                  <p>Other, no longer maintained FreeType repositories
+                    (which exist for historical interest only) can be
+                    downloaded
+                    from <a href="https://savannah.nongnu.org/">Savannah</a>
+                    through CVS and
+                    viewed <a href="https://cvs.savannah.gnu.org/viewvc/?root=freetype">here</a>.
+                    Use the following value for the <tt>CVSROOT</tt>
+                    environment variable (or the equivalent <tt>-d</tt>
+                    command line option of the cvs client):</p>
+
+                  <div class="quote">
+                    <tt>:pserver:anonymous@cvs.sv.nongnu.org:/sources/freetype</tt>
+                  </div>
+
+                  <p>When asked for a password, simply press Enter
+                    for <tt>cvs login</tt>. The module names
+                    are <tt>freetype</tt> (Freetype version&nbsp;1.x,
+                    C&nbsp;code), <tt>freetype1-contrib</tt> (contributed
+                    programs), and <tt>ftpascal</tt> (Freetype
+                    version&nbsp;1.x, Pascal code).</p>
+
+                  <p>The <tt>freetype2</tt> and <tt>ft2demos</tt> modules
+                    have been transformed to git (see above) and shouldn't
+                    be used anymore.</p>
+                </li>
+              </ul>
+            </div>
+
+
+            <!-- ************************************************** -->
+
+            <div id="bug-report">
+              <h2>Reporting a Bug</h2>
+
+              <p>In case you find a bug, which you think is related to
+                FreeType, please check the problematic font with one of
+                our demo programs, for example <b>ftview</b>
+                or <b>ftstring</b>. In case the problem persists, consult
+                <a href="https://gitlab.freedesktop.org/groups/freetype/-/issues">FreeType's
+                  issue list</a> to find out whether the problem has been
+                reported already. Otherwise, please submit a new issue.
+                It is helpful to use the git version (see above) of
+                FreeType and its demo programs for testing if possible
+                since we don't release FreeType very often.
+              </p>
+            </div>
+
+
+            <!-- ************************************************** -->
+
+            <div id="patches">
+              <h2>Submitting Patches</h2>
+
+              <p>For larger changes please
+                provide <a href="https://gitlab.freedesktop.org/groups/freetype/-/merge_requests">merge
+                  requests</a>. Alternatively, you can submit patches to
+                the <a href="mailto:freetype-devel@nongnu.org">freetype-devel@nongnu.org</a>
+                mailing list &ndash; and thank you in advance for your
+                work on improving FreeType!
+              <p>
+
+              <p>Here are some tips on making your contribution easy to
+                integrate into the FreeType git repositories.</p>
+
+              <ul>
+                <li>
+                  In the preamble of your patch, add a description of your
+                  changes similar to the entries in the <tt>ChangeLog</tt>
+                  file. With &lsquo;similar&rsquo; it is meant that the
+                  format and style of <tt>ChangeLog</tt> entries should be
+                  imitated as much as possible. However, don't modify
+                  the <tt>ChangeLog</tt> file by yourself.
+                </li>
+                <li>
+                  Try to follow the formatting of the source code as much
+                  as possible.
+                </li>
+                <li>
+                  If you plan to contribute larger changes, split them
+                  into smaller, logical units. Reviewing code changes in
+                  small, incremental steps is much easier to perform.
+                </li>
+              </ul>
+            </div>
+
+
+            <!-- ************************************************** -->
+
+            <div id="language-bindings">
+              <h2>Language Bindings</h2>
+
+              <p>For a couple of programming languages there exist
+                wrappers around FreeType. Note that some of them are
+                quite old and probably no longer maintained.</p>
+
+
+              <h3><a href="https://caml.inria.fr/">Caml</a></h3>
+
+              <p>Bindings are part of
+                the <a href="http://cristal.inria.fr/camlimages/eng.html">CamlImages</a>
+                package.</p>
+
+
+              <h3><a href="https://dlang.org">D</a></h3>
+
+              <p>Bindings are available
+                in <a href="https://github.com/BindBC/bindbc-freetype">BindBC-FreeType</a>.</p>
+
+
+              <h3><a href="https://factorcode.org/">Factor</a></h3>
+
+              <p>This dynamic programming language comes
+                with <a href="https://docs.factorcode.org/content/vocab-freetype.html">FreeType
+                  bindings</a>.</p>
+
+
+              <h3><a href="https://www.perl.org">Perl</a></h3>
+
+              <p>More than a single binding package is available.
+                Try <a href="https://metacpan.org/search?q=freetype">here</a>
+                for a search on CPAN.</p>
+
+
+              <h3><a href="https://www.python.org">Python</a></h3>
+
+              <p>Bindings are
+                available <a href="https://github.com/rougier/freetype-py/">here</a>.
+                <a href="https://pypi.org/project/Pillow/">Pillow</a>, the
+                successor of the Python Imaging Library (PIL), can be
+                built to use FreeType for font rendering, giving
+                high-level access to fonts.
+              </p>
+
+              <p>A more extensive set of Python bindings, designed to work
+                together to cover the main parts of the Linux typography
+                stack, are</p>
+
+              <ul>
+                <li>
+                  <a href="https://github.com/ldo/python_freetype">python_freetype</a>
+                  for FreeType,
+                </li>
+                <li>
+                  <a href="https://github.com/ldo/qahirah">Qahirah</a> for
+                  the Cairo graphics library,
+                </li>
+                <li>
+                  <a href="https://github.com/ldo/pybidi">PyBidi</a> for
+                  the FriBidi bidirectional-layout library,
+                </li>
+                <li>
+                  <a href="https://github.com/ldo/harfpy">HarfPy</a> for
+                  the HarfBuzz type-shaping library, and
+                </li>
+                <li>
+                  <a href="https://github.com/ldo/python_fontconfig">python_fontconfig</a> for
+                  the Fontconfig font-matching library.
+                </li>
+              </ul>
+
+
+              <h3><a href="https://www.ruby-lang.org">Ruby</a></h3>
+
+              <p>See <a href="https://rubygems.org/search?query=freetype+OR+ft2">rubygems</a>
+                for bindings.</p>
+
+
+              <h3><a href="https://www.rust-lang.org">Rust</a></h3>
+
+              <p>Crates, the Rust Package Registry, shows a list of
+                bindings <a href="https://crates.io/search?q=freetype">here</a>.</p>
+
+
+              <h3><a href="https://ziglang.org">Zig</a></h3>
+
+              <p>See <a href="https://github.com/hexops/mach-freetype">mach-freetype</a>,
+                which comes with zero-fuss installation, cross compilation
+                and ~99% API coverage.</p>
+            </div>
+
+
+            <!-- ************************************************** -->
+
+            <div id="support-tools">
+              <h2>Support Tools</h2>
+
+              <p>One of the simplest way to compile FreeType is from the
+                command line using one of the following tools.</p>
+
+
+              <h3>GNU Make</h3>
+
+              <p>FreeType comes with a sophisticated build system that is
+                based on GNU Make. This really means a set of Makefiles
+                and sub-Makefiles that are used to perform the following
+                operations.</p>
+
+              <ul>
+                <li>
+                  <p>Detect the current operating system in order to
+                    select the appropriate default compiler settings for the
+                    build.</p>
+                </li>
+                <li>
+                  <p>Select the settings corresponding to a given compiler
+                    for a given platform. For example, on Windows, the
+                    following compilers are supported: Visual C++, GCC,
+                    Borland C++, Watcom C++, Win32-LCC. On Unix, gcc, lcc
+                    and standard cc are also supported through a
+                    traditional <tt>configure</tt> script.</p>
+                </li>
+                <li>
+                  <p>Build the list of FreeType modules automatically from
+                    the sub-directories present in the <tt>src</tt>
+                    directory.</p>
+                </li>
+                <li>
+                  <p>Finally, build the library and its module as a static
+                    library or DLL, depending on the platform and
+                    compiler.</p>
+                </li>
+              </ul>
+
+              <p>The build system is capable of supporting several
+                compilers, on several platforms. However, you <b>must</b>
+                have a recent version of GNU Make installed to use it.
+                The build does <em>not work</em> with other <tt>make</tt>
+                tools (like BSD Make, NMake, etc.).</p>
+
+              <p>See the <a href="download.html">download section</a> for
+                binaries of GNU Make for Windows.</p>
+
+
+              <h3>Meson</h3>
+
+              <p>Right now, support for
+                <a href="https://mesonbuild.com/">Meson</a> is
+                experimental and available for the library only, without
+                the demo programs. It is planned to fix this eventually,
+                making Meson a first-class build system.
+              </p>
+
+
+              <h3>CMake</h3>
+
+              <p>FreeType can also be built with
+                <a href="https://cmake.org/">CMake</a>. Note, however,
+                that this is contributed code not officially
+                supported.
+              </p>
+
+            </div>
+
+            <!-- ************************************************** -->
+
+            <div id="links">
+              <h2>Links</h2>
+
+              <p>The links collected in this section are useful if you
+                want to put FreeType into a larger frame of
+                understanding.</p>
+
+
+              <h3>Reference Sites</h3>
+
+              <div class="quote">
+                <p><a href="https://learn.microsoft.com/en-us/typography/">Microsoft
+                    Typography</a> &ndash; Microsoft's OpenType
+                  specification and developing tools<br>
+
+                  <a href="https://developer.apple.com/fonts/">Apple
+                    Fonts</a> &ndash; Apple's TrueType specification and
+                  other things<br>
+
+                  <a href="https://www.adobe.com/products/type.html">Adobe
+                    Typography</a> &ndash; PostScript fonts specifications
+                  and developing tools
+                </p>
+              </div>
+
+              <p>Detailed information on the font formats supported by
+                FreeType can be found in the
+                file <a href="https://gitlab.freedesktop.org/freetype/freetype/-/blob/master/docs/formats.txt"
+                  type="text/plain"><tt>formats.txt</tt></a>, which is part
+                of the FreeType source code bundle.</p>
+
+
+              <h3>Font Tools</h3>
+
+              <!-- ************************************************** -->
+
+              <div class="updated">
+                <p>Last update: 25-Feb-2024</p>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- ************************************************** -->
+
+          <div class="col2">
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ************************************************** -->
+
+      <div id="TOC">
+        <ul>
+          <li class="funding">
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+              <input type="hidden" name="cmd" value="_s-xclick">
+              <input type="hidden" name="hosted_button_id" value="SK827YKEALMT4">
+              <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" name="submit"
+                alt="PayPal - The safer, easier way to pay online!">
+            </form>
+          </li>
+          <li class="primary">
+            <a href="index.html">Home</a>
+          </li>
+          <li class="primary">
+            <a href="index.html#news">News</a>
+          </li>
+          <li class="primary">
+            <a href="freetype2/docs/index.html">Overview</a>
+          </li>
+          <li class="primary">
+            <a href="freetype2/docs/documentation.html">Documentation</a>
+          </li>
+          <li class="primary">
+            <a href="developer.html" class="current">Development</a>
+          </li>
+          <li class="primary">
+            <a href="contact.html" class="emphasis">Contact</a>
+          </li>
+
+          <li>
+            &nbsp; <!-- separate primary from secondary entries -->
+          </li>
+          <li class="secondary">
+            <a href="glyphs/index.html">Glyph Conventions</a>
+          </li>
+          <li class="secondary">
+            <a href="ft2faq.html">FAQ</a>
+          </li>
+          <li class="secondary">
+            <a href="tutorial/step1.html">Tutorial</a>
+          </li>
+          <li class="secondary">
+            <a href="reference/index.html">API Reference</a>
+          </li>
+          <li class="secondary">
+            <a href="design/index.html">Design</a>
+          </li>
+          <li class="secondary">
+            <a href="hinting/hinting.html">Hinting</a>
+          </li>
+          <li class="secondary">
+            <!-- Leave this as full URL -->
+            <a href="https://www.freetype.org/freetype2/docs/rasterinfo/rasterinfo.html">The
+              RasterInfo Font</a>
+          </li>
+
+          <li>
+            &nbsp; <!-- separate primary from secondary entries -->
+          </li>
+
+          <li class="secondary">
+            <a href="#source-code">Source Code</a>
+          </li>
+          <li class="secondary">
+            <a href="#bug-report">Bug Reports</a>
+          </li>
+          <li class="secondary">
+            <a href="#patches">Submitting Patches</a>
+          </li>
+          <li class="secondary">
+            <a href="#language-bindings">Language Bindings</a>
+          </li>
+          <li class="secondary">
+            <a href="#support-tools">Support Tools</a>
+          </li>
+          <li class="secondary">
+            <a href="contact.html#mailing-lists">Mailing Lists</a>
+          </li>
+        </ul>
+      </div>
+
+    </div> <!-- id="wrapper" -->
+
+    <div id="TOC-bottom">
+    </div>
+
+</body>
+
+</html>

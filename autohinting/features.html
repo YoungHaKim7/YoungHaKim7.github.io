@@ -1,0 +1,163 @@
+<html>
+<head>
+<title>The FreeType Auto-Hinting pages</title>
+<basefont face="Georgia, Arial, Helvetica, Geneva">
+<META name="description"
+ content="The FreeType Project: a free, quality and portable Font engine">
+<META name="keywords"
+ content="FreeType fonts renderer TrueType Type1 TTF library free fast quality">
+<style content="text/css">
+  P { text-align=justify }
+  P.location { text-align=left; font-size="20" }
+  P.url { text-align=center; font-size="20" }
+  P.title { text-align=center; font-size="20" }
+  P.center { text-align=center }
+  H1 { text-align=center }
+  H2 { text-align=center }
+  LI { text-align=justify }
+</style>
+</head>
+
+<body text="#000000"
+      bgcolor="#FFFFFF"
+      link="#0000EF"
+      vlink="#51188E"
+      alink="#FF0000">
+
+<center>
+<table width="70%" cellspacing=5><tr bgcolor="#CCCCEE"><td>
+<h2 align=center>Feature Detection in FreeType 2</h2>
+</td></tr><tr><td>
+
+<h3>Introduction</h3>
+
+<p>This section documents the <em>feature detection</em> pass of the
+   FreeType Auto-Hinter. This pass is in charge of detecting important
+   glyph features that will need special processing when aligning the
+   outline to the pixel grid, mainly stems, serifs as well as point
+   candidates for blue zone alignment. It is performed on the unscaled
+   master outline of a glyph.</p>
+
+
+<h3>Prior analysis</h3>
+
+<p>Each new glyph that is loaded in the auto-hinter is scanned to compute
+   important information associated to each of its points. Mainly, these
+   are: </p>
+   
+<p><ul>
+   <li><p>the point coordinates in the master outline, and its scaled
+          coordinates in pixel space. There is also some room for the
+          grid-fitted coordinate that are later computed.</p>
+            
+   <li><p>the angles of the inwards and outwards tangents on each point
+          (this is performed through a very quick look-up table used to
+          implement the "arctan" function with reduced accuracy).</p>
+          
+   <li><p>pointers to the next and previous points in the same contour.
+          this is later used to scan the glyph more easily in latter
+          passes.</p>
+          
+   <li><p>flags indicating the point's type. The flags will be later
+          adjusted.</p>
+</ul></p>
+
+<h3>Segment detection and linkage</h3>
+
+<p>The Auto-Hinter first tries to detect <em>segments</em>. A segment is
+   simply a set of successive points aligned either on the horizontal or
+   vertical direction. Each segment has a direction, depending on the contour that
+   includes it.</p>
+
+<p><em>Note that we do not try, for now, to detect and manage diagonal stems.
+   However, this will be added later with a very similar scheme.</em></p>
+
+<p>Then, segments are linked together, in order to recognize vertical or
+   horizontal "stems". Basically, two segments can be linked when they delimit
+   a "span" during the scan-conversion process. Basically, this means :</p>
+        
+<p><ul>
+   <li><p>they are both aligned on the same axis, and have opposite
+          directions.</p>
+     
+   <li><p>in TrueType, outlines are filled to the right of the contour's
+          direction. This means that if the segments are vertical, the
+          upwards segment must be located to the left of the downwards
+          segment.</p>
+     
+   <li><p>Similarly, for TrueType, if the segments are horizontal, the
+          leftwards segment must be placed below the rightwards one.</p>
+     
+   <li><p>For Type 1, which uses the opposite filling convention, inverse
+          rules must be applied. This means that we need to know in advance
+          what's the filling rule used in an outline.</p>
+ </ul></p>
+
+<p>Each segment is linked to the "closest" linkable segment. We do this
+   by scoring the "distance" between two segments, and keeping the one
+   with the lowest score. The scoring function must be simple and reflects
+   basically the "distance" between the segments.</p>
+
+<p>Then when two segments are linked "together", i.e. when we have
+   (seg1->link == seg2 && seg2->link == seg1), they form a vertical or
+   horizontal "stem". On the other hand, when (seg1->link == seg2
+   && seg2->link != seg1), then seg1 is said to be a "serif" segment, and we
+   put the value (seg2->link) in its field (seg1->serif) to indicate this.</p>
+
+<p>a segment is said to be "rounded" when either one of its extrema
+   points is off the outline (cubic control point).</p>
+
+   
+<h3>Edge detection and linkage</h3>
+
+<p>Segments that are located on the same coordinate, or close enough from
+   each other are grouped in <em>edges</em>. An edge is simply an axis
+   coordinate that contains one or more segments on it. Each edge inherits
+   the properties of its segments, following a few simple rules:</p>
+
+<p><ul>
+   <li>an edge that contains a stem segment is a stem edge
+   <li>an edge that only contains serif segments is a serif edge
+   <li>an edge that only contains rounded segments is a rounded edge
+</ul></p>
+
+<p>Note that similarly to segments, we can link edges together, and find
+   "stem" edges, as well as "serif" edges. This information is later used
+   by the control alignment phase, as edges are the basis of grid-alignement
+   and point interpolation in the FreeType Auto-Hinter.</p>
+
+<h3>Blue edge detection</h3>
+
+<p>It is also necessary to detect which edges need to be aligned against
+   a bottom or top blue zone. This is performed after edge detection and
+   linkage with some simple rules:</p>
+
+<p><ul>
+   <li><p>Only right-wards edges are linked against a top blue zone, and
+          left-wards ones are linked against a bottom blue zone (this is for
+          TrueType, invert the right/left direction for Type&nbsp;1).</p>
+       
+   <li><p>Each such edge is compared to the zone's reference position,
+          and linked against it if it is close enough.</p>
+          
+   <li><p>Moreover, if the edge is rounded, it is also compared to the zone's
+          overshoot position and linked against it when closer than to the
+          reference.</p>
+          
+   <li><p>To avoid weird artefacts, a round edge may NOT be snapped to a blue
+          position when it is under the reference point.</p>
+</ul></p>
+
+
+</td></tr></table>
+</center>
+
+<p>
+<i>
+  Page maintained by <a href="mailto:david.turner@freetype.org">
+  David Turner</a>
+</i><br>
+</p>
+
+</body>
+</html>

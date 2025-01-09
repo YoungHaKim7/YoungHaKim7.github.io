@@ -1,0 +1,345 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
+  <meta name="description" content="Rust Overview">
+
+  <link rel="icon" href="../../image/favicon_-60.ico">
+  <link rel="shortcut icon" href="../../image/favicon_-60.ico">
+  <link rel="stylesheet" type="text/css" href="../../css/freetype2_-60.css">
+
+  <script type="text/javascript" src="../../js/freetype2.js">
+  </script>
+
+  <title>FreeType Overview</title>
+</head>
+
+
+<body>
+
+  <div id="top" class="bar">
+    <h1><a href="../../index.html">Blog</a>아무거나 올리는 공간</h1>
+  </div>
+
+
+  <div id="wrapper">
+
+    <div class="colmask leftmenu">
+      <div class="colright">
+        <div class="col1wrap">
+          <div class="col1">
+
+
+            <!-- ************************************************** -->
+
+            <div id="about">
+              <h2>투자나 개발등 제가 원하는 글을 올리는 공간입니다.</h2>
+
+            </div>
+
+
+            <!-- ************************************************** -->
+
+            <div id="economic_calender">
+              <h2>economic_calender</h2>
+              <h1 class="todo-list-title">📅 실시간 경제 스케쥴 📊</h1>
+              <div class="tradingview-widget-container">
+                <div class="tradingview-widget-container__widget"></div>
+                <div class="tradingview-widget-copyright"><a
+                    href="https://www.tradingview.com/markets/currencies/economic-calendar/" rel="noopener"
+                    target="_blank"><span class="blue-text">Economic Calendar</span></a> by TradingView</div>
+                <script type="text/javascript"
+                  src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
+                    {
+                      "colorTheme": "light",
+                        "isTransparent": false,
+                          "width": "510",
+                            "height": "600",
+                              "locale": "en",
+                                "importanceFilter": "-1,0,1"
+                    }
+                  </script>
+              </div>
+            </div>
+
+
+            <!-- ************************************************** -->
+
+            <div id="trading_view_price">
+
+              <h2>trading_view_price</h2>
+
+              <h1 class="todo-list-title">📈 주요국 실시간 시세 📉</h1>
+              <div class="tradingview-widget-container">
+                <div class="tradingview-widget-container__widget"></div>
+                <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/" rel="noopener"
+                    target="_blank"><span class="blue-text">Financial Markets</span></a> by TradingView</div>
+                <script type="text/javascript"
+                  src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+                    {
+                      "colorTheme": "light",
+                        "dateRange": "12M",
+                          "showChart": true,
+                            "locale": "en",
+                              "largeChartUrl": "",
+                                "isTransparent": false,
+                                  "showSymbolLogo": true,
+                                    "showFloatingTooltip": false,
+                                      "width": "400",
+                                        "height": "660",
+                                          "plotLineColorGrowing": "rgba(41, 98, 255, 1)",
+                                            "plotLineColorFalling": "rgba(41, 98, 255, 1)",
+                                              "gridLineColor": "rgba(240, 243, 250, 0)",
+                                                "scaleFontColor": "rgba(120, 123, 134, 1)",
+                                                  "belowLineFillColorGrowing": "rgba(41, 98, 255, 0.12)",
+                                                    "belowLineFillColorFalling": "rgba(41, 98, 255, 0.12)",
+                                                      "belowLineFillColorGrowingBottom": "rgba(41, 98, 255, 0)",
+                                                        "belowLineFillColorFallingBottom": "rgba(41, 98, 255, 0)",
+                                                          "symbolActiveColor": "rgba(41, 98, 255, 0.12)",
+                                                            "tabs": [
+                                                              {
+                                                                "title": "Indices",
+                                                                "symbols": [
+                                                                  {
+                                                                    "s": "FOREXCOM:SPXUSD",
+                                                                    "d": "S&P 500"
+                                                                  },
+                                                                  {
+                                                                    "s": "FOREXCOM:NSXUSD",
+                                                                    "d": "US 100"
+                                                                  },
+                                                                  {
+                                                                    "s": "FOREXCOM:DJI",
+                                                                    "d": "Dow 30"
+                                                                  },
+                                                                  {
+                                                                    "s": "INDEX:NKY",
+                                                                    "d": "Nikkei 225"
+                                                                  },
+                                                                  {
+                                                                    "s": "INDEX:DEU40",
+                                                                    "d": "DAX Index"
+                                                                  },
+                                                                  {
+                                                                    "s": "FOREXCOM:UKXGBP",
+                                                                    "d": "UK 100"
+                                                                  }
+                                                                ],
+                                                                "originalTitle": "Indices"
+                                                              },
+                                                              {
+                                                                "title": "Futures",
+                                                                "symbols": [
+                                                                  {
+                                                                    "s": "CME_MINI:ES1!",
+                                                                    "d": "S&P 500"
+                                                                  },
+                                                                  {
+                                                                    "s": "CME:6E1!",
+                                                                    "d": "Euro"
+                                                                  },
+                                                                  {
+                                                                    "s": "COMEX:GC1!",
+                                                                    "d": "Gold"
+                                                                  },
+                                                                  {
+                                                                    "s": "NYMEX:CL1!",
+                                                                    "d": "Crude Oil"
+                                                                  },
+                                                                  {
+                                                                    "s": "NYMEX:NG1!",
+                                                                    "d": "Natural Gas"
+                                                                  },
+                                                                  {
+                                                                    "s": "CBOT:ZC1!",
+                                                                    "d": "Corn"
+                                                                  }
+                                                                ],
+                                                                "originalTitle": "Futures"
+                                                              },
+                                                              {
+                                                                "title": "Bonds",
+                                                                "symbols": [
+                                                                  {
+                                                                    "s": "CME:GE1!",
+                                                                    "d": "Eurodollar"
+                                                                  },
+                                                                  {
+                                                                    "s": "CBOT:ZB1!",
+                                                                    "d": "T-Bond"
+                                                                  },
+                                                                  {
+                                                                    "s": "CBOT:UB1!",
+                                                                    "d": "Ultra T-Bond"
+                                                                  },
+                                                                  {
+                                                                    "s": "EUREX:FGBL1!",
+                                                                    "d": "Euro Bund"
+                                                                  },
+                                                                  {
+                                                                    "s": "EUREX:FBTP1!",
+                                                                    "d": "Euro BTP"
+                                                                  },
+                                                                  {
+                                                                    "s": "EUREX:FGBM1!",
+                                                                    "d": "Euro BOBL"
+                                                                  }
+                                                                ],
+                                                                "originalTitle": "Bonds"
+                                                              },
+                                                              {
+                                                                "title": "Forex",
+                                                                "symbols": [
+                                                                  {
+                                                                    "s": "FX:EURUSD"
+                                                                  },
+                                                                  {
+                                                                    "s": "FX:GBPUSD"
+                                                                  },
+                                                                  {
+                                                                    "s": "FX:USDJPY"
+                                                                  },
+                                                                  {
+                                                                    "s": "FX:USDCHF"
+                                                                  },
+                                                                  {
+                                                                    "s": "FX:AUDUSD"
+                                                                  },
+                                                                  {
+                                                                    "s": "FX:USDCAD"
+                                                                  }
+                                                                ],
+                                                                "originalTitle": "Forex"
+                                                              }
+                                                            ]
+                    }
+                  </script>
+              </div>
+              <p>FreeType is written in industry-standard ANSI&nbsp;C and
+                should compile easily with any compliant C&nbsp;or C++
+                compiler. We have even taken great care to
+                eliminate <em>all warnings</em> when compiling with
+                popular compilers like gcc, Visual C++, and Borland
+                C++.</p>
+
+              <p>Apart from a standard ANSI&nbsp;C library, FreeType
+                doesn't have any external dependencies and can be compiled
+                and installed on its own on any kind of system. Some
+                modules <em>need</em> external libraries (e.g., for
+                handling fonts compressed with gzip or bz2), however, they
+                are optional and can be disabled.</p>
+            </div>
+
+
+            <!-- ************************************************** -->
+
+            <div id="patents">
+              <h2>Patent Issues</h2>
+
+              <p>All patents related to the TrueType bytecode interpreter
+                expired in May 2010. All patents related to the ClearType
+                color filtering model expired in August 2019.</p>
+
+              <p>More information regarding this topic is available at
+                our <a href="../../patents.html">patents page</a>.</p>
+            </div>
+
+
+            <!-- ************************************************** -->
+
+            <div class="updated">
+              <p>Last update: 16-Jan-2021</p>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- ************************************************** -->
+
+        <div class="col2">
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ************************************************** -->
+
+    <div id="TOC">
+      <ul>
+        <li class="funding">
+          <style>
+            .pp-5HHBGYD2SP7JJ {
+              text-align: center;
+              border: none;
+              border-radius: 0.25rem;
+              min-width: 11.625rem;
+              padding: 0 2rem;
+              height: 2.625rem;
+              font-weight: bold;
+              background-color: #FFD140;
+              color: #000000;
+              font-family: "Helvetica Neue", Arial, sans-serif;
+              font-size: 1rem;
+              line-height: 1.25rem;
+              cursor: pointer;
+            }
+          </style>
+
+          <form action="https://www.paypal.com/ncp/payment/5HHBGYD2SP7JJ" method="post" target="_top"
+            style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;">
+            <input class="pp-5HHBGYD2SP7JJ" type="submit" value="후원하기Donate" />
+            <img src=https://www.paypalobjects.com/images/Debit_Credit.svg alt="cards" />
+            <section> 제공: <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg"
+                alt="paypal" style="height:0.875rem;vertical-align:middle;" /></section>
+          </form>
+        </li>
+        <li class="primary">
+          <a href="../../index.html">Home</a>
+        </li>
+        <li class="primary">
+          <a href="../../index.html#news">News</a>
+        </li>
+        <li class="primary">
+          <a href="index.html" class="current">Blog개인글</a>
+        </li>
+        <li class="primary">
+          <a href="documentation.html">결제&Doc</a>
+        </li>
+        <li class="primary">
+          <a href="../../developer.html">Development</a>
+        </li>
+        <li class="primary">
+          <a href="../../contact.html" class="emphasis">Contact</a>
+        </li>
+
+        <li>
+          &nbsp; <!-- separate primary from secondary entries -->
+        </li>
+
+        <li class="secondary">
+          <a href="#about">투자 & 개인적 생각</a>
+        </li>
+        <li class="secondary">
+          <a href="#economic_calender">economic_calender</a>
+        </li>
+        <li class="secondary">
+          <a href="#trading_view_price">trading실시간시세</a>
+        </li>
+        <li class="secondary">
+          <a href="#patents">Patents</a>
+        </li>
+      </ul>
+    </div>
+
+  </div> <!-- id="wrapper" -->
+
+  <div id="TOC-bottom">
+  </div>
+
+</body>
+
+</html>

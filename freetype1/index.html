@@ -1,0 +1,227 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+          "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<link rel="stylesheet" href="../css/freetype.css">
+<title>FreeType 1 Overview</title>
+</head>
+
+<body text="#000000"
+      bgcolor="#FFFFFF"
+      link="#0000EF"
+      vlink="#51188E"
+      alink="#FF0000">
+
+
+<table  width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr><td BGCOLOR="#06425F"><a href="../index.html">
+<IMG SRC="../image/fond3.jpg" ALIGN="right" BORDER="0" HSPACE="0" VSPACE="0"
+     ALT="FreeType home page"></a></td><td BGCOLOR="#06425F">
+     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+
+<!-- *********************************************************************************** H1 -->
+<TR><TD BGCOLOR="#06425F"><h1 class="intro">FREETYPE 1</h1></TD><TD BGCOLOR="#06425F">&nbsp;</TD></TR>
+<TR><TD BGCOLOR="#669999">
+<P>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="#what" CLASS="index">What is FT1 ?</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="#features" CLASS="index">Features</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="#requirements" CLASS="index">Requirements</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="../patents.html" CLASS="index">Patent issues</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+	<font color="#FFFFFF">|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
+      <a href="../index.html" CLASS="index">home page</a>
+
+</P>
+</TD><TD BGCOLOR="#669999">&nbsp;</TD></TR>
+</table>
+
+<table align="center" width="80%"><tr><td>
+<br><br>
+
+  <h1 class="section">Introduction</h1>
+
+  <p>DOCUMENT INDEX</p>
+
+  <ul>
+    <p><a href="#what">What is FreeType 1 ?</a><br>
+       <a href="#features">Features</a><br>
+       <a href="#requirements">Requirements</a><br>
+       <a href="../patents.html">Patent issues</a><br>
+       <a href="download.html">Download</a><br>
+       <a href="documentation.html">Documentation</a><br>
+       <a href="screenshots.html">Screenshots</a><br>
+       <a href="projects.html">Related Projects</a><br>
+       <a href="../opentype/index.html">OpenType Layout support</a><br>
+    </p>
+  </ul>
+
+  <h1 class="section"><a name="what">What is FreeType 1 ?</a></h1>
+
+  <p><font size="+2" color="red">This library is no longer supported.  The
+  information given here is for historical interest only.</font></p>
+
+  <p>FreeType&nbsp;1 is a portable and highly efficient TrueType rendering
+  engine, that is now successfully used to bring TrueType support to a very
+  large variety of platforms and environments, be they font servers,
+  graphics libraries or embedded systems.</p>
+
+  <p>FreeType&nbsp;1 is a clean-room implementation that is not derived from
+  the original TrueType engine developed by Apple and Microsoft.  It has
+  been created with the sole help of the published TrueType specifications,
+  which to our great surprise (and pain) turned out to be extremely poor and
+  misleading in critical areas.  Much hard work has been undertaken to solve
+  ambiguities.  The end result is a portable and fast renderer.</p>
+
+  <p>Note that FreeType&nbsp;1 is a <em>library</em>.  It is <em>not</em> a
+  font server for your favorite platform, even though it was designed to be
+  used in many of them.  Note also that it is <em>not</em> a complete
+  text-rendering library.  Its purpose is simply to open and manage font
+  files, as well as load, hint and render individual glyphs efficiently.
+  You can also see it as a "TrueType driver" for a higher-level library,
+  though rendering text with it is easy, as demonstrated by the test
+  programs.</p>
+
+  <p>Its quality matches these of Windows and the Macintosh, while its
+  memory foot-print and code size (between 48 and 55&nbsp;kByte of Intel
+  code) remain modest.  A thing that cannot be said for most other
+  commercial engines available.</p>
+
+
+  <p>For more information, check our <a href="../download.html">Download
+  page</a> or see the source and its diffs through our <a
+  href="http://cvs.savannah.gnu.org/viewvc/freetype/">ViewVC interface</a>.</p>
+
+  <h1 class="section">
+    <a name="features">Features</a>
+  </h1>
+
+  <p>The following features are part of FreeType&nbsp;1:</p>
+
+  <ul>
+    <li>
+      <p>Supports TrueType files (TTF) and collections (TTC).  Doesn't
+      support GX or OpenType fonts, but these can be opened and used as
+      normal TTF files by the library.  (With the exception of <tt>OTF</tt>
+      OpenType fonts which really embed a Type&nbsp;1 font file within a
+      TrueType storage).</p>
+    </li>
+    <li>
+      <p>Modular design: Memory and I/O operations can be very easily
+      tailored to your own platform/system (the standard release comes with
+      ANSI libc support).</p>
+    </li>
+    <li>
+      <p>Font smoothing, a.k.a. gray-scaling.  Just like Win95, the renderer
+      only smoothes the parts of a glyph which need it (i.e., diagonals and
+      curves).</p>
+    </li>
+    <li>
+      <p>Support for all character mappings defined in the TrueType
+      specification.  The client application can select whichever pleases
+      it.</p>
+    </li>
+    <li>
+      <p>A full-featured and efficient TrueType bytecode interpreter.  The
+      engine is able to produce excellent output at small point sizes.  This
+      component has been extremely difficult to get right, due to the
+      ambiguous and misleadings TrueType specifications.  However, we now
+      <em>match</em> Windows and Mac qualities.</p>
+    </li>
+    <li>
+      <p>Written in portable ANSI&nbsp;C (and Pascal, for older
+      FreeType&nbsp;1 versions).  Should compile well on all kinds of
+      systems (tested on 16, 32 and 64&nbsp;bits processors).  With full
+      source code available.</p>
+    </li>
+    <li>
+      <p>Open Source License.  FreeType can be included in all kinds of
+      commercial systems and software.</p>
+    </li>
+    <li>
+      <p>Provides test programs to "show-off" the library, runnable on the
+      following platforms: Dos, Unix, OS/2, Win95, and Amiga.  Any porters
+      for other systems are welcome and should contact the developers
+      team.</p>
+    </li>
+    <li>
+      <p>Support for extensions.  These are separately linkable units which
+      can be used to enhance the engine's functionalities without
+      recompiling it.  They can be written to access additional TrueType
+      tables, or even GX and/or OpenType ones (the latter is already
+      available).</p>
+    </li>
+    <li>
+      <p>Kerning support: The TrueType kerning data is available through one
+      of the standard extensions that comes in this release.  However, it is
+      up to the application to "interpret" the data, as many different
+      `formats' are supported.</p>
+    </li>
+    <li>
+      <p>Support for vertical metrics.  The engine is able to provide client
+      applications with vertical glyph metrics if they are found in font
+      files (usually in CJKV fonts).  If not present, it synthetizes metrics
+      from the horizontal values, ascender, and descender metrics.  This
+      means that it is possible to render vertical text correctly.</p>
+    </li>
+    <li>
+      <p>Standard extensions are provided to access and load the glyph names
+      in the Postscript table.</p>
+    </li>
+  </ul>
+
+  <h1 class="section">
+    <a name="requirements">Requirements</a>
+  </h1>
+
+  <p>The ANSI&nbsp;C version of the library should compile with no problems
+  on a great variety of platforms.  Some ANSI-compliant compilers may
+  generate a lot of warnings when compiling it.  These are not ANSI warnings
+  and can be safely ignored.  The reference compiler is <tt>gcc</tt> with
+  the flags `<tt>-Wall</tt>' (all warnings) and `<tt>-ansi -pedantic</tt>',
+  though using it is not a requirement.</p>
+
+  <p>However, the test programs, which are used to demonstrate the engine,
+  are more system-specific as they use a tiny graphics sub-system in order
+  to display the engine's output on the screen or in a window.  The
+  sub-system supports right now the following platforms: Dos, OS/2, X11,
+  Win95, and Amiga.  In addition, a platform independent driver for the <a
+  href="http://sourceforge.net/projects/alleg/">Allegro</a> graphics library
+  is available.</p>
+
+  <p>FreeType&nbsp;1 comes with a Pascal version that now runs on Borland
+  Pascal&nbsp;7 (DOS), fPrint Virtual Pascal (OS/2), FPC (Linux, DOS, OS/2)
+  as well as Delphi (16-bit & 32-bit versions).  It is now almost up-to-date
+  with the C&nbsp;version, even though it doesn't include extensions.  It is
+  located in the <tt>ftpascal</tt> CVS module.</p>
+
+<br><br>
+</td></tr></table>
+
+<font size=-3>Last update: 6-Aug-2011</font>
+
+<table  width="100%" border="0" cellspacing="0" cellpadding="0">
+<TR><TD BGCOLOR="#669999">
+<P>
+<P>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="#what" CLASS="index">What is FT1 ?</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="#features" CLASS="index">Features</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="#requirements" CLASS="index">Requirements</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="../patents.html" CLASS="index">Patent issues</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+	<font color="#FFFFFF">|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
+      <a href="../index.html" CLASS="index">home page</a>
+
+</P>
+</TD><TD BGCOLOR="#669999">&nbsp;</TD></TR>
+
+<tr><td BGCOLOR="#06425F"><a href="../index.html">
+<IMG SRC="../image/fond3.jpg" ALIGN="right" BORDER="0" HSPACE="0" VSPACE="0"
+     ALT="FreeType home page"></a></td><td BGCOLOR="#06425F">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+
+</table>
+
+</body>
+</html>

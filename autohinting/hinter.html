@@ -1,0 +1,249 @@
+<html>
+<head>
+<title>The FreeType Auto-Hinting pages</title>
+<basefont face="Georgia, Arial, Helvetica, Geneva">
+<META name="description"
+ content="The FreeType Project: a free, quality and portable Font engine">
+<META name="keywords"
+ content="FreeType fonts renderer TrueType Type1 TTF library free fast quality">
+<style content="text/css">
+  P { text-align=justify }
+  P.location { text-align=left; font-size="20" }
+  P.url { text-align=center; font-size="20" }
+  P.title { text-align=center; font-size="20" }
+  P.center { text-align=center }
+  H1 { text-align=center }
+  H2 { text-align=center }
+  LI { text-align=justify }
+</style>
+</head>
+
+<body text="#000000"
+      bgcolor="#FFFFFF"
+      link="#0000EF"
+      vlink="#51188E"
+      alink="#FF0000">
+
+<center>
+<table width="70%" cellspacing=5><tr bgcolor="#CCCCEE"><td>
+<h2 align=center>The FreeType Auto-Hinter</h2>
+</td></tr><tr><td>
+
+<h3>Basic design goals</h3>
+
+<p>The FreeType auto-hinter will be designed in order provide the following
+   features:</p>
+   
+<p><ul>
+   <li><p>absolutely patent-free from day 1 !!</p>
+   
+   <li><p>capable of hinting monochrome and anti-aliased glyphs
+          differently, in order to generate high-quality images matched to
+          the target device.</p>
+
+   <li><p>capable of real-time hinting of outlines, in order to be used
+          with any FreeType 2 font driver ( TrueType, Type 1, CFF/Type 2,
+          etc..) that doesn't provide its own hinting algorithm.</p>
+
+   <li><p>we'll try to make the auto-hinter as independent as the rest of
+          FreeType 2, in order to make it usable in other projects.</p>
+
+   <li><p>well, as usual with FreeType code, expect small footprint, code
+          size and excellent performance ;-)</p>
+</ul></p>
+
+<h3>Development</h3>
+
+<p>The FreeType Auto-Hinter is developed by David Turner, lead FreeType
+   architect and developer, under contract with an unnamed company. Among
+   other things, the following have been agreed when signing the contract:</p>
+
+<p><ul>
+  <li><p>The auto-hinter will be released under an open source license similar
+         to the FreeType one (with copyrights reverted to the Company). Hence,
+         it will be included in FreeType 2 when the latter is released.</p>
+  
+  <li><p>The source code for the auto-hinter will be kept confidential until
+         the contract delivery date, set to the end of May 2000. However,
+         its algorithms will be freely and publicly discussed and detailed
+         in a dedicated mailing list. Screen shots of the on-going work will
+         be posted on web pages too.</p>
+  
+</ul></p>
+
+<p>Other than the legal stuff, the general approach is extremely practical,
+   and features will be introduced progressively in the auto-hinting engine
+   to enhance its quality and performance. Do not expect beautiful results
+   immediately then :-)</p>
+
+<p>Of course, the engine will be tested against a large number of fonts.
+   However, it will first focus on correctly hinting widely available
+   high-quality fonts (Arial, Times, Helvetica, Palatino, Courier, etc..)
+   for Latin scripts. Managin ideographs will be added later as these will
+   much probably require some specific settings.</p>
+
+<h3>Current Status</h3>
+
+<p>The auto-hinter is now described through several web pages. Please follow
+   the links below for more information:</p>
+   
+<p><ul>
+  <li><p><a href="features.html">Performing Feature Detection</a></p>
+  <li><p><a href="blues.html">Managing Blue Zones</a></p>
+  <li><p><a href="widths.html">Normalizing widths</a></p>
+  <li><p><a href="alignment.html">Aligning important features</a></p>
+  <li><p><a href="interpolation.html">How to Interpolate Points</a></p>
+</ul></p>
+
+
+<h3>ScreenShots</h3>
+
+<p>Here are some screenshots taken on Monday 3 April 2000 with the current
+   auto-hinting module. You can find also find old screenshots on the
+   <a href="archive/10Mar2000/hinter.html">archives page</a>. Note that :</p>
+   
+<p><ul>
+   <li><p>Glyph metrics are <em>still</em> not hinted in this version, so do
+          not be surprised if you see some strange inter-character spacing.
+          Composite glyphs (i.e. mainly accented characters) are also not
+          hinted correctly as they will be in a near future.</p>
+
+   <li><p>Diagonals are not hinted for now, so don't be surprised to see the
+          same "colorful" letters as with TrueDoc.</p>
+      
+   <li><p>The anti-aliased images correspond to the same grid-fitted outlines than
+          the monochrome ones. For now, we do not explicitely support anti-aliased
+          hinting, even though this should not prove to be really hard..</p>
+      
+   <li><p>The anti-aliased images are rendered through Beta FreeType 2's default
+          renderer which supports 128 levels of grays (this will go as high as
+          256 for the release, but shouldn't make a difference to the human
+          eye..).</p>
+</ul></p>
+
+<p>The following problems have been fixed compared to the latest version:</p>
+
+<p><ul>
+  <li><p>Courier, and ohter fonts with very thin stems were not handled
+         properly. This is now fixed.</p>
+         
+  <li><p>Blue zone computation and alignment have been improved (though it
+         doesn't show on the screenshots).</p>
+         
+  <li><p>Points located between edges are now much better interpolated,
+         resulting in slightly higher quality. Actually, the difference
+         is more visible with decorative fonts that are not shown there..</p>
+
+  <li><p>Type 1 outlines are now supported. The current results are equivalent
+         to the FreeType 2 Type 1 hinter :-) By the way, the latter was
+         recently updated with improvements that came from this research.</p>
+</ul></p>
+
+<center>
+<h1>Images dated 2000-03-02</h1>
+<h3 align="center">Arial</h3>
+
+<p class="center">
+   Unhinted monochrome outlines<br>
+   <img src="image/auto_arial_no.png"><br><br>
+
+   Hinted monochrome outlines<br>
+   <img src="image/auto_arial.png"><br><br>
+   
+   Hinted anti-aliased outlines<br>
+   <img src="image/auto_arial_aa.png"></p>
+
+<h3 align="center">Arial Italic</h3>
+
+   Unhinted monochrome outlines<br>
+   <img src="image/auto_ariali_no.png"><br><br>
+
+   Hinted monochrome outlines<br>
+   <img src="image/auto_ariali.png"><br><br>
+   
+   Hinted anti-aliased outlines<br>
+   <img src="image/auto_ariali_aa.png"></p>
+
+<h3 align="center">Times New Roman</h3>
+
+   Unhinted monochrome outlines<br>
+   <img src="image/auto_tnr_no.png"><br><br>
+
+   Hinted monochrome outlines<br>
+   <img src="image/auto_tnr.png"><br><br>
+   
+   Hinted anti-aliased outlines<br>
+   <img src="image/auto_tnr_aa.png"></p>
+
+<h3 align="center">Times New Roman Italic</h3>
+
+<p class="center">Unhinted monochrome outlines<br>
+   <img src="image/auto_tnri_no.png"><br><br>
+
+   Hinted monochrome outlines<br>
+   <img src="image/auto_tnri.png"><br><br>
+   
+   Hinted anti-aliased outlines<br>
+   <img src="image/auto_tnri_aa.png"></p>
+
+<h3 align="center">Courier New</h3>
+
+<p class="center">Unhinted monochrome outlines<br>
+   <img src="image/auto_cour_no.png"><br><br>
+
+   Hinted monochrome outlines<br>
+   <img src="image/auto_cour.png"><br><br>
+   
+   Hinted anti-aliased outlines<br>
+   <img src="image/auto_cour_aa.png"></p>
+
+<h3 align="center">Courier New Italic</h3>
+
+<p class="center">Unhinted monochrome outlines<br>
+   <img src="image/auto_couri_no.png"></p>
+
+   Hinted monochrome outlines<br>
+   <img src="image/auto_couri.png"><br><br>
+   
+   Hinted anti-aliased outlines<br>
+   <img src="image/auto_couri_aa.png"><br><br>
+</center>
+
+<h3>Things TO DO !!</h3>
+
+<p>Well, for now: </p>
+
+<p><ul>
+  <li><p>Implement composite glyph hinting correctly. FreeType 2 has been
+         updated to implement the FT_LOAD_NO_RECURSE flag which is crucial
+         to load composite glyphs as separate elements, and I'm currently
+         experimenting to incorporate this in the auto-hinter.</p>
+  
+  <li><p>Introduce extra edges for the left-most and right-most extrema
+         in a font (when those are not covered already by an edge). This
+         seems to be important for many things, including diagonals !!
+         Well, I've just been too lazy for now..</p>
+  
+  <li><p>Implement anti-aliased hinting (should be easy and give good
+         results)</p>
+  
+  <li><p>Test with asian fonts, and try to devise an algorithm to improve
+         their rendering (apparently, equal spacing of white distances is
+         much more important than correct positioning of black ones..).</p>
+         
+  <li><p>Implement outline distortion measurement and optimisation as described
+         above.</p>
+</ul></p>
+
+</td></tr></table>
+</center>
+
+<p>
+<i>
+  Page maintained by <a href="mailto:david.turner@freetype.org">
+  David Turner</a>
+</i><br>
+</p>
+
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+          "https://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type"
+        content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type"
+        content="text/css">
+  <meta http-equiv="Content-Script-Type"
+        content="text/javascript">
+
+  <meta name="description"
+        content="FreeType History">
+  <meta name="keywords"
+        content="FreeType 1 FreeType 2 history Werner Lemberg David Turner
+                 Robert Wilhelm libttf libfreetype Pascal ftpascal">
+
+  <link rel="icon"
+        href="image/favicon_-60.ico">
+  <link rel="shortcut icon"
+        href="image/favicon_-60.ico">
+  <link rel="stylesheet"
+        type="text/css"
+        href="css/freetype2_-60.css">
+
+  <script type="text/javascript"
+          src="js/freetype2.js">
+  </script>
+
+  <title>FreeType History</title>
+</head>
+
+<body>
+
+<div id="top"
+     class="bar">
+  <h1><a href="index.html">FreeType</a> History</h1>
+</div>
+
+
+<div id="wrapper">
+
+<div class="colmask leftmenu">
+  <div class="colright">
+    <div class="col1wrap">
+      <div class="col1">
+
+
+        <!-- ************************************************** -->
+
+        <div id="freetype1">
+          <h3>FreeType&nbsp;1</h3>
+
+          <p>The main author of FreeType was David Turner, who created
+            the library in 1996 to render TrueType fonts, including an
+            interpreter for handling TrueType bytecode.  It was
+            originally written in
+            the <a href="https://en.wikipedia.org/wiki/Pascal_%28programming_language%29">Pascal</a>
+            programming language.  In 1997, Robert Wilhelm ported it
+            to&nbsp;<a href="https://en.wikipedia.org/wiki/C_%28programming_language%29">C</a>,
+            and Werner Lemberg joined the team.  Originally, the C and
+            Pascal versions were developed in parallel, however,
+            development of the Pascal version stopped in 2000.</p>
+
+          <p>Using FreeType&nbsp;1, as this original version is called
+            today, some programs were written which then had some
+            impact, for example <a href="ft_os2/index.html">FreeType/2</a>,
+            a better TrueType font driver for
+            the <a href="https://en.wikipedia.org/wiki/OS/2">OS/2</a>
+            operating system, or ttf2pk, a converter from TrueType
+            fonts
+            to <a href="https://en.wikipedia.org/wiki/TeX">TeX</a>'s PK
+            bitmap format (this program, while updated to use
+            FreeType&nbsp;2,
+            is <a href="https://www.tug.org/svn/texlive/trunk/Build/source/texk/ttf2pk2/">still
+            part of TeXLive</a>).</p>
+
+          <p>Robert Wilhelm stopped working on FreeType in 2000.</p>
+
+          <p>For historical reasons you can find here links to the
+          documentation of FreeType&nbsp;1.  Note that those pages are
+          no longer maintained.</p>
+
+          <div class="quote">
+            <p><a href="freetype1/index.html">Overview</a><br>
+
+              <a href="freetype1/index.html#features">Features</a><br>
+
+              <a href="freetype1/index.html#requirements">Requirements</a><br>
+
+              <a href="freetype1/screenshots.html">Screenshots</a><br>
+
+              <a href="freetype1/documentation.html">Documentation</a><br>
+
+              <a href="patents.html">Patent issues</a><br>
+
+              <a href="opentype/index.html">OpenType support</a><br>
+
+              <a href="freetype1/projects.html">Related
+              projects</a></p>
+          </div>
+        </div>
+
+
+        <!-- ************************************************** -->
+
+        <div id="freetype2">
+          <h3>FreeType&nbsp;2</h3>
+
+          <p>After several beta releases, version 2.0 of FreeType was
+            released in 2000, providing a complete rewrite to make it
+            modular.  To distinguish it from FreeType&nbsp;1, it was
+            then called FreeType&nbsp;2 (which is no longer necessary
+            today).  Most important new features were the support of
+            multiple font formats, in particular PostScript fonts
+            (together with hinting engine), a much improved rendering
+            backend for gray-level images, and a module for caching
+            glyphs images and glyph metrics.  Later versions added
+            support for even more font formats and LCD rendering
+            modes.</p>
+
+          <p>In the year 1999 we were informed by Apple Inc. that
+            FreeType was infringing patents related to TrueType
+            hinting (see <a href="patents.html">here</a> for more).
+            As a consequence, we disabled the bytecode interpreter
+            completely by default.  Later on we were able to refine
+            this radical cut by disabling only the patented
+            instructions, handling more than 95% of the other
+            instructions just fine and circumventing problems with the
+            remaining 5% to a certain extent.  Another consequence was
+            the invention of the auto-hinter which needs no hints at
+            all (you can
+            find <a href="https://www.tug.org/TUGboat/tb24-3/lemberg.pdf">here</a>
+            an early scholarly paper).  Today, the TrueType patents
+            have expired.</p>
+
+          <p>Around 2004 it was decided to restrict FreeType to a
+            single target: Creating (rasterized) glyph images.
+            Attempts to handle OpenType layout features and text
+            shaping were abandoned since this could be handled much
+            better with a separate library on top of FreeType
+            (cf. <a href="http://www.icu-project.org/">ICU</a> or
+            <a href="http://harfbuzz.org">Harfbuzz</a>).
+
+          <p>In 2009, the source code repository has been migrated
+            from <a href="https://www.nongnu.org/cvs/">CVS</a>
+            to <a href="https://git-scm.com/">git</a>, and David Turner
+            stopped active development on FreeType.  Since then the
+            only maintainer is Werner Lemberg, with the help of others
+            who contribute fixes and improvements.</p>
+        </div>
+
+
+        <!-- ************************************************** -->
+
+        <div class="updated">
+          <p>Last update: 18-Jan-2019</p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ************************************************** -->
+
+    <div class="col2">
+    </div>
+  </div>
+</div>
+
+
+<!-- ************************************************** -->
+
+<div id="TOC">
+  <ul>
+    <li class="funding">
+      <form action="https://www.paypal.com/cgi-bin/webscr"
+            method="post"
+            target="_top">
+        <input type="hidden"
+               name="cmd"
+               value="_s-xclick">
+        <input type="hidden"
+               name="hosted_button_id"
+               value="SK827YKEALMT4">
+        <input type="image"
+               src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif"
+               name="submit"
+               alt="PayPal - The safer, easier way to pay online!">
+      </form>
+    </li>
+    <li class="primary">
+      <a href="index.html">Home</a>
+    </li>
+    <li class="primary">
+      <a href="index.html#news">News</a>
+    </li>
+    <li class="primary">
+      <a href="freetype2/docs/index.html">Overview</a>
+    </li>
+    <li class="primary">
+      <a href="freetype2/docs/documentation.html">Documentation</a>
+    </li>
+    <li class="primary">
+      <a href="developer.html">Development</a>
+    </li>
+    <li class="primary">
+      <a href="contact.html"
+         class="emphasis">Contact</a>
+    </li>
+
+    <li>
+      &nbsp; <!-- separate primary from secondary entries -->
+    </li>
+
+    <li class="secondary">
+      <a href="history.html" class="current">History</a>
+    </li>
+    <li class="tertiary">
+      <a href="#freetype1">FreeType&nbsp;1</a>
+    </li>
+    <li class="tertiary">
+      <a href="#freetype2">FreeType&nbsp;2</a>
+    </li>
+  </ul>
+</div>
+
+</div> <!-- id="wrapper" -->
+
+<div id="TOC-bottom">
+</div>
+
+</body>
+</html>

@@ -1,0 +1,552 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+          "https://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type"
+        content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type"
+        content="text/css">
+  <meta http-equiv="Content-Script-Type"
+        content="text/javascript">
+
+  <meta name="description"
+        content="ttfautohint for OS X">
+  <meta name="keywords"
+        content="FreeType TrueType digital font TTF engine autohint
+                 hint OSX">
+
+  <link rel="icon"
+        href="../image/favicon_90.ico">
+  <link rel="shortcut icon"
+        href="../image/favicon_90.ico">
+  <link rel="stylesheet"
+        type="text/css"
+        href="../css/freetype2_90.css">
+
+  <script type="text/javascript"
+          src="../js/freetype2.js">
+  </script>
+
+  <title>Installation of ttfautohint on Mac OS&nbsp;X</title>
+</head>
+
+<body>
+
+<div id="top"
+     class="bar">
+  <h1><a href="index.html">ttfautohint</a> on OS&nbsp;X</h1>
+</div>
+
+
+<div id="wrapper">
+
+<div class="colmask leftmenu">
+  <div class="colright">
+    <div class="col1wrap">
+      <div class="col1">
+
+
+        <p>This page describes how to compile both ttfautohint and
+          ttfautohintGUI on Mac OS&nbsp;X.</p>
+
+
+        <!-- ************************************************** -->
+
+        <div id="macports">
+          <h2>Compilation With MacPorts</h2>
+
+          <p>If you have <a href="https://macports.org">MacPorts</a>
+            and are comfortable with it, you can install ttfautohint
+            (together with libttfautohint) and ttfautohintGUI quite
+            easily.</p>
+
+          <p>To install the ttfautohint command line executable, open
+            Terminal.app and type</p>
+
+          <pre>
+sudo port install ttfautohint</pre>
+
+          <p>Enter your Mac login password, then press the return key
+            again.  This installs the currently released version.</p>
+
+          <p>You can execute the ttfautohint executable on the command
+            line with</p>
+
+          <pre>
+ttfautohint</pre>
+
+          <p>followed by an appropriate set of arguments as detailed
+            in the <a href="doc/ttfautohint.html">usage
+            documentation</a>.</p>
+
+          <p>To install both the ttfautohint command line executable
+            and the GUI version, use</p>
+
+          <pre>
+sudo port install ttfautohint +qt5</pre>
+
+          <p>instead of the above installation command.  Enter your
+            Mac login password, then press the return key again.  This
+            installs the currently released version using
+            the <a href="https://www.qt.io">Qt5</a> framework.  If you
+            want to use the Qt4 framework (for example, if you have a
+            MacOS version that is not supported by Qt5),
+            replace <code>+qt5</code> with <code>+qt4</code> in the
+            above command.</p>
+
+          <p>After installation you can now type</p>
+
+          <pre>
+ttfautohintGUI</pre>
+
+          <p>from the Terminal app to start the GUI.</p>
+        </div>
+
+
+        <div id="homebrew">
+          <h2>Compilation With Homebrew</h2>
+
+          <p class="warning">Warning: Homebrew only supports recent
+            MacOS versions (i.e., the current one and two older
+            releases).  For older MacOS versions please use
+            MacPorts, <a href="#macports">see above</a>.</p>
+
+          <p>If you have <a href="https://brew.sh">Homebrew</a> and
+            are comfortable with it, you can install ttfautohint
+            (together with libttfautohint) and ttfautohintGUI quite
+            easily.</p>
+
+          <h3>ttfautohint only</h3>
+
+          <p>If you do not need the GUI version of ttfautohint, you
+            can install the ttfautohint command line executable
+            with</p>
+
+          <pre>
+brew install ttfautohint</pre>
+
+          <p>to get the currently released version.  For the git HEAD
+            version (i.e., the current development version) use</p>
+
+          <pre>
+brew install --HEAD ttfautohint</pre>
+
+          <p>instead.</p>
+
+          <p>To upgrade ttfautohint from an older version, please
+            follow the standard instructions given in
+            the <a href="https://github.com/Homebrew/homebrew/blob/master/share/doc/homebrew/FAQ.md#faq">Homebrew
+            FAQ</a>.  However, in case you want to update from an
+            older <tt>--HEAD</tt> installation to current git HEAD,
+            you have to use</p>
+
+          <pre>
+brew reinstall --HEAD ttfautohint</pre>
+
+          <p>instead of calling <tt>brew upgrade ttfautohint</tt>
+            (see <a href="https://github.com/Homebrew/homebrew/issues/13197">this
+            homebrew tracker issue</a>).</p>
+
+          <p>You can execute the ttfautohint executable on the command
+            line with</p>
+
+          <pre>
+ttfautohint</pre>
+
+          <p>followed by an appropriate set of arguments as detailed
+            in the <a href="doc/ttfautohint.html">usage
+            documentation</a>.</p>
+
+          <h3>ttfautohint and ttfautohintGUI</h3>
+
+          <p>If you need the GUI version of ttfautohint (which depends
+            on the Qt library), you can't use core Homebrew's version.
+            Instead, please
+            use <a href="mailto:cosimo@anthrotype.com">Cosimo
+            Lupo's</a> Homebrew Tap (i.e., a user's github
+            repository).  Calling</p>
+
+          <pre>
+brew install anthrotype/ttfautohint/ttfautohintGUI</pre>
+
+          <p>will both install ttfautohint and ttfautohintGUI.  For
+            the git HEAD version (i.e., the current development
+            version) use</p>
+
+          <pre>
+brew install --HEAD anthrotype/ttfautohint/ttfautohintGUI</pre>
+
+          <p>instead.</p>
+
+          <p>If you want to switch from core Homebrew to Cosimo's tap,
+            you should start with</p>
+
+          <pre>
+brew uninstall ttfautohint</pre>
+
+          <p>before installing from the tap to avoid
+            interferences.</p>
+
+          <p>After installation you can now type</p>
+
+          <pre>
+ttfautohintGUI</pre>
+
+          <p>from the Terminal app to start the GUI.</p>
+        </div>
+
+
+        <!-- ************************************************** -->
+
+        <div id="scratch">
+          <h2>Compilation From Scratch</h2>
+
+          <p>A simple solution to automatically compile ttfautohint
+            (but not ttfautohintGUI) is Chris
+            Simpkins's <a href="https://github.com/source-foundry/ttfautohint-build">ttfautohint-build</a>
+            script.</p>
+
+          <p>If you don't have <a href="https://brew.sh">Homebrew</a>
+            or <a href="https://macports.org">MacPorts</a>, you should
+            check out one of these two package managers because both
+            are extremely useful and automate all ttfautohint build
+            dependency installs for you.  But supposing you don't want
+            to use them, you can install the command line executable
+            ttfautohint and the ttfautohint GUI on Mac OS&nbsp;X from
+            scratch.</p>
+
+          <p>Following the instructions below, everything except XCode
+            and Qt gets installed into the
+            &lsquo;<tt>/usr/local/</tt>&rsquo; directory tree.  You
+            should thus <em>prepend</em>
+            &lsquo;<tt>/usr/local/bin</tt>&rsquo; to your path now (so
+            that the new programs and scripts get found before the
+            system ones).
+            See <a href="https://architectryan.com/2012/10/02/add-to-the-path-on-mac-os-x-mountain-lion/#.Uvm23FZr7RY">here</a>,
+            for example, how to do that easily.  It is possible to
+            change the default installation directory hierarchy,
+            though; please read the
+            generic <a href="https://git.savannah.gnu.org/gitweb/?p=gnulib.git;a=blob_plain;f=doc/INSTALL;hb=HEAD">GNU
+            installation instructions</a> for more.</p>
+
+
+          <h3>XCode</h3>
+
+          <p>We start by installing XCode from the App Store, and then the Command Line
+            Tools.  Instructions are at
+            <a href="https://guide.macports.org/chunked/installing.html#installing.xcode">https://guide.macports.org/chunked/installing.html#installing.xcode</a>.</p>
+
+
+          <h3>pkg-config</h3>
+
+          <p>Another preliminary is pkg-config, which is a helper tool
+            to get library information for both compilation and
+            linking.</p>
+
+          <p>Create a folder in your Home folder called
+            &lsquo;<tt>src</tt>&rsquo;.</p>
+
+          <p>In your browser,
+            download <a href="https://pkg-config.freedesktop.org/releases/pkg-config-0.29.2.tar.gz">https://pkg-config.freedesktop.org/releases/pkg-config-0.29.2.tar.gz</a>.</p>
+
+          <p>In Finder, go to your Downloads folder and double click
+            the <tt>pkg-config-0.29.2.tar.gz</tt> file to unpack it
+            into a folder named
+            &lsquo;<tt>pkg-config-0.29.2</tt>&rsquo;.  Move that
+            folder now into the <tt>src</tt> folder you created in
+            your Home folder.</p>
+
+          <p>Open Terminal.app, type</p>
+
+          <pre>
+cd ~/src/pkg-config-0.29.2</pre>
+
+          <p>and press the return key.  Continue with</p>
+
+          <pre>
+./configure</pre>
+
+          <p>and press the return key again.  You will see a bunch of
+            text rolling through the Terminal app.  When it is done,
+            type</p>
+
+          <pre>
+make</pre>
+
+          <p>and press the return key to see more text rolling
+            through.  When it is done, type</p>
+
+          <pre>
+sudo make install</pre>
+
+          <p>and press the return key.  Enter your Mac login password,
+            then press the return key again.</p>
+
+
+          <h3>FreeType</h3>
+
+          <p>Next we install FreeType, the system that ttfautohint is
+            based on.</p>
+
+          <p>In your browser, download
+            <a href="https://sourceforge.net/projects/freetype/files/freetype2/2.11.0/freetype-2.11.0.tar.gz/download">https://sourceforge.net/projects/freetype/files/freetype2/2.11.0/freetype-2.11.0.tar.gz/download</a>.</p>
+
+          <p>In Finder, go to your Downloads folder and double click
+            the <tt>freetype-2.11.0.tar.gz</tt> file to unpack it into
+            a folder named &lsquo;<tt>freetype-2.11.0</tt>&rsquo;.
+            Move that folder now into the <tt>src</tt> folder you
+            created in your Home folder.</p>
+
+          <p>Open Terminal.app, type</p>
+
+          <pre>
+cd ~/src/freetype-2.11.0</pre>
+
+          <p>and press the return key.  Continue with</p>
+
+          <pre>
+./configure</pre>
+
+          <p>and press the return key again.  You will see a bunch of
+            text rolling through the Terminal app.  When it is done,
+            type</p>
+
+          <pre>
+make</pre>
+
+          <p>and press the return key to see more text rolling
+            through.  When it is done, type</p>
+
+          <pre>
+sudo make install</pre>
+
+          <p>and press the return key.  Enter your Mac login password,
+            then press the return key again.</p>
+
+
+          <h3>HarfBuzz</h3>
+
+          <p>This library is also used by ttfautohint to handle
+            OpenType features in TrueType fonts.</p>
+
+          <p>In your browser, download
+            <a href="https://github.com/harfbuzz/harfbuzz/releases/download/2.9.0/harfbuzz-2.9.0.tar.xz">https://github.com/harfbuzz/harfbuzz/releases/download/2.9.0/harfbuzz-2.9.0.tar.xz</a>.</p>
+
+          <p>In Finder, go to your Downloads folder and double click
+            the <tt>harfbuzz-2.9.0.tar.xz</tt> file to unpack it
+            into a folder named
+            &lsquo;<tt>harfbuzz-2.9.0</tt>&rsquo;.  Move that folder
+            now into the <tt>src</tt> folder you created in your Home
+            folder.</p>
+
+          <p>Open Terminal.app, type</p>
+
+          <pre>
+cd ~/src/harfbuzz-2.9.0</pre>
+
+          <p>and press the return key.  Continue with</p>
+
+          <pre>
+./configure --with-glib=no</pre>
+
+          <p>and press the return key again.  You will see a bunch of
+            text rolling through the Terminal app.  When it is done,
+            type</p>
+
+          <pre>
+make</pre>
+
+          <p>and press the return key to see more text rolling
+            through.  When it is done, type</p>
+
+          <pre>
+sudo make install</pre>
+
+          <p>and press the return key.  Enter your Mac login password,
+            then press the return key again.</p>
+
+          <p>[Note: For a complete installation of FreeType you should
+            now compile and install FreeType again to make it use the
+            most recent version of HarfBuzz.  However, this is not
+            necessary if you only want to build ttfautohint and
+            nothing else.]</p>
+
+
+          <h3>Qt</h3>
+
+          <p>This step is optional and only required if you intend to
+            install ttfautohintGUI (the GUI version of ttfautohint).
+            These steps install the <a href="https://qt.io/">Qt</a>
+            libraries for ttfautohint's Graphical User Interface.</p>
+
+          <p>With your browser, download the latest &lsquo;Qt
+            Libraries for Mac&rsquo; <tt>.dmg</tt> file from
+            <a href="https://qt.io/download">https://qt.io/download</a>
+            and install Qt in the normal way.  Currently, a direct
+            link is
+            <a href="https://download.qt.io/official_releases/qt/5.12/5.12.11/qt-opensource-mac-x64-5.12.11.dmg">https://download.qt.io/official_releases/qt/5.12/5.12.11/qt-opensource-mac-x64-5.12.11.dmg</a>.</p>
+
+          <p>[There are newer version of Qt&nbsp;5 available, however,
+            no <tt>.dmg</tt> files are provided.  If you need them,
+            follow
+            the <a href="https://doc.qt.io/qt-5/macos-building.html">building
+            instructions</a>.]</p>
+
+          <p>[In case you need Qt&nbsp;4,
+            use <a href="https://download.qt.io/archive/qt/4.8/4.8.7/qt-opensource-mac-4.8.7.dmg">https://download.qt.io/archive/qt/4.8/4.8.7/qt-opensource-mac-4.8.7.dmg</a>
+            instead.]</p>
+
+
+          <h3>ttfautohint</h3>
+
+          <p>We are almost finished.
+            Visit <a href="https://freetype.org/ttfautohint">https://freetype.org/ttfautohint</a>
+            and in the download section, download the latest version
+            of the source code.  Currently the direct link is
+            <a href="https://sourceforge.net/projects/freetype/files/ttfautohint/1.8.4/ttfautohint-1.8.4.tar.gz/download">https://sourceforge.net/projects/freetype/files/ttfautohint/1.8.4/ttfautohint-1.8.4.tar.gz/download</a>.</p>
+
+          <p>In Finder, go to your Downloads folder and double click the
+            <tt>ttfautohint-1.8.4.tar.gz</tt> file to unpack it into a
+            folder named &lsquo;<tt>ttfautohint-1.8.4</tt>&rsquo;.
+            Move the <tt>ttfautohint-1.8.4</tt> folder to
+            the <tt>src</tt> folder in your Home folder.</p>
+
+          <p>In Terminal, type</p>
+
+          <pre>
+cd ~/src/ttfautohint-1.8.4</pre>
+
+          <p>and press the return key.</p>
+
+          <p>To include the GUI version of ttfautohint in the
+            installation, use the following command.</p>
+
+          <pre>
+./configure --with-doc=no</pre>
+
+          <p>To install only the ttfautohint command line executable
+            (without the GUI version of ttfautohint), use the
+            following command.</p>
+
+          <pre>
+./configure --with-doc=no --with-qt=no</pre>
+
+          <p>Press the return key again.  You will see a bunch of text
+            rolling through the Terminal app.  When it is done,
+            type</p>
+
+          <pre>
+make</pre>
+
+          <p>and press the return key.  Again you will see a bunch of
+            text rolling through the Terminal app.  When it is done,
+            type</p>
+
+          <pre>
+sudo make install</pre>
+
+          <p>followed by a press to the return key.  As above, enter
+            your Mac login password, then press the return key again.
+            You will see a bunch of text rolling through the Terminal
+            app.</p>
+
+          <p>For GUI installs, you can launch ttfautohintGUI by
+            typing</p>
+
+          <pre>
+ttfautohintGUI</pre>
+
+          <p>After pressing the return key, you should now see the
+            GUI!</p>
+
+          <p>You can execute the ttfautohint executable on the command
+            line with</p>
+
+          <pre>
+ttfautohint</pre>
+
+          <p>followed by an appropriate set of arguments as detailed
+            in
+            the <a href="https://www.freetype.org/ttfautohint/doc/ttfautohint.html">usage
+            documentation</a>.</p>
+        </div>
+
+
+        <!-- ************************************************** -->
+
+        <div class="webmaintainer">
+          <p>This page is maintained by
+            <a href="mailto:wl@gnu.org">Werner Lemberg</a>, based on
+            instructions written
+            by <a href="mailto:dave@understandingfonts.com">David
+            Crossland</a>
+            and <a href="mailto:git.simpkins@gmail.com">Chris
+            Simpkins</a>.</p>
+        </div>
+        <div class="updated">
+          <p>Last update: 21-Aug-2021</p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ************************************************** -->
+
+    <div class="col2">
+    </div>
+  </div>
+</div>
+
+
+<!-- ************************************************** -->
+
+<div id="TOC">
+  <ul>
+    <li class="funding">
+      <form action="https://www.paypal.com/cgi-bin/webscr"
+            method="post"
+            target="_top">
+        <input type="hidden"
+               name="cmd"
+               value="_s-xclick">
+        <input type="hidden"
+               name="hosted_button_id"
+               value="SK827YKEALMT4">
+        <input type="image"
+               src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif"
+               name="submit"
+               alt="PayPal - The safer, easier way to pay online!">
+      </form>
+    </li>
+    <li class="primary">
+      <a href="index.html">Home</a>
+    </li>
+
+    <li>
+      &nbsp; <!-- separate primary from secondary entries -->
+    </li>
+
+    <li class="secondary">
+      <a href="osx.html" class="current">ttfautohint on OS&nbsp;X</a>
+    </li>
+    <li class="tertiary">
+      <a href="#macports">Compilation With MacPorts</a>
+    </li>
+    <li class="tertiary">
+      <a href="#homebrew">Compilation With Homebrew</a>
+    </li>
+    <li class="tertiary">
+      <a href="#scratch">Compilation From Scratch</a>
+    </li>
+  </ul>
+</div>
+
+</div> <!-- id="wrapper" -->
+
+<div id="TOC-bottom">
+</div>
+
+</body>
+</html>

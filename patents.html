@@ -1,0 +1,231 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
+
+  <meta name="description" content="FreeType and Patents">
+  <meta name="keywords" content="FreeType patents TrueType Apple legal infringing
+                 interpreter Microsoft ClearType">
+
+  <link rel="icon" href="image/favicon_-90.ico">
+  <link rel="shortcut icon" href="image/favicon_-90.ico">
+  <link rel="stylesheet" type="text/css" href="css/freetype2_-90.css">
+
+  <script type="text/javascript" src="js/freetype2.js">
+  </script>
+
+  <title>FreeType and Patents</title>
+</head>
+
+<body>
+
+  <div id="top" class="bar">
+    <h1><a href="index.html">FreeType</a> &amp; Patents</h1>
+  </div>
+
+
+  <div id="wrapper">
+
+    <div class="colmask leftmenu">
+      <div class="colright">
+        <div class="col1wrap">
+          <div class="col1">
+
+
+            <!-- ************************************************** -->
+
+            <div id="bytecode-patents">
+              <h2>The TrueType Bytecode Patents Have Expired!</h2>
+
+              <p>Since May 2010, all patents related to bytecode hinting
+                have expired worldwide. It it thus no longer necessary to
+                disable the bytecode interpreter, and starting with
+                FreeType version 2.4, it is enabled by default.</p>
+
+              <p>The affected patents were</p>
+
+              <div class="quote">
+                <p><a href="https://patents.google.com/patent/US5155805">
+                    Patent US5155805:<br>
+                    <em>Method and apparatus for moving control points
+                      in displaying digital typeface on raster output
+                      devices</em></a></p>
+
+                <p><a href="https://patents.google.com/patent/US5159668">
+                    Patent US5159668:<br>
+                    <em>Method and apparatus for manipulating outlines
+                      in improving digital typeface on raster output
+                      devices</em></a></p>
+
+                <p><a href="https://patents.google.com/patent/US5325479">
+                    Patent US5325479:<br>
+                    <em>Method and apparatus for moving control points
+                      in displaying digital typeface on raster output
+                      devices</em></a></p>
+              </div>
+            </div>
+
+
+            <!-- ************************************************** -->
+
+            <div id="cleartype-patents">
+              <h2>The ClearType Color Filtering Patents Have Expired!</h2>
+
+              <p>Since August 2019, all patents related to ClearType color
+                filtering have expired worldwide.</p>
+
+              <p>The affected patents were</p>
+
+              <div class="quote">
+                <p><a href="https://patents.google.com/patent/US6219025">
+                    Patent US6219025:<br>
+                    <em>Mapping image data samples to pixel sub-components
+                      on a striped display device</em></a></p>
+
+                <p><a href="https://patents.google.com/patent/US6225973">
+                    Patent US6225973:<br>
+                    <em>Mapping samples of foreground/background color
+                      image data to pixel sub-components</em></a></p>
+
+                <p><a href="https://patents.google.com/patent/US6239783">
+                    Patent US6239783:<br>
+                    <em>Weighted mapping of image data samples to pixel
+                      sub-components on a display device</em></a></p>
+
+                <p><a href="https://patents.google.com/patent/US6243070">
+                    Patent US6243070:<br>
+                    <em>Method and apparatus for detecting and reducing
+                      color artifacts in images</em></a></p>
+
+                <p><a href="https://patents.google.com/patent/US6282327">
+                    Patent US6282327:<br>
+                    <em>Maintaining advance widths of existing characters
+                      that have been resolution enhanced </em></a></p>
+
+                <p><a href="https://patents.google.com/patent/US6307566">
+                    Patent US6307566:<br>
+                    <em>Methods and apparatus for performing image
+                      rendering and rasterization operations</em></a></p>
+
+                <p><a href="https://patents.google.com/patent/US6393145">
+                    Patent US6393145:<br>
+                    <em>Methods apparatus and data structures for
+                      enhancing the resolution of images to be rendered on
+                      patterned display devices </em></a></p>
+
+                <p><a href="https://patents.google.com/patent/US6421054">
+                    Patent US6421054:<br>
+                    <em>Methods and apparatus for performing grid fitting
+                      and hinting operations</em></a></p>
+
+                <p><a href="https://patents.google.com/patent/US6624828">
+                    Patent US6624828:<br>
+                    <em>Method and apparatus for improving the quality of
+                      displayed images through the use of user reference
+                      information </em></a></p>
+
+                <p><a href="https://patents.google.com/patent/US6973210">
+                    Patent US6973210:<br>
+                    <em>Filtering image data to obtain samples mapped to
+                      pixel sub-components of a display device</em></a></p>
+              </div>
+
+              <p>Essentially, these patents covered several different
+                things, which can be grossly sub-divided into</p>
+
+              <ul>
+                <li>the process of displaying images where data is
+                  &lsquo;mapped&rsquo; to individual (e.g., LCD)
+                  sub-pixels, instead of whole pixels,</li>
+                <li>the process of displaying said images after filtering
+                  them for various purposes, e.g., reducing color fringes,
+                  and</li>
+                <li>the process of dealing with metrics and spacing
+                  rounding in a sub-pixel world.</li>
+              </ul>
+
+              <p>It is possible that Microsoft acquired other patents
+                related to the field in the previous years.</p>
+
+              <p>Please note that above claims do <em>not</em> cover the
+                enhanced interpretation of TrueType bytecode
+                instructions as discussed
+                in <a href="https://learn.microsoft.com/en-us/typography/cleartype/truetypecleartype">Greg
+                  Hitchcock's whitepaper</a>.</p>
+            </div>
+
+
+            <!-- ************************************************** -->
+
+            <div class="updated">
+              <p>Last update: 17-Aug-2020</p>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- ************************************************** -->
+
+        <div class="col2">
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ************************************************** -->
+
+    <div id="TOC">
+      <ul>
+        <li class="funding">
+          <form action="https://www.paypal.com/ncp/payment/5HHBGYD2SP7JJ" method="post" target="_top"
+            style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;">
+            <input class="pp-5HHBGYD2SP7JJ" type="submit" value="후원하기Donate" />
+            <img src=https://www.paypalobjects.com/images/Debit_Credit.svg alt="cards" />
+            <section> 제공: <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg"
+                alt="paypal" style="height:0.875rem;vertical-align:middle;" /></section>
+          </form>
+        </li>
+        <li class="primary">
+          <a href="index.html">Home</a>
+        </li>
+        <li class="primary">
+          <a href="index.html#news">News</a>
+        </li>
+        <li class="primary">
+          <a href="freetype2/docs/index.html">Overview</a>
+        </li>
+        <li class="primary">
+          <a href="freetype2/docs/documentation.html">Documentation</a>
+        </li>
+        <li class="primary">
+          <a href="developer.html">Development</a>
+        </li>
+        <li class="primary">
+          <a href="contact.html" class="emphasis">Contact</a>
+        </li>
+
+        <li>
+          &nbsp; <!-- separate primary from secondary entries -->
+        </li>
+
+        <li class="secondary">
+          <a href="#bytecode-patents">Bytecode Patents</a>
+        </li>
+        <li class="secondary">
+          <a href="#cleartype-patents">ClearType Patents</a>
+        </li>
+      </ul>
+    </div>
+
+  </div> <!-- id="wrapper" -->
+
+  <div id="TOC-bottom">
+  </div>
+
+</body>
+
+</html>
