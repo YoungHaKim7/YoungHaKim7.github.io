@@ -104,79 +104,44 @@
             <div id="news">
               <h2>News &amp; Updates [Top 10]<a href="./new_more.html">news 더 자세히 더 보기(search전용)</a></h2>
 
-              <h3>Rust String에 대해서</h3>
-              <div class="date">2025-01-09</div>
-              <ul>
-                <a href="./gy_doc/Rust_lang/250109_string_rust_dev.html">Rust String에 대해 알아보겠습니다.</a>.
-                </p>
-              </ul>
 
-              <h3>홈페이지 test</h3>
-              <div class="date">2025-01-07</div>
-              <ul>
-                <p>GlobalYoung공식 홈페이지 입니다. 서툴지만 최대한 만들어 보겠습니다. 좌측 상단 후원 감사합니다. ^^</p>
-                <p> raylib 게임 만들기 최근에 푹 빠져 있습니다.<a
-                    href="https://github.com/YoungHaKim7/raylib-rs_training_game_dev">Github raylib 게임만들기 이동</a>.
-                </p>
-                <p> SDL3/2 게임 만들기도 최고요 ^^.<a href="https://github.com/YoungHaKim7/SDL3_Rust_Game_Training">Github
-                    SDL3/2
-                    게임만들기 이동</a>.
-                </p>
-              </ul>
+              <!-- ************************************************** -->
+
+              <div id="links">
 
 
-              <h4>FreeType 2.13.3</h4>
-              <div class="date">2024-08-12</div>
+                <h2>Links</h2>
+                <ul>
+                  <li><a href="https://cerebras.ai/">https://cerebras.ai/</a>
+                  </li>
+                  <li>
+                    <a href="https://www.perplexity.ai/">https://www.perplexity.ai/</a>,
+                  </li>
+                  <li>
+                    <a href="https://chatgpt.com/">https://chatgpt.com/</a>,
+                  </li>
+                  <li>
+                    <a href="https://gemini.google.com/app">https://gemini.google.com/app</a>,
+                  </li>
+                  <li>
+                    <a href="https://www.microsoft.com/en-us/edge/features/bing-chat">엣지설치하기 싫어서 안 씀 ㅋBing Chat |
+                      Microsoft
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/features/copilot ">기가 막힌 코파일럿, https://github.com/features/copilot
+                      Microsoft
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://alan.estsoft.ai/">한국꺼 이지소프트에서 만듬 Alan앨런</a>
+                  </li>
 
-              <p>The B/W rasterizer has become much faster; besides that,
-                it is a maintenance release.</p>
+                </ul>
+                - ollama로컬 설치용(mistral, llama3.3)
 
-              <p>As usual, a list of the more noteworthy changes can be
-                found in
-                the <a href="https://sourceforge.net/projects/freetype/files/freetype2/2.13.3/">release
-                  notes</a>.</p>
-
-
-            </div>
-
-
-            <!-- ************************************************** -->
-
-            <div id="links">
-
-
-              <h2>Links</h2>
-              <ul>
-                <li><a href="https://cerebras.ai/">https://cerebras.ai/</a>
-                </li>
-                <li>
-                  <a href="https://www.perplexity.ai/">https://www.perplexity.ai/</a>,
-                </li>
-                <li>
-                  <a href="https://chatgpt.com/">https://chatgpt.com/</a>,
-                </li>
-                <li>
-                  <a href="https://gemini.google.com/app">https://gemini.google.com/app</a>,
-                </li>
-                <li>
-                  <a href="https://www.microsoft.com/en-us/edge/features/bing-chat">엣지설치하기 싫어서 안 씀 ㅋBing Chat |
-                    Microsoft
-                  </a>
-                </li>
-                <li>
-                  <a href="https://github.com/features/copilot ">기가 막힌 코파일럿, https://github.com/features/copilot
-                    Microsoft
-                  </a>
-                </li>
-                <li>
-                  <a href="https://alan.estsoft.ai/">한국꺼 이지소프트에서 만듬 Alan앨런</a>
-                </li>
-
-              </ul>
-              - ollama로컬 설치용(mistral, llama3.3)
-
-              <div>
-                <pre>
+                <div>
+                  <pre>
 <code class="language-bash">
 # llama3.3(가정용 컴퓨터로 405B모델을 경험 가능 지금은 아주 느리다. 241212 
 # New state of the art 70B model. Llama 3.3 70B offers similar performance
@@ -196,8 +161,8 @@ $ systemctl stop ollama.service
 $ ollama run phi4
   </code></pre>
 
-              </div>
-              <pre>
+                </div>
+                <pre>
   <code class="language-rust">
     // Your Rust code here
   fn main (){
@@ -207,118 +172,21 @@ $ ollama run phi4
   </code>
 </pre>
 
-              - https://github.com/ollama/ollama/issues/690
+                - https://github.com/ollama/ollama/issues/690
 
-              <br />
+                <br />
 
-              <br />
+                <input class="goupbtn" type="button" value="Top" onclick="window.scrollTo(0,0);">
 
-              <hr />
+                <!-- ************************************************** -->
 
-              <hr />
-
-              <p>The links collected in this section are useful if you
-                want to put FreeType into a larger frame of
-                understanding.</p>
-
-
-              <h3>Reference Sites</h3>
-
-              <div class="quote">
-                <p><a href="https://learn.microsoft.com/en-us/typography/">Microsoft
-                    Typography</a> &ndash; Microsoft's OpenType
-                  specification and developing tools<br>
-
-                  <a href="https://developer.apple.com/fonts/">Apple
-                    Fonts</a> &ndash; Apple's TrueType specification and
-                  other things<br>
-
-                  <a href="https://www.adobe.com/products/type.html">Adobe
-                    Typography</a> &ndash; PostScript fonts specifications
-                  and developing tools
-                </p>
-              </div>
-
-              <p>Detailed information on the font formats supported by
-                FreeType can be found in the
-                file <a href="https://gitlab.freedesktop.org/freetype/freetype/-/blob/master/docs/formats.txt"
-                  type="text/plain"><tt>formats.txt</tt></a>, which is part
-                of the FreeType source code bundle.</p>
-
-
-              <h3>Font Tools</h3>
-
-              <div class="quote">
-                <p><a href="https://github.com/fonttools/fonttools">TTX</a>
-                  &ndash; an OpenType assembler and disassembler<br>
-
-                  <a href="https://fontforge.github.io/en-US/">FontForge</a> &ndash;
-                  a free, powerful graphical font editor, including a
-                  TrueType instructions debugger (using FreeType)<br>
-
-                  <a href="http://home.kabelfoon.nl/~slam/fonts/truetypeviewer.html">TrueTypeViewer</a>
-                  &ndash; a free, powerful OpenType viewing tool with a
-                  TrueType instructions debugger (<em>not</em> using
-                  FreeType)<br>
-
-                  <a href="ttfautohint/index.html">ttfautohint</a> &ndash;
-                  a tool to auto-hint TrueType fonts, based on FreeType's
-                  auto-hinting engine
-                </p>
-              </div>
-
-
-              <h3>Font Shaping and Layout Engines</h3>
-
-              <p>These libraries work on top of font rendering libraries
-                like FreeType to provide sophisticated text (string)
-                layout, being able to handle OpenType features in
-                particular. All of them
-                use <a href="https://www.unicode.org">Unicode</a> for font
-                and text encoding.</p>
-
-              <div class="quote">
-                <p><a href="https://www.pango.org">Pango</a> &ndash; the
-                  layout library used
-                  by <a href="https://www.gnome.org">Gnome</a>'s <a href="https://www.gtk.org">GTK+</a>
-                  framework<br>
-
-                  <a href="http://www.icu-project.org">ICU</a> &ndash; a
-                  layout library originally developed by IBM, used for
-                  example in <a href="https://tug.org/xetex/">XeTeX</a>, an
-                  internationalized successor
-                  of <a href="https://en.wikipedia.org/wiki/TeX">TeX</a><br>
-
-                  <a href="http://harfbuzz.org">HarfBuzz</a> &ndash; a
-                  text shaping library, originally based on
-                  FreeType&nbsp;1's OpenType layout support
-                </p>
-              </div>
-
-
-              <h3>Other Font-related Libraries</h3>
-
-              <div class="quote">
-                <p><a href="https://www.t1lib.org/">T1Lib</a> &ndash; a
-                  Type&nbsp;1 fonts library (no longer under
-                  development)<br>
-
-                  <a href="http://www-masu.ist.osaka-u.ac.jp/~kakugawa/VFlib/">VFLib</a>
-                  &ndash; a library especially for accessing TeX fonts (no
-                  longer under development)
-                </p>
               </div>
             </div>
-            <input class="goupbtn" type="button" value="Top" onclick="window.scrollTo(0,0);">
+
 
             <!-- ************************************************** -->
 
-            <div class="webmaintainer">
-              <p>This page is maintained by
-                <a href="mailto:wl@gnu.org">Werner Lemberg.</a> The
-                FreeType logo has been designed
-                by <a href="http://www.colom.org">Manuel Colom</a>.
-              </p>
+            <div class="col2">
             </div>
           </div>
         </div>
@@ -326,85 +194,77 @@ $ ollama run phi4
 
         <!-- ************************************************** -->
 
-        <div class="col2">
+        <div id="TOC">
+          <ul>
+            <li class="funding">
+              <style>
+                .pp-5HHBGYD2SP7JJ {
+                  text-align: center;
+                  border: none;
+                  border-radius: 0.25rem;
+                  min-width: 11.625rem;
+                  padding: 0 2rem;
+                  height: 2.625rem;
+                  font-weight: bold;
+                  background-color: #FFD140;
+                  color: #000000;
+                  font-family: "Helvetica Neue", Arial, sans-serif;
+                  font-size: 1rem;
+                  line-height: 1.25rem;
+                  cursor: pointer;
+                }
+              </style>
+              <form action="https://www.paypal.com/ncp/payment/5HHBGYD2SP7JJ" method="post" target="_top"
+                style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;">
+                <input class="pp-5HHBGYD2SP7JJ" type="submit" value="후원하기Donate" />
+                <img src=https://www.paypalobjects.com/images/Debit_Credit.svg alt="cards" />
+                <section> 제공: <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg"
+                    alt="paypal" style="height:0.875rem;vertical-align:middle;" /></section>
+              </form>
+            </li>
+            <li class="primary">
+              <a href="../index.html" class="current">Home</a>
+            </li>
+            <li class="primary">
+              <a href="../index.html#news">News</a>
+            </li>
+            <li class="primary">
+              <a href="Investment/index_investment.html">Blog개인글</a>
+            </li>
+            <li class="primary">
+              <a href="documentation.html">결제&Doc</a>
+            </li>
+            <li class="primary">
+              <a href="../developer.html">Development</a>
+            </li>
+            <li class="primary">
+              <a href="../contact.html" class="emphasis">Contact</a>
+            </li>
+
+            <li>
+              &nbsp; <!-- separate primary from secondary entries -->
+            </li>
+
+            <li class="secondary">
+              <a href="../comment.html">게시판&Q&A</a>
+            </li>
+            <li class="secondary">
+              <a href="../index.html#links">Links</a>
+            </li>
+            <li>
+              &nbsp; <!-- separate primary from secondary entries -->
+            </li>
+            <li class="primary">
+              <a href="gsoc.html">GSoC</a>
+            </li>
+          </ul>
         </div>
+
+      </div> <!-- id="wrapper" -->
+
+      <div id="TOC-bottom">
       </div>
-    </div>
-
-
-    <!-- ************************************************** -->
-
-    <div id="TOC">
-      <ul>
-        <li class="funding">
-          <style>
-            .pp-5HHBGYD2SP7JJ {
-              text-align: center;
-              border: none;
-              border-radius: 0.25rem;
-              min-width: 11.625rem;
-              padding: 0 2rem;
-              height: 2.625rem;
-              font-weight: bold;
-              background-color: #FFD140;
-              color: #000000;
-              font-family: "Helvetica Neue", Arial, sans-serif;
-              font-size: 1rem;
-              line-height: 1.25rem;
-              cursor: pointer;
-            }
-          </style>
-          <form action="https://www.paypal.com/ncp/payment/5HHBGYD2SP7JJ" method="post" target="_top"
-            style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;">
-            <input class="pp-5HHBGYD2SP7JJ" type="submit" value="후원하기Donate" />
-            <img src=https://www.paypalobjects.com/images/Debit_Credit.svg alt="cards" />
-            <section> 제공: <img src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg"
-                alt="paypal" style="height:0.875rem;vertical-align:middle;" /></section>
-          </form>
-        </li>
-        <li class="primary">
-          <a href="../index.html" class="current">Home</a>
-        </li>
-        <li class="primary">
-          <a href="../index.html#news">News</a>
-        </li>
-        <li class="primary">
-          <a href="Investment/index_investment.html">Blog개인글</a>
-        </li>
-        <li class="primary">
-          <a href="documentation.html">결제&Doc</a>
-        </li>
-        <li class="primary">
-          <a href="../developer.html">Development</a>
-        </li>
-        <li class="primary">
-          <a href="../contact.html" class="emphasis">Contact</a>
-        </li>
-
-        <li>
-          &nbsp; <!-- separate primary from secondary entries -->
-        </li>
-
-        <li class="secondary">
-          <a href="../comment.html">게시판&Q&A</a>
-        </li>
-        <li class="secondary">
-          <a href="../index.html#links">Links</a>
-        </li>
-        <li>
-          &nbsp; <!-- separate primary from secondary entries -->
-        </li>
-        <li class="primary">
-          <a href="gsoc.html">GSoC</a>
-        </li>
-      </ul>
-    </div>
-
-  </div> <!-- id="wrapper" -->
-
-  <div id="TOC-bottom">
-  </div>
-  <script src="js/highlight.js"></script>
+      <script src="js/highlight.js"></script>
 
 </body>
 
