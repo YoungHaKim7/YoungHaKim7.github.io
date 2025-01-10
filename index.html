@@ -19,15 +19,16 @@
   <script type="text/javascript" src="js/freetype2.js">
   </script>
   <!-- ***********구글 광고 식별********************************** -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5428961115692818" crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5428961115692818"
+    crossorigin="anonymous"></script>
   <!-- ***********구글 광고 식별********************************** -->
-  
+
   <!-- ***********코드 이쁘게********************************** -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
   <script>hljs.highlightAll();</script>
   <!-- ***********코드 이쁘게********************************** -->
-  
+
   <title>Global Young</title>
 </head>
 
@@ -199,31 +200,22 @@
               </ul>
               - ollama로컬 설치용(mistral, llama3.3)
 
-<pre>
-<code class="language-bash">
+              <div>
+
+                <pre><style>
+.hljs {
+    white-space: pre;
+    overflow-x: auto;
+}
+</style><code class="language-bash">
 # llama3.3(가정용 컴퓨터로 405B모델을 경험 가능 지금은 아주 느리다. 241212 
-</code>
-<code class="language-bash">
 # New state of the art 70B model. Llama 3.3 70B offers similar performance
-</code>
-<code class="language-bash">  
 # compared to Llama 3.1 405B model. 
-</code>
-<code class="language-bash">  
 ollama run llama3.3 
-</code>
-<code class="language-bash"> 
 # ollam 프로세서 잘 실행 되는지 확인
-</code>
-<code class="language-bash"> 
 # pgrep ollama
-</code>
-<code class="language-bash"> 
 6327
-</code>
-<code class="language-bash">
 6521 
-</code>
 
 # ollam "/bye" 로 종료 시키고 서비스 종료 시키기
 $ systemctl stop ollama.service 
@@ -232,7 +224,15 @@ $ systemctl stop ollama.service
 # OpenAI's GPT-4o-mini from Microsoft is available on Ollama.
 
 $ ollama run phi4
-
+  </code></pre>
+              </div>
+              <pre>
+  <code class="language-rust">
+    // Your Rust code here
+  fn main (){
+    let a = 10;
+    println!("hello rust");
+  }
   </code>
 </pre>
 
@@ -439,7 +439,8 @@ $ ollama run phi4
 
   <div id="TOC-bottom">
   </div>
-<script src="js/highlight.js"></script>
+  <script src="js/highlight.js"></script>
 
 </body>
+
 </html>
