@@ -200,27 +200,39 @@
               - ollama로컬 설치용(mistral, llama3.3)
 
 <pre>
-  <code class="language-bash">
+<code class="language-bash">
+# llama3.3(가정용 컴퓨터로 405B모델을 경험 가능 지금은 아주 느리다. 241212 
+</code>
+<code class="language-bash">
+# New state of the art 70B model. Llama 3.3 70B offers similar performance
+</code>
+<code class="language-bash">  
+# compared to Llama 3.1 405B model. 
+</code>
+<code class="language-bash">  
+ollama run llama3.3 
+</code>
+<code class="language-bash"> 
+# ollam 프로세서 잘 실행 되는지 확인
+</code>
+<code class="language-bash"> 
+# pgrep ollama
+</code>
+<code class="language-bash"> 
+6327
+</code>
+<code class="language-bash">
+6521 
+</code>
 
+# ollam "/bye" 로 종료 시키고 서비스 종료 시키기
+$ systemctl stop ollama.service 
 
-# llama3.3(가정용 컴퓨터로 405B모델을 경험 가능 지금은 아주 느리다. 241212 <br />
-# New state of the art 70B model. Llama 3.3 70B offers similar performance  <br />
-# compared to Llama 3.1 405B model. <br />
-ollama run llama3.3 <br />
- <br />
-# ollam 프로세서 잘 실행 되는지 확인 <br />
-# pgrep ollama <br />
-6327 <br />
-6521 <br />
- <br />
-# ollam "/bye" 로 종료 시키고 서비스 종료 시키기 <br />
-$ systemctl stop ollama.service <br />
- <br />
-# 마이크로소프트꺼) Phi-4, a 14B parameter open model which performs at par with  <br />
-# OpenAI's GPT-4o-mini from Microsoft is available on Ollama. <br />
- <br />
-$ ollama run phi4 <br />
- <br />
+# 마이크로소프트꺼) Phi-4, a 14B parameter open model which performs at par with
+# OpenAI's GPT-4o-mini from Microsoft is available on Ollama.
+
+$ ollama run phi4
+
   </code>
 </pre>
 
