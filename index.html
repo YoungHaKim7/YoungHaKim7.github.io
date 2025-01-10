@@ -21,6 +21,13 @@
   <!-- ***********구글 광고 식별********************************** -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5428961115692818" crossorigin="anonymous"></script>
   <!-- ***********구글 광고 식별********************************** -->
+  <!-- ***********highlight.js코드 이쁘게********************************** -->
+  <!--https://github.com/highlightjs/highlight.js/ -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/es/languages/bash.min.js"></script>
+  <!-- ***********highlight.js코드 이쁘게********************************** -->
+  
   <title>Global Young</title>
 </head>
 
@@ -192,28 +199,28 @@
               </ul>
               - ollama로컬 설치용(mistral, llama3.3)
 
-              <pre>
+<pre>
+  <code class="bash">
 
-```bash
+  # llama3.3(가정용 컴퓨터로 405B모델을 경험 가능 지금은 아주 느리다. 241212
+  # New state of the art 70B model. Llama 3.3 70B offers similar performance compared to Llama 3.1 405B
+  model.
+  ollama run llama3.3
+  
+  # ollam 프로세서 잘 실행 되는지 확인
+  # pgrep ollama
+  6327
+  6521
+  
+  # ollam "/bye" 로 종료 시키고 서비스 종료 시키기
+  $ systemctl stop ollama.service
+  
+  # 마이크로소프트꺼) Phi-4, a 14B parameter open model which performs at par with OpenAI's GPT-4o-mini from Microsoft is available on Ollama.
+  
+  $ ollama run phi4
 
-# llama3.3(가정용 컴퓨터로 405B모델을 경험 가능 지금은 아주 느리다. 241212
-# New state of the art 70B model. Llama 3.3 70B offers similar performance compared to Llama 3.1 405B
-model.
-ollama run llama3.3
-
-# ollam 프로세서 잘 실행 되는지 확인
-# pgrep ollama
-6327
-6521
-
-# ollam "/bye" 로 종료 시키고 서비스 종료 시키기
-$ systemctl stop ollama.service
-
-# 마이크로소프트꺼) Phi-4, a 14B parameter open model which performs at par with OpenAI's GPT-4o-mini from Microsoft is available on Ollama.
-
-$ ollama run phi4
-```
-              </pre>
+  </code>
+</pre>
 
               - https://github.com/ollama/ollama/issues/690
 
