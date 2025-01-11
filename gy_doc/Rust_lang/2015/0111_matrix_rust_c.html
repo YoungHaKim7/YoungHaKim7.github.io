@@ -1,0 +1,373 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Style-Type" content="text/css">
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+
+    <meta name="description" content="Rust Development matrix">
+    <meta name="keywords" content="matrix rust 
+                 matrix">
+
+    <link rel="icon" href="../../image/favicon_-60.ico">
+    <link rel="shortcut icon" href="../../image/favicon_-60.ico">
+    <link rel="stylesheet" type="text/css" href="../../../css/lang_css/code_highlight.css">
+
+    <script type="text/javascript" src="../../../js/freetype2.js">
+    </script>
+    <!-- ***********코드 이쁘게********************************** -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <!-- ***********코드 이쁘게********************************** -->
+
+
+    <title>Rust(Matrix) Development</title>
+</head>
+
+<body>
+
+    <div id="top" class="bar">
+        <h1><a href="../../../developer.html">Rust 언어</a> Development</h1>
+    </div>
+
+
+    <div id="wrapper">
+
+        <div class="colmask leftmenu">
+            <div class="colright">
+                <div class="col1wrap">
+                    <div class="col1">
+
+
+                        <!-- ************************************************** -->
+
+                        <div id="source-code">
+                            <h2><a href="../../../developer.html">- Rust dev(Dev. Home으로 돌아가기)</a></h2>
+                            <br />
+                            <hr />
+                            <h1 id="rust-dev"><img width=30px src="../../../image/rust_logo.png"><a href="#rust-dev">
+                                    Rust
+                                    dev</a></h1>
+                            <ul>
+                                <li class="emph">
+                                    <p><a href="#cpp-devteset"> 250111 Rust Matrix구현.시리즈(C언어와 비교)</a></p>
+                                </li>
+                            </ul>
+
+                            <hr />
+
+                            <div id="intro">
+                                <a href="#matrix_simple">Rust로 Matrix를 일단 구현부터 해 봅시다. 이동</a>
+                                <p>Rust의 최대장점은 C/C++같이 만들고 싶은 기능을 내 맘대로 구현할 수 있습니다. ^^</p>
+
+                                <hr />
+                            </div>
+                            <h2 id="matrix_simple">Rust로 Matrix를 구현하겠습니다.</h2>
+
+                            <pre>
+  <code class="language-rust"> // Your Rust code here
+fn matrix_multiply(
+    matrix: [[i32; 3]; 3],
+    mul: [[i32; 1]; 3]
+    ) -> [[i32; 1]; 3] 
+    {
+    let mut result = [[0; 1]; 3];
+
+    for i in 0..3 {
+        for j in 0..1 {
+            for k in 0..3 {
+                result[i][j] += matrix[i][k] * mul[k][j];
+            }
+        }
+    }
+
+    result
+}
+
+fn main() {
+    #[rustfmt::skip]
+    let matrix_2d = [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9]
+    ];
+    #[rustfmt::skip]
+    let mat_mul = [
+        [1],
+        [2],
+        [3]
+    ];
+
+    let mat_result = matrix_multiply(matrix_2d, mat_mul);
+
+    println!("Matrix 2D:");
+    for row in matrix_2d {
+        println!("{:?}", row);
+    }
+
+    println!("\nMatrix Mul:");
+    for row in mat_mul {
+        println!("{:?}", row);
+    }
+
+    println!("\nResult:");
+    for row in mat_result {
+        println!("{:?}", row);
+    }
+}
+
+
+// ~~~~~~ cargo run
+// Result
+Matrix 2D:
+[1, 2, 3]
+[4, 5, 6]
+[7, 8, 9]
+
+Matrix Mul:
+[1]
+[2]
+[3]
+
+Result:
+[14]
+[32]
+[50]
+
+</code>
+</pre>
+
+                            <hr />
+
+                            <div id="matrix_auto">
+                                <p>matrix자동으로 인식하게 코드 구현</p>
+                                <h4>Rust Matrix 수동으로 구현 하니 매트릭스를 자동으로 인식하는 fn기능을 구현하고 싶어졌습니다.</h4>
+
+                                <h2> Matrix row와 column을 자동으로 인식하는 fn기능입니다.</h2>
+                                <ul> Rust Matrix 자동으로 row와 column 인식하게 구현 하니 골치아픈 소유권을 피해가기 위해 Clone Trait를 활용하여 날로
+                                    먹어봤습니다.
+                                    <li class="emph"><a href="#matrix_auto">코드로 이동</a>
+                                    </li>
+                                    <li class="emph"> Rust의 꽃은 Trait죠. Trait를 모르신다면 유료 회원 결제 해서 1:1 수업을 들어보세요^^
+                                    </li>
+                                    <li class="emph"> Trait 가장 어렵기도 하고 Trait덕에 딱딱한 타입을 유연하게 피해 갈 수 있는 아주 아주 좋은 기능이 많은
+                                        넘입니다. 사랑스러운 Trait
+                                    </li>
+                                    <li class="emph"><a href="../../documentation.html">유료 수업 문의로 이동</a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                            <pre>
+
+                            <code class="language-rust"> // Your Rust code here
+fn matrix_multiply<T>(
+    matrix_a: &[Vec<T>],
+    matrix_b: &[Vec<T>],
+    mut multiply: impl FnMut(&T, &T) -> T,
+    mut add: impl FnMut(&T, &T) -> T,
+) -> Vec<Vec<T>>
+where
+    T: Default + Clone,
+{
+    let rows_a = matrix_a.len();
+    let cols_a = matrix_a[0].len();
+    let rows_b = matrix_b.len();
+    let cols_b = matrix_b[0].len();
+
+    assert_eq!(
+        cols_a, rows_b,
+        "Matrix dimensions do not match for multiplication!"
+    );
+
+    // Initialize the result matrix with default values.
+    let mut result = vec![vec![T::default(); cols_b]; rows_a];
+
+    for i in 0..rows_a {
+        for j in 0..cols_b {
+            for k in 0..cols_a {
+                result[i][j] = add(&result[i][j], &multiply(&matrix_a[i][k], &matrix_b[k][j]));
+            }
+        }
+    }
+
+    result
+}
+  </code>
+  </pre>
+
+                            <hr />
+
+                            <h1 id="c_matrix"><img width=30px
+                                    src="../../../image/Lang_logo/C_Programming_Language_svg.png"> C언어로 matrix</h1>
+                            <p> malloc을 활용하여 동적 활당(dynamic programming)도 가능합니다. 이건...유료 회원에게만...</p>
+                            <pre>
+                            <code class="language-c"> // Your C code here(C matrix)
+
+#include <stdio.h>
+#include <string.h>
+
+#define COLS (5)
+
+void init_matrix(int m[][COLS], int rows)
+{
+    int i, j;
+    for (i = 0; i < rows; i++) {
+        for (j = 0; j < COLS; j++) {
+            m[i][j] = i*j;
+        }
+    }
+}
+
+int main(void)
+{
+    int matrix[10][COLS];
+
+    init_matrix(matrix, 5);
+
+    // Print the matrix
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < COLS; j++) {
+            printf("%d ", matrix[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
+// Result
+
+0 0 0 0 0
+0 1 2 3 4
+0 2 4 6 8
+0 3 6 9 12
+0 4 8 12 16
+
+
+</code>
+</pre>
+
+                            <h1> matrix 를 0으로 초기화하기</h1>
+                            <pre>
+<code>
+
+void init_matrix(int m[][COLS], int rows)
+{
+    int i, j;
+    for (i = 0; i < rows; i++) {
+        for (j = 0; j < COLS; j++) {
+            m[i][j] = 0;
+        }
+    }
+}
+</code>
+</pre>
+
+                            <div id="intro">
+                                <p>이상 matrix를 활용하여 데이터를 저장하는 방법을 알아보았습니다.</p>
+                                <p>유료 회원에게는 더 다양한 코드와 snippet과 AI를 활용한 생산성 100배의 코드제공과 코드의 기본 원리를 1:1로 알려 드리고 있습니다.</p>
+                                <p>머신러닝과 AI시대는 matrix가 필수 인거 아시죠. 이제 데이터를 1차원으로 넣는게 아니라. 다차원으로 Data를 넣어서 알고리즘을 만들어야 하는
+                                    시대로
+                                    들어왔습니다.</p>
+                                <p>OpenGV나 요즘 컴퓨터 비젼으로 뜨고 있는 OpenCV 코딩의 기초중에 기초는 매트릭스를 가지고 놀아야합니다.</p>
+                                <p>AI 혁명으로 1900년도 산업업명 -> 2000년도 인터넷 혁명 -> 2010년도 스마트폰 혁명 -> 2016년 AI 혁명</p>
+                                <p> 인간의 지능의 한계점을 돌파하는 시대에 살아 남으시려면 AI를 활용한 코딩은 필수 입니다.</p>
+                                <li><a href="https://youtu.be/I0UJ5bn0o-I?si=PY1rGY4-f7OJvJra">(241031) AI혁명의 시작 딥러닝 과연
+                                        노벨 물리학상은
+                                        왜 딥러닝에 주목하였을까? 2024 노벨물리학상해설 1부 [보이저엑스 남세동 대표]
+                                        안될과학 Unrealscience
+                                    </a></li>
+
+                                <hr />
+
+                                <br />
+                                <br />
+                                <li class="emph"><a href="../../documentation.html">유료 수업 문의로 이동</a>
+                                </li>
+                            </div>
+
+                        </div>
+
+
+                        <!-- ************************************************** -->
+
+
+                        <!-- ************************************************** -->
+
+                        <div class="updated">
+                            <p>Last update: 11-Jan-2025</p>
+                        </div>
+                        <input class="goupbtn" type="button" value="Top" onclick="window.scrollTo(0,0);">
+                    </div>
+                </div>
+
+
+                <!-- ************************************************** -->
+
+                <div class="col2">
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ************************************************** -->
+
+        <div id="TOC">
+            <ul>
+                <li class="funding">
+                    <style>
+                        .pp-5HHBGYD2SP7JJ {
+                            text-align: center;
+                            border: none;
+                            border-radius: 0.25rem;
+                            min-width: 11.625rem;
+                            padding: 0 2rem;
+                            height: 2.625rem;
+                            font-weight: bold;
+                            background-color: #FFD140;
+                            color: #000000;
+                            font-family: "Helvetica Neue", Arial, sans-serif;
+                            font-size: 1rem;
+                            line-height: 1.25rem;
+                            cursor: pointer;
+                        }
+                    </style>
+                    <form action="https://www.paypal.com/ncp/payment/5HHBGYD2SP7JJ" method="post" target="_top"
+                        style="display:inline-grid;justify-items:center;align-content:start;gap:0.5rem;">
+                        <input class="pp-5HHBGYD2SP7JJ" type="submit" value="후원하기Donate" />
+                        <img src=https://www.paypalobjects.com/images/Debit_Credit.svg alt="cards" />
+                        <section> 제공: <img
+                                src="https://www.paypalobjects.com/paypal-ui/logos/svg/paypal-wordmark-color.svg"
+                                alt="paypal" style="height:0.875rem;vertical-align:middle;" /></section>
+                    </form>
+                </li>
+                <li class="primary">
+                    <a href="../../../index.html">Home</a>
+                </li>
+
+                <li>
+                    &nbsp; <!-- separate primary from secondary entries -->
+                </li>
+
+                <li class="secondary">
+                    <a href="#rust-dev">Rust Lang(matrix)</a>
+                </li>
+                <li class="secondary">
+
+                    <a href="#c_matrix">C Lang(matrix)</a>
+                </li>
+            </ul>
+        </div>
+
+    </div> <!-- id="wrapper" -->
+
+    <div id="TOC-bottom">
+    </div>
+
+</body>
+
+</html>
