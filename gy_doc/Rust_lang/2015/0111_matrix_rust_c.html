@@ -164,12 +164,12 @@ Result:
                             <pre>
 
                             <code class="language-rust"> // Your Rust code here
-fn matrix_multiply<T>(
-    matrix_a: &[Vec<T>],
-    matrix_b: &[Vec<T>],
+fn matrix_multiply&lt;T&gt;(
+    matrix_a: &[Vec&lt;T&gt;],
+    matrix_b: &[Vec&lt;T&gt;],
     mut multiply: impl FnMut(&T, &T) -> T,
     mut add: impl FnMut(&T, &T) -> T,
-) -> Vec<Vec<T>>
+) -> Vec&lt;Vec&lt;T&gt;&gt;
 where
     T: Default + Clone,
 {
@@ -207,8 +207,8 @@ where
                             <pre>
                             <code class="language-c"> // Your C code here(C matrix)
 
-#include <stdio.h>
-#include <string.h>
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
 
 #define COLS (5)
 
