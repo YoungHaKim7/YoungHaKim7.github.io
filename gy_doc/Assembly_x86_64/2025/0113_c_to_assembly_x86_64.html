@@ -72,9 +72,79 @@
                             <div id="intro">
                                 <a href="#matrix_simple">c 코드를 Assembly_x86_64 변환</a>
 
-                                <hr />
-
                             </div>
+                            <hr />
+                            <h1 id="Common_LLVM_IR"> Common LLVM IR Instructions</h1>
+                            <a href="https://youtu.be/wt7a5BOztuM?si=pfpYsxb3Q00jeTII">출처 : C to Assembly | MIT(16분
+                                10초)</a>
+                            <table border="1">
+                                <tr>
+                                    <td colspan="3" align="center">Common LLVM IR Instructions</td>
+                                </tr>
+                                <tr align="center">
+                                    <td>Type</td>
+                                    <td>Operation</td>
+                                    <td>Example(s)</td>
+                                </tr>
+                                <tr align="center">
+                                    <td rowspan="4">Data<br />movement</td>
+                                    <td>Stack allocation</td>
+                                    <td>alloca</td>
+                                </tr>
+                                <tr align="center">
+                                    <td>Momory read</td>
+                                    <td>load</td>
+                                </tr>
+                                <tr align="center">
+                                    <td>Memory write</td>
+                                    <td>store</td>
+                                </tr>
+                                <tr align="center">
+                                    <td>Type conversion</td>
+                                    <td>bitcast, ptrtoint</td>
+                                </tr>
+                                <tr align="center">
+                                    <td rowspan="5">Arithmetic<br />and logic</td>
+                                    <td>Integer arithmetic</td>
+                                    <td>add, sub, mul, div, shl, shr</td>
+                                </tr>
+                                <tr align="center">
+                                    <td>Floating-point<br />arithmetic</td>
+                                    <td>fadd, fmul</td>
+                                </tr>
+                                <tr align="center">
+                                    <td>Binary logic</td>
+                                    <td>and, or, xor, not</td>
+                                </tr>
+                                <tr align="center">
+                                    <td>Boolean logic</td>
+                                    <td>icmp</td>
+                                </tr>
+                                <tr align="center">
+                                    <td>Address calculation</td>
+                                    <td>getelementptr</td>
+                                </tr>
+                                <tr align="center">
+                                    <td rowspan="4">Control<br />flow</td>
+                                    <td>Unconditional jump</td>
+                                    <td>br &lt;location&gt;
+                                    </td>
+                                </tr>
+                                <tr align="center">
+                                    <td>Conditional jump</td>
+                                    <td>br &lt;condition&gt;, &lt;true&gt;, &lt;false&gt;</td>
+                                </tr>
+                                <tr align="center">
+                                    <td>Subroutines</td>
+                                    <td>call, ret</td>
+                                </tr>
+                                <tr align="center">
+                                    <td>Maintaining SSA form</td>
+                                    <td>phi</td>
+                                </tr>
+                            </table>
+
+                            <hr />
 
                             <h1 id="asm_code_sample">Assembly(x86_64) asm.s </h1>
 
@@ -204,12 +274,13 @@ ret i64 %8
                     <li>
                         &nbsp; <!-- separate primary from secondary entries -->
                     </li>
-
+                    <li class="secondary">
+                        <a href="#Common_LLVM_IR">Common_LLVM_IR<br /> Instructions</a>
+                    </li>
                     <li class="secondary">
                         <a href="#asm_code_sample">Assembly <br />sample code</a>
                     </li>
                     <li class="secondary">
-
                         <a href="#llvm_asm">LLVM <br /> sample code</a>
                     </li>
                 </ul>
