@@ -1,0 +1,12 @@
+/* freetype2_60.css */
+
+@import "../freetype2.css";
+
+.bar {
+  background: #42445c url("../../image/Lang_logo/assembly_log.png") no-repeat right top;
+  background-size: 10%;
+}
+
+#top a {
+  border-bottom: 2px solid #42445c;
+}
