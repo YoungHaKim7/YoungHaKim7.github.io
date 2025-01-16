@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay 1yr</title>
+</head>
+
+<body>
+
+    <script
+        src="https://www.paypal.com/sdk/js?client-id=BAAso3VFkUad8u10SYQqtZNGSpqF_n5iQlAw7E2jTVP2nhyY5BCbKZglMePnZDXy1K1_DHfCuD-EOg2Hu0&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
+    <div id="paypal-container-ZTUS528PGCY98"></div>
+    <script>
+        paypal
+            .HostedButtons({
+                hostedButtonId: "ZTUS528PGCY98",
+            })
+            .render("#paypal-container-ZTUS528PGCY98");
+    </script>
+</body>
+
+</html>
