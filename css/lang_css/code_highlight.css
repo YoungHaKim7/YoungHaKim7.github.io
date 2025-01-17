@@ -14,4 +14,6 @@
 .hljs {
     white-space: pre;
     overflow-x: auto;
+    background-color: #343434;
+    color: aliceblue;
 }
