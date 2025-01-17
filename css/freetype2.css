@@ -12,6 +12,23 @@
 /* my css */
 @import "menu_top/gotop.css";
 
+:root {
+  /* this has to be set to switch between light or dark */
+  color-scheme: light dark;
+
+  --light-bg: ghostwhite;
+  --light-color: rgb(240, 250, 250);
+  --light-code: tomato;
+
+  --dark-bg: rgb(38, 47, 47);
+  --dark-color: ghostwhite;
+  --dark-code: gold;
+}
+
+* {
+  background-color: light-dark(var(--light-bg), var(--dark-bg));
+  color: light-dark(var(--light-color), var(--dark-color));
+}
 
 
 /* top-level appearance */
@@ -29,7 +46,7 @@ body {
 /* table of contents column; */
 /* width and offsets must be synchronized with col2 below */
 #TOC {
-  background: #F8F8F8;
+  background: light-dark(var(--light-bg), var(--dark-bg));
   position: fixed;
   font-family: "Droid Sans", "sans-serif";
   font-size: 115%;
@@ -38,7 +55,7 @@ body {
 }
 
 #TOC-bottom {
-  background: #F8F8F8;
+  background: light-dark(var(--light-bg), var(--dark-bg));
   left: 0em;
   width: 11.5em;
 }
@@ -72,19 +89,19 @@ body {
 
 /* this is gray getting black */
 #TOC a:link {
-  color: #666666;
+  color: #6186ff;
 }
 
 #TOC a:visited {
-  color: #666666;
+  color: #f6e6e6;
 }
 
 #TOC a:active {
-  color: #666666;
+  color: #ffe9e9;
 }
 
 #TOC a:hover {
-  color: #000000;
+  color: #fff0f0;
 }
 
 /* this is pale red getting red
@@ -197,7 +214,7 @@ body {
   position: relative;
   left: 11.5em;
   /* pad2_l + wd2 + pad2_r */
-  background: white;
+  background: light-dark(var(--light-bg), var(--dark-bg));
 }
 
 .leftmenu .col1wrap {
@@ -269,18 +286,18 @@ span.important {
 }
 
 a {
-  color: #0000EF;
+  color: #347ff1;
   font-weight: bold;
   /* no underline for links */
   text-decoration: none;
 }
 
 a:link {
-  color: #000080;
+  color: #347ff1;
 }
 
 a:visited {
-  color: #800080;
+  color: #ffffda;
 }
 
 a:active {
@@ -288,7 +305,7 @@ a:active {
 }
 
 a:hover {
-  color: #1919AA;
+  color: #e3edfc;
 }
 
 h1 {
