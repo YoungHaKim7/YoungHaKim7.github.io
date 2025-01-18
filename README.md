@@ -25,6 +25,9 @@
 
 <hr />
 
+# 댓글 darkmode 세팅
+- https://junia3.github.io/blog/commentdark 
+
 # Thank you
 - https://gitlab.freedesktop.org/freetype/freetype-web
 
