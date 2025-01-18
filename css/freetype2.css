@@ -46,7 +46,7 @@ body {
 /* table of contents column; */
 /* width and offsets must be synchronized with col2 below */
 #TOC {
-  background: light-dark(var(--light-bg), var(--dark-bg)) !important;
+  background: #262f2f !important;
   position: fixed;
   font-family: "Droid Sans", "sans-serif";
   font-size: 115%;
@@ -55,7 +55,7 @@ body {
 }
 
 #TOC-bottom {
-  background: light-dark(var(--light-bg), var(--dark-bg)) !important;
+  background: #262f2f !important;
   left: 0em;
   width: 11.5em;
 }
@@ -214,7 +214,7 @@ body {
   position: relative;
   left: 11.5em;
   /* pad2_l + wd2 + pad2_r */
-  background: light-dark(var(--light-bg), var(--dark-bg)) !important;
+  background: #262f2f !important;
 }
 
 .leftmenu .col1wrap {
