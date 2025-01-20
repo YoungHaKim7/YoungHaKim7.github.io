@@ -523,6 +523,9 @@ p.note {
 }
 
 footer {
+  font-size: smaller;
+  background-color: light-dark(var(--light-bg), var(--dark-bg));
+  color: light-dark(var(--light-color), var(--dark-color));
   width: 100%;
   height: auto;
   /* footer의 높이 */
