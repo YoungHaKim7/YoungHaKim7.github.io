@@ -522,6 +522,18 @@ p.note {
   font-style: italic;
 }
 
+footer {
+  width: 100%;
+  height: auto;
+  /* footer의 높이 */
+  position: absolute;
+  /* bottom: 100rem; */
+  x: 50rem;
+  y: 100rem;
+  left: 0;
+}
+
+
 /*
 @media screen and (max-width: 40.5em) {
   #TOC,
