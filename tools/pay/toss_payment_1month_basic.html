@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://js.tosspayments.com/v2/standard"></script>
+    <title>Pay 1 Month </title>
+</head>
+
+<body>
+    <!-- 상품 정보 영역-->
+    <div class="title">상품 정보</div>
+    <p>Rust Basic 기초</p>
+    <p>결제 금액: 300,000원</p>
+
+    <!-- 결제 방법 영역-->
+    <div class="title">결제 방법</div>
+    <div id="payment-method"></div>
+    <div id="agreement"></div>
+    <script>
+        //https://github.com/tosspayments/tosspayments-sample
+        // 스크립트 태그 연동방식
+        const tossPayments = TossPayments("test_gck_Ba5PzR0ArnPqN5qOBpdX3vmYnNeD"); // 결제위젯 연동 키
+        // 회원 결제
+        const widgets = tossPayments.widgets({ customerKey });
+
+        widgets.setAmount({
+            currency: 'KRW',
+            value: amount,
+        });
+
+        // const clientKey = 'test_gck_Ba5PzR0ArnPqN5qOBpdX3vmYnNeD' // 상점을 특정하는 키
+        // const customerKey = 'test_ck_D5GePWvyJnrK0W0k6q8gLzN97Eoq' // 결제 고객을 특정하는 키
+        // const amount = 300_000 // 결제 금액
+
+        // /*결제위젯 영역 렌더링*/
+        // const paymentWidget = PaymentWidget(clientKey, customerKey) // 회원 결제 초기화
+        // // const paymentWidget = PaymentWidget(clientKey, PaymentWidget.ANONYMOUS) // 비회원 결제 초기화
+        // paymentMethods = paymentWidget.renderPaymentMethods('#payment-method', amount)
+
+        // /*약관 영역 렌더링*/
+        // const paymentAgreement = paymentWidget.renderAgreement('#agreement')
+    </script>
+</body>
+
+</html>
