@@ -523,7 +523,11 @@ p.note {
 }
 
 footer {
-  font-size: smaller;
+
+  margin-top: 5ex;
+  margin-left: 5ex;
+  font-style: italic;
+  font-size: 90%;
   background-color: light-dark(var(--light-bg), var(--dark-bg));
   color: light-dark(var(--light-color), var(--dark-color));
   width: 100%;
@@ -534,6 +538,7 @@ footer {
   right: 10;
   left: 0;
   bottom: 0;
+  opacity: 80%;
 }
 
 
