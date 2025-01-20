@@ -1,0 +1,33 @@
+/* freetype2_60.css */
+
+@import "../freetype2.css";
+@import "../menu_top/nav_bar.css";
+
+.bar {
+  background: #21065E url("../../image/Lang_logo/Rust.png") no-repeat right top;
+  background-size: 10%;
+}
+
+#top a {
+  border-bottom: 2px solid #31166E;
+}
+
+.button {
+  color: #f9fafb;
+  background-color: #3182f6;
+  margin: 30px 15px 0px 15px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 18px;
+  white-space: nowrap;
+  text-align: center;
+  /* vertical-align: middle; */
+  cursor: pointer;
+  border: 0 solid transparent;
+  user-select: none;
+  transition: background 0.2s ease, color 0.1s ease;
+  text-decoration: none;
+  border-radius: 7px;
+  padding: 11px 5px;
+  width: 150px;
+}
