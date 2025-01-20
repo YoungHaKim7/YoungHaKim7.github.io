@@ -526,7 +526,7 @@ footer {
   width: 100%;
   height: auto;
   /* footer의 높이 */
-  position: fixed;
+  position: absolute;
   /* bottom: 100rem; */
   right: 10;
   left: 0;
