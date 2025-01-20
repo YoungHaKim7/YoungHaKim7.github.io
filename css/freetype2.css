@@ -526,11 +526,11 @@ footer {
   width: 100%;
   height: auto;
   /* footer의 높이 */
-  position: absolute;
+  position: fixed;
   /* bottom: 100rem; */
-  x: 50rem;
-  y: 100rem;
+  right: 10;
   left: 0;
+  bottom: 0;
 }
 
 
