@@ -1,6 +1,7 @@
 body {
   background-color: #e8f3ff;
 }
+
 .p {
   padding: 0;
   margin: 0;
@@ -10,16 +11,19 @@ body {
   word-break: keep-all;
   word-wrap: break-word;
 }
+
 .wrapper {
   max-width: 800px;
   margin: 0 auto;
 }
+
 .title {
   margin: 0 0 4px;
   font-size: 24px;
   font-weight: 600;
   color: #4e5968;
 }
+
 .box_section {
   background-color: white;
   border-radius: 10px;
@@ -31,9 +35,12 @@ body {
   color: #333d4b;
   align-items: center;
   text-align: center;
-  overflow-x: auto; /* Add this property for horizontal scrolling */
-  white-space: nowrap; /* Prevent text wrapping */
+  overflow-x: auto;
+  /* Add this property for horizontal scrolling */
+  white-space: nowrap;
+  /* Prevent text wrapping */
 }
+
 :root {
   --inverseGrey50: #202027;
   --inverseGrey100: #2c2c35;
@@ -106,7 +113,7 @@ html {
 .button {
   color: #f9fafb;
   background-color: #3182f6;
-  margin: 30px 15px 0px 15px;
+  margin: 5px 5px 0px 15px;
   font-size: 15px;
   font-weight: 600;
   line-height: 18px;
@@ -361,7 +368,7 @@ textarea {
   display: flex;
 }
 
-.checkable + .checkable {
+.checkable+.checkable {
   margin-top: 12px;
 }
 
@@ -369,7 +376,7 @@ textarea {
   display: inline-block;
 }
 
-.checkable--inline + .checkable--inline {
+.checkable--inline+.checkable--inline {
   margin-top: 0;
   margin-left: 18px;
 }
@@ -506,11 +513,11 @@ textarea {
   padding-left: var(--checkable-label-text-padding);
 }
 
-.checkable--disabled > .checkable__input {
+.checkable--disabled>.checkable__input {
   cursor: not-allowed;
 }
 
-.checkable--disabled > .checkable__label {
+.checkable--disabled>.checkable__label {
   color: #b0b8c1;
   color: var(--grey400);
   cursor: not-allowed;

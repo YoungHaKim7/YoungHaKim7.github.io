@@ -35,6 +35,7 @@
 
             <!-- ************************************************** -->
             <!-- 러스트 200불짜리 결제 테스트 -->
+            <!-- 
             <script
               src="https://www.paypal.com/sdk/js?client-id=BAAso3VFkUad8u10SYQqtZNGSpqF_n5iQlAw7E2jTVP2nhyY5BCbKZglMePnZDXy1K1_DHfCuD-EOg2Hu0&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
             <div id="paypal-container-QDFG69S5FAPDS"></div>
@@ -42,7 +43,27 @@
               paypal.HostedButtons({
                 hostedButtonId: "QDFG69S5FAPDS",
               }).render("#paypal-container-QDFG69S5FAPDS")
-            </script>
+            </script> -->
+
+            <table class="todo-list-title" border="3">
+              <tr>
+                <td colspan="4" align="center">Rust & vim 유료 강의 소개 </td>
+              </tr>
+              <tr align="center">
+                <td colspan="2">강의명</td>
+                <td>금액<br>(카드 <br>& 현금 영수증<br> 가능합니다.)</td>
+                <td>총 강의 시간</td>
+              </tr>
+              <tr align="center">
+                <td rowspan="4"><img width=30px src="../image/Lang_logo/Rust.png"><br>Rust 강의</td>
+                <td>Rust + Vim<br />강력추천 !</td>
+                <td>40만원 <!-- 결제하기 버튼 -->
+                  <button class="button" style="margin-top: 5px"
+                    onclick="location.href='https://younghakim7.github.io/tools/pay/php-javascript/public/payment/checkout.html';">결제하기</button>
+                </td>
+                <td>(Rust 80시간)+(Vim 30시간) = 총120시간</td>
+              </tr>
+            </table>
 
             <div id="introduction">
               <p> 커리 큐럼 및 문의<a href="tel:01028957174"> 010-2895-7174 </a><br />(신용카드는 checkout누르시면 됩니다. 결제하시고
@@ -71,7 +92,10 @@
                 <tr align="center">
                   <td rowspan="4"><img width=30px src="../image/Lang_logo/Rust.png"><br>Rust 강의</td>
                   <td>Rust + Vim<br />강력추천 !</td>
-                  <td>40 만원<br />(카드결제btn자리)</td>
+                  <td>40만원 <!-- 결제하기 버튼 -->
+                    <button class="button" style="margin-top: 5px"
+                      onclick="location.href='https://younghakim7.github.io/tools/pay/php-javascript/public/payment/checkout.html';">결제하기</button>
+                  </td>
                   <td>(Rust 80시간)+(Vim 30시간) = 총120시간</td>
                 </tr>
                 <tr align="center">
