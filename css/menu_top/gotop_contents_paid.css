@@ -1,0 +1,12 @@
+.goupbtn {
+    padding: 1px 1px;
+    bottom: 140px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 80%;
+    background-color: #423838;
+    border: red 8px solid;
+    position: fixed;
+    z-index: 1;
+}

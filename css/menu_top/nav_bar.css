@@ -8,6 +8,7 @@
     bottom: 0px;
     border-top: 1px solid #f7f7f7;
     box-sizing: border-box;
+    z-index: 10;
 }
 
 .nav__list-item a {
