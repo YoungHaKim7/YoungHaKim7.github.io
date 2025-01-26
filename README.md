@@ -31,4 +31,6 @@
 # Thank you
 - https://gitlab.freedesktop.org/freetype/freetype-web
 
+- 난중에 홈페이지 이걸로 개편 예정(250126계획중)
+  - https://github.com/KhronosGroup/khronosgroup.github.io
 
