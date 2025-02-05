@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_URI'] === '/') {
 	exit;
 }
 
-$widgetSecretKey = "test_gsk_docs_OaPz8L5KdmQXkzRz3y47BMw6";
+$widgetSecretKey = $API_WIDGET_SECRET_KEY;
 $apiSecretKey = $API_SECRET_KEY;
 
 $encryptedWidgetSecretKey = "Basic " . base64_encode($widgetSecretKey . ":");
