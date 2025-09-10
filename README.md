@@ -36,3 +36,4 @@
 
 - 이것도 고려해 보자
   - https://github.com/cotes2020/jekyll-theme-chirpy
+    - 원본 https://github.com/jekyll/jekyll
