@@ -34,3 +34,5 @@
 - 난중에 홈페이지 이걸로 개편 예정(250126계획중)
   - https://github.com/KhronosGroup/khronosgroup.github.io
 
+- 이것도 고려해 보자
+  - https://github.com/cotes2020/jekyll-theme-chirpy
